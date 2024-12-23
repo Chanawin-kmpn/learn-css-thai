@@ -5,3 +5,74 @@
 body {
   font-family: "Sarabun", sans-serif;
 }
+
+@layer utilities {
+  .bg-light100_dark900 {
+    @apply bg-light-100 dark:bg-dark-900;
+  }
+
+  .text-dark700_light400 {
+    @apply text-dark-700 dark:text-light-400 !important;
+  }
+
+  .text-dark900_light100 {
+    @apply text-dark-900 dark:text-light-100 !important;
+  }
+
+  .h1-banner {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold;
+  }
+
+  .h2-banner {
+    @apply text-3xl md:text-4xl font-semibold;
+  }
+
+  .h3-banner {
+    @apply text-base font-bold;
+  }
+
+  .h1-section {
+    @apply text-3xl md:text-4xl font-bold;
+  }
+
+  .h2-section {
+    @apply text-2xl md:text-3xl font-semibold;
+  }
+
+  .paragraph {
+    @apply text-base;
+  }
+
+  .paragraph-sm {
+    @apply text-sm;
+  }
+
+  .description {
+    @apply text-lg;
+  }
+
+  .link {
+    @apply text-sm;
+  }
+
+  .link-label {
+    @apply text-sm font-semibold;
+  }
+
+  .btn {
+    @apply bg-primary-lime text-white px-4 py-2 rounded-md;
+  }
+
+  .border-gradient-outline {
+    @apply relative px-4 py-2 rounded-md bg-white;
+  }
+
+  .border-gradient-outline::before {
+    @apply absolute -inset-[2px] bg-gradient-to-r from-lime-500 to-orange-500 -z-10 rounded-lg;
+    content: "";
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-lime-500 to-orange-500 text-transparent bg-clip-text;
+  }
+}

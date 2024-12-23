@@ -10,20 +10,28 @@ export default {
   theme: {
     extend: {
       colors: {
+        primary: {
+          lime: "#84cc16",
+        },
+        secondary: {
+          orange: "#f97316",
+        },
         dark: {
           "700": "#3f3f46",
           "900": "#18181b",
         },
         light: {
+          "100": "#ffffff",
           "300": "#d4d4d8",
           "400": "#a1a1aa",
         },
       },
+      gradientColorStops: {},
       backgroundImage: {
         "light-desktop":
           "url(/images/background/light-blur-blob-bg-desktop.png)",
         "dark-desktop": "url(/images/background/dark-blur-blob-bg-desktop.png)",
-        "light-mobile": "url(/images/background/dark-blur-blob-bg-mobile.png)",
+        "light-mobile": "url(/images/background/light-blur-blob-bg-mobile.png)",
         "dark-mobile": "url(/images/background/dark-blur-blob-bg-mobile.png)",
       },
       fontFamily: {
