@@ -2,7 +2,7 @@
 
 import { EllipsisVertical, Minus } from "lucide-react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 import {
@@ -38,7 +38,7 @@ const NavLinks = () => {
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             {navbarLinks.map((link) => (
-              <DropdownMenuItem key={link.label}>
+              <DropdownMenuItem key={link.label} asChild>
                 <Link href={link.href}>{link.label}</Link>
               </DropdownMenuItem>
             ))}

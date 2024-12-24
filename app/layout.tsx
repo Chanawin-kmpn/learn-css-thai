@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="th" suppressHydrationWarning>
       <body
-        className={`${sarabun.className} ${inter.variable} h-screen antialiased`}
+        className={`${sarabun.className} ${inter.variable} h-screen  antialiased`}
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-20 flex justify-center overflow-hidden">
           <div className="flex w-[108rem] flex-none justify-end 2xl:w-[180rem]">

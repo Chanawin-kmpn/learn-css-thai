@@ -17,7 +17,7 @@ body {
   }
 
   .bg-nav {
-    @apply bg-light-100 dark:bg-dark-900 bg-opacity-60 dark:bg-opacity-60 backdrop-blur;
+    @apply bg-light-100 dark:bg-dark-900 bg-opacity-60 dark:bg-opacity-60 backdrop-blur z-40;
   }
 
   .text-dark700_light400 {
