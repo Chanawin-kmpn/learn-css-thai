@@ -92,15 +92,15 @@ export const ROUTES = [
       },
       {
         label: "CSS Grid",
-        path: "/docs/modern-layout/docs-grid",
+        path: "/docs/modern-layout/grid",
         children: [
           {
             label: "บทนำ",
-            path: "/docs/modern-layout/docs-grid/introduction",
+            path: "/docs/modern-layout/grid/introduction",
           },
           {
             label: "พื้นฐาน",
-            path: "/docs/modern-layout/docs-grid/fundamentals",
+            path: "/docs/modern-layout/grid/fundamentals",
           },
         ],
       },

@@ -1,10 +1,10 @@
 export const navbarLinks = [
   {
-    href: "/docs/fundamental-css/introduction-css",
+    href: "/docs/basics/introduction",
     label: "Docs",
   },
   {
-    href: "/blog",
-    label: "Blog",
+    href: "/blogs",
+    label: "Blogs",
   },
 ];
