@@ -16,6 +16,10 @@ body {
     @apply bg-light-100 dark:bg-dark-900;
   }
 
+  .bg-nav {
+    @apply bg-light-100 dark:bg-dark-900 bg-opacity-60 dark:bg-opacity-60 backdrop-blur;
+  }
+
   .text-dark700_light400 {
     @apply text-dark-700 dark:text-light-400 !important;
   }
@@ -79,5 +83,25 @@ body {
 
   .text-gradient {
     @apply bg-gradient-to-r from-lime-500 to-orange-500 text-transparent bg-clip-text;
+  }
+
+  .invert-colors {
+    @apply invert dark:invert-0;
+  }
+
+  .icon-invert-colors {
+    @apply text-zinc-700 dark:text-white;
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .flex-start {
+    @apply flex justify-start items-center;
   }
 }

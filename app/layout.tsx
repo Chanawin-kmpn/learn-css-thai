@@ -1,9 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import { Sarabun } from "next/font/google";
 import localFont from "next/font/local";
 import React from "react";
 
 import "./globals.css";
+import Navbar from "@/components/Navbar/Navbar";
 import ThemeProvider from "@/context/Theme";
 
 const inter = localFont({
@@ -32,13 +34,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="th" suppressHydrationWarning>
-      <body className={`${sarabun.className} ${inter.variable} antialiased`}>
+      <body
+        className={`${sarabun.className} ${inter.variable} h-screen antialiased`}
+      >
+        <div className="pointer-events-none absolute inset-x-0 top-0 -z-20 flex justify-center overflow-hidden">
+          <div className="flex w-[108rem] flex-none justify-end 2xl:w-[180rem]">
+            <img
+              src="/images/background/light-blur-blob-bg-mobile.png"
+              alt="background"
+              className="w-full max-w-none flex-none opacity-20 dark:hidden"
+            />
+            <img
+              src="/images/background/dark-blur-blob-bg-mobile.png"
+              alt="background"
+              className="hidden w-full max-w-none flex-none opacity-20 dark:block"
+            />
+          </div>
+        </div>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
+          <Navbar />
           {children}
         </ThemeProvider>
       </body>
