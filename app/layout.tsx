@@ -5,7 +5,9 @@ import localFont from "next/font/local";
 import React from "react";
 
 import "./globals.css";
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar/Navbar";
+import Sidebar from "@/components/Navbar/Sidebar";
 import ThemeProvider from "@/context/Theme";
 
 const inter = localFont({
@@ -58,7 +60,9 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Navbar />
-            <div className="jun-content">{children}</div>
+            {children}
+            <Sidebar />
+            <Footer />
           </ThemeProvider>
         </div>
       </body>

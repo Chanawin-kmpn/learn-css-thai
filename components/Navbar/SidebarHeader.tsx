@@ -14,7 +14,7 @@ import {
 
 const SidebarHeader = () => {
   return (
-    <div className="jun-header top-[75px] -mt-8 gap-8 p-4 lg:hidden">
+    <div className="-mt-8 flex gap-8 p-4 lg:hidden">
       <button
         className="text-dark900_light100 jun-edgeDrawerTrigger"
         onClick={() => triggerEdgeDrawer()}
