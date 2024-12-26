@@ -51,7 +51,14 @@ const NavLinks = () => {
       <div className="hidden items-center lg:flex">
         <div className="space-x-4">
           {navbarLinks.map((link) => {
-            const isActive = pathName === link.href;
+            const isDocsActive = pathName.startsWith("/docs");
+            const isBlogsActive = pathName.startsWith("/blogs");
+
+            const isActive = link.href.startsWith("/docs")
+              ? isDocsActive
+              : link.href.startsWith("/blogs")
+                ? isBlogsActive
+                : pathName === link.href;
 
             return (
               <Link
@@ -59,7 +66,7 @@ const NavLinks = () => {
                   isActive
                     ? "text-primary-lime"
                     : "text-dark700 dark:text-light-100",
-                  "link-label"
+                  "link-label",
                 )}
                 key={link.label}
                 href={link.href}

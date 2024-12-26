@@ -17,6 +17,7 @@ const inter = localFont({
 const sarabun = Sarabun({
   variable: "--font-sarabun",
   weight: ["300", "400", "500", "700"],
+  subsets: ["latin", "thai"],
 });
 
 export const metadata: Metadata = {
@@ -34,32 +35,32 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="th" suppressHydrationWarning>
-      <body
-        className={`${sarabun.className} ${inter.variable} h-screen antialiased`}
-      >
-        <div className="pointer-events-none absolute inset-x-0 top-0 -z-20 flex justify-center overflow-hidden">
-          <div className="flex w-[108rem] flex-none justify-end 2xl:w-[180rem]">
-            <img
-              src="/images/background/light-blur-blob-bg-mobile.png"
-              alt="background"
-              className="w-full max-w-none flex-none opacity-20 dark:hidden"
-            />
-            <img
-              src="/images/background/dark-blur-blob-bg-mobile.png"
-              alt="background"
-              className="hidden w-full max-w-none flex-none opacity-20 dark:block"
-            />
+      <body className={`${sarabun.className} ${inter.variable} antialiased`}>
+        <div className="jun-layout">
+          <div className="pointer-events-none absolute inset-x-0 top-0 -z-20 flex justify-center overflow-hidden">
+            <div className="flex w-[108rem] flex-none justify-end 2xl:w-full">
+              <img
+                src="/images/background/light-blur-blob-bg-mobile.png"
+                alt="background"
+                className="w-full max-w-none flex-none opacity-20 dark:hidden"
+              />
+              <img
+                src="/images/background/dark-blur-blob-bg-mobile.png"
+                alt="background"
+                className="hidden w-full max-w-none flex-none opacity-20 dark:block"
+              />
+            </div>
           </div>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Navbar />
+            <div className="jun-content">{children}</div>
+          </ThemeProvider>
         </div>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-          {children}
-        </ThemeProvider>
       </body>
     </html>
   );
