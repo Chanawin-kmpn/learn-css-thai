@@ -1,7 +1,6 @@
-export const ROUTES = [
+const ROUTES = [
   {
     label: "พื้นฐาน",
-    path: "/docs/basics",
     children: [
       {
         label: "บทนำ",
@@ -31,7 +30,6 @@ export const ROUTES = [
   },
   {
     label: "การแสดงผลและการแก้ไข",
-    path: "/docs/rendering",
     children: [
       {
         label: "การ Debugging บน Browser",
@@ -77,7 +75,6 @@ export const ROUTES = [
   },
   {
     label: "ระบบ Layout สมัยใหม่",
-    path: "/docs/modern-layout",
     children: [
       {
         label: "Flexbox",
@@ -111,3 +108,5 @@ export const ROUTES = [
     ],
   },
 ];
+
+export default ROUTES;

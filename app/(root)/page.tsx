@@ -5,7 +5,7 @@ export default function Home() {
       <p className="text-center">
         นี่คือเว็บไซต์ที่สร้างด้วย Next.js และ Tailwind CSS
       </p>
-      this is
+      this is a test
       <button className="border-gradient-outline">Welcome to css</button>
     </div>
   );

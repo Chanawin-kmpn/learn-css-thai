@@ -1,7 +1,7 @@
 import React from "react";
 
 const page = () => {
-  return <div>page</div>;
+  return <div>Containing Blocks</div>;
 };
 
 export default page;
