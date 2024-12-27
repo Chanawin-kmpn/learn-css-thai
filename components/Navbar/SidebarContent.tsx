@@ -1,13 +1,17 @@
+"use client";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
+import { triggerEdgeDrawer } from "tailwindcss-jun-layout";
 
 import ROUTES from "@/constants/router";
+import { cn } from "@/lib/utils";
 
 import { CloseDrawerButton } from "../Triggers";
-import { Button } from "../ui/button";
 
-const SidebarContent = () => {
+const SidebarContent = ({ isMobile = false }: { isMobile?: boolean }) => {
+  const pathName = usePathname();
   return (
     <>
       <CloseDrawerButton />
@@ -22,71 +26,119 @@ const SidebarContent = () => {
               <div className="jun-sidebarGroupText">
                 <div>
                   <ul className="jun-sidebarMenu jun-sidebarMenu-nested before:bg-dark-700/20 before:dark:bg-light-400/20">
-                    {section.children.map((item) =>
-                      item.label !== "Flexbox" && item.label !== "CSS Grid" ? (
+                    {section.children.map((item) => {
+                      let isActive = pathName.includes(item.path);
+                      return item.label !== "Flexbox" &&
+                        item.label !== "CSS Grid" ? (
+                        <li
+                          className="jun-sidebarMenuItem"
+                          key={`Sub Section ${item.label}`}
+                          onClick={() => triggerEdgeDrawer()}
+                        >
+                          <Link
+                            className="link text-dark700_light400 jun-sidebarMenuButton transition-all duration-150 hover:bg-light-300 hover:dark:bg-dark-700"
+                            href={item.path}
+                          >
+                            <span
+                              className={cn(
+                                "jun-sidebarText",
+                                isActive &&
+                                  "text-secondary-orange dark:text-primary-lime",
+                              )}
+                            >
+                              {item.label}
+                            </span>
+                          </Link>
+                        </li>
+                      ) : (
                         <li
                           className="jun-sidebarMenuItem"
                           key={`Sub Section ${item.label}`}
                         >
-                          <Button
-                            variant="ghost"
-                            className="jun-sidebarMenuButton"
-                          >
-                            <Link
-                              className="link text-dark700_light400 jun-sidebarText"
-                              href={item.path}
-                            >
-                              {item.label}
-                            </Link>
-                          </Button>
-                        </li>
-                      ) : (
-                        <li
-                          className="jun-sidebarMenu-nested jun-sidebarMenuItem"
-                          key={`Sub Section ${item.label}`}
-                        >
-                          <label
-                            htmlFor={`menu-${item.label}`}
-                            className="jun-sidebarMenuButton jun-collapsibleTrigger"
-                          >
-                            <span className="link-label jun-sidebarText">
-                              {item.label}
-                            </span>
-                            <ChevronDown className="jun-collapsibleIcon jun-collapsibleIcon-rotate-180 size-4" />
-                            <input
-                              type="checkbox"
-                              className="sr-only"
-                              id={`menu-${item.label}`}
-                              // defaultChecked
-                            />
-                          </label>
-                          <div className="jun-collapsibleContent">
-                            <div>
-                              <ul className="jun-sidebarMenu jun-sidebarMenu-nested">
-                                {item.children?.map((child) => (
-                                  <li
-                                    className="jun-sidebarMenuItem"
-                                    key={`Super Sub Section ${child.path}`}
-                                  >
-                                    <Button
-                                      variant="ghost"
-                                      className="jun-sidebarMenuButton"
+                          {isMobile ? (
+                            <>
+                              <div className="link-label jun-sidebarText">
+                                {item.label}
+                              </div>
+                              <div className="jun-sidebarGroupText">
+                                <ul className="jun-sidebarMenu jun-sidebarMenu-nested">
+                                  {item.children?.map((child) => (
+                                    <li
+                                      className="jun-sidebarMenuItem"
+                                      key={`Super Sub Section ${child.label}`}
+                                      onClick={() => triggerEdgeDrawer()}
                                     >
                                       <Link
-                                        className="link text-dark700_light400 jun-sidebarText"
+                                        className="link text-dark700_light400 jun-sidebarMenuButton transition-all duration-150 hover:bg-light-300 hover:dark:bg-dark-700"
                                         href={child.path}
                                       >
-                                        {child.label}
+                                        <span
+                                          className={cn(
+                                            "jun-sidebarText",
+                                            pathName.includes(child.path) &&
+                                              "text-secondary-orange dark:text-primary-lime",
+                                          )}
+                                        >
+                                          {child.label}
+                                        </span>
                                       </Link>
-                                    </Button>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          </div>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              <label
+                                htmlFor={`menu-${item.label}`}
+                                className="jun-sidebarMenuButton jun-collapsibleTrigger"
+                              >
+                                <span className="link-label jun-sidebarText">
+                                  {item.label}
+                                </span>
+                                <ChevronDown className="jun-collapsibleIcon jun-collapsibleIcon-rotate-180 size-4" />
+                                <input
+                                  type="checkbox"
+                                  className="sr-only"
+                                  id={`menu-${item.label}`}
+                                  defaultChecked
+                                />
+                              </label>
+                              <div className="jun-collapsibleContent">
+                                <div>
+                                  <ul className="jun-sidebarMenu jun-sidebarMenu-nested">
+                                    {item.children?.map((child) => {
+                                      isActive = pathName.includes(child.path);
+                                      return (
+                                        <li
+                                          className="jun-sidebarMenuItem"
+                                          key={`Super Sub Section ${child.path}`}
+                                        >
+                                          <Link
+                                            className="link text-dark700_light400 jun-sidebarMenuButton transition-all duration-150 hover:bg-light-300 hover:dark:bg-dark-700"
+                                            href={child.path}
+                                          >
+                                            <span
+                                              className={cn(
+                                                "jun-sidebarText",
+                                                isActive &&
+                                                  "text-secondary-orange dark:text-primary-lime",
+                                              )}
+                                            >
+                                              {child.label}
+                                            </span>
+                                          </Link>
+                                        </li>
+                                      );
+                                    })}
+                                  </ul>
+                                </div>
+                              </div>
+                            </>
+                          )}
                         </li>
-                      ),
-                    )}
+                      );
+                    })}
                   </ul>
                 </div>
               </div>

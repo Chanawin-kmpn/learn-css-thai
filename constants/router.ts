@@ -3,7 +3,7 @@ const ROUTES = [
     label: "พื้นฐาน",
     children: [
       {
-        label: "บทนำ",
+        label: "Introduction",
         path: "/docs/basics/introduction",
       },
       {
