@@ -14,14 +14,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { navbarLinks } from "@/constants";
-import { cn } from "@/lib/utils";
+import { checkDocsPath, cn } from "@/lib/utils";
 
 import Theme from "./Theme";
 import Search from "../Search/Search";
 
 const NavLinks = () => {
   const pathName = usePathname();
-  const isDocsPath = pathName.startsWith("/docs");
+  const isDocsPath = checkDocsPath(pathName);
 
   return (
     <div className="flex items-center gap-16">
@@ -51,10 +51,10 @@ const NavLinks = () => {
       <div className="hidden items-center lg:flex">
         <div className="space-x-4">
           {navbarLinks.map((link) => {
-            const isDocsActive = pathName.startsWith("/docs");
+            const isDocsActive = checkDocsPath(pathName);
             const isBlogsActive = pathName.startsWith("/blogs");
 
-            const isActive = link.href.startsWith("/docs")
+            const isActive = checkDocsPath(link.href)
               ? isDocsActive
               : link.href.startsWith("/blogs")
                 ? isBlogsActive

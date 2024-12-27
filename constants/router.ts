@@ -7,7 +7,7 @@ const ROUTES = [
         path: "/docs/basics/introduction",
       },
       {
-        label: "Media Queries",
+        label: "Media queries",
         path: "/docs/basics/media-queries",
       },
       {
@@ -32,23 +32,23 @@ const ROUTES = [
     label: "การแสดงผลและการแก้ไข",
     children: [
       {
-        label: "การ Debugging บน Browser",
+        label: "Debugging",
         path: "/docs/rendering/debugging-browser",
       },
       {
-        label: "พื้นฐานการแสดงผล CSS",
-        path: "/docs/rendering/css-rendering-basics",
+        label: "Rendering CSS",
+        path: "/docs/rendering/css-rendering",
       },
       {
-        label: "Block และ Inline",
+        label: "Block and Inline",
         path: "/docs/rendering/block-inline",
       },
       {
-        label: "Box Model",
+        label: "Box model",
         path: "/docs/rendering/box-model",
       },
       {
-        label: "Flow Layout",
+        label: "Flow layout",
         path: "/docs/rendering/flow-layout",
       },
       {
@@ -56,11 +56,11 @@ const ROUTES = [
         path: "/docs/rendering/positioning",
       },
       {
-        label: "Containing Blocks",
+        label: "Containing blocks",
         path: "/docs/rendering/containing-blocks",
       },
       {
-        label: "Stacking Contexts",
+        label: "Stacking contexts",
         path: "/docs/rendering/stacking-contexts",
       },
       {
@@ -68,7 +68,7 @@ const ROUTES = [
         path: "/docs/rendering/overflow",
       },
       {
-        label: "Hidden Content",
+        label: "Hidden content",
         path: "/docs/rendering/hidden-content",
       },
     ],
@@ -80,9 +80,12 @@ const ROUTES = [
         label: "Flexbox",
         path: "/docs/modern-layout/flexbox",
         children: [
-          { label: "บทนำ", path: "/docs/modern-layout/flexbox/introduction" },
           {
-            label: "พื้นฐาน",
+            label: "Introduction",
+            path: "/docs/modern-layout/flexbox/introduction",
+          },
+          {
+            label: "Fundamentals",
             path: "/docs/modern-layout/flexbox/fundamentals",
           },
         ],
@@ -92,11 +95,11 @@ const ROUTES = [
         path: "/docs/modern-layout/grid",
         children: [
           {
-            label: "บทนำ",
+            label: "Introduction",
             path: "/docs/modern-layout/grid/introduction",
           },
           {
-            label: "พื้นฐาน",
+            label: "Fundamentals",
             path: "/docs/modern-layout/grid/fundamentals",
           },
         ],

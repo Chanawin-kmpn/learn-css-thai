@@ -3,7 +3,6 @@ import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import { triggerEdgeDrawer } from "tailwindcss-jun-layout";
 
 import ROUTES from "@/constants/router";
 import { cn } from "@/lib/utils";
@@ -33,7 +32,6 @@ const SidebarContent = ({ isMobile = false }: { isMobile?: boolean }) => {
                         <li
                           className="jun-sidebarMenuItem"
                           key={`Sub Section ${item.label}`}
-                          onClick={() => triggerEdgeDrawer()}
                         >
                           <Link
                             className="link text-dark700_light400 jun-sidebarMenuButton transition-all duration-150 hover:bg-light-300 hover:dark:bg-dark-700"
@@ -66,7 +64,6 @@ const SidebarContent = ({ isMobile = false }: { isMobile?: boolean }) => {
                                     <li
                                       className="jun-sidebarMenuItem"
                                       key={`Super Sub Section ${child.label}`}
-                                      onClick={() => triggerEdgeDrawer()}
                                     >
                                       <Link
                                         className="link text-dark700_light400 jun-sidebarMenuButton transition-all duration-150 hover:bg-light-300 hover:dark:bg-dark-700"

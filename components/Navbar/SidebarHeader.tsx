@@ -29,6 +29,9 @@ const SidebarHeader = () => {
             {getSeperatePath.map((path, index) => {
               const pathName = path.charAt(0).toUpperCase() + path.slice(1);
               const isLastItem = index === getSeperatePath.length - 1;
+              const formattedPath = path.includes("-")
+                ? pathName.replace("-", " ")
+                : pathName;
               return (
                 <React.Fragment key={index}>
                   <BreadcrumbItem
@@ -36,7 +39,7 @@ const SidebarHeader = () => {
                       isLastItem ? "link-label text-primary-lime" : "link",
                     )}
                   >
-                    {pathName}
+                    {formattedPath}
                   </BreadcrumbItem>
                   {!isLastItem && <BreadcrumbSeparator />}
                 </React.Fragment>
