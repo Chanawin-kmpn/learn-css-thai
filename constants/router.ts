@@ -74,7 +74,7 @@ const ROUTES = [
     ],
   },
   {
-    label: "ระบบ Layout สมัยใหม่",
+    label: "Modern Layout",
     children: [
       {
         label: "Flexbox",

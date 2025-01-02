@@ -40,16 +40,16 @@ export default function RootLayout({
       <body className={`${sarabun.className} ${inter.variable} antialiased`}>
         <div className="jun-layout">
           <div className="pointer-events-none absolute inset-x-0 top-0 -z-20 flex justify-center overflow-hidden">
-            <div className="flex w-[108rem] flex-none justify-end 2xl:w-full">
+            <div className="flex w-[150rem] flex-none justify-end">
               <img
                 src="/images/background/light-blur-blob-bg-mobile.png"
                 alt="background"
-                className="w-full max-w-none flex-none opacity-20 dark:hidden"
+                className="h-screen w-full max-w-none flex-none opacity-20 dark:hidden"
               />
               <img
                 src="/images/background/dark-blur-blob-bg-mobile.png"
                 alt="background"
-                className="hidden w-full max-w-none flex-none opacity-20 dark:block"
+                className="hidden h-screen w-full max-w-none flex-none opacity-20 dark:block"
               />
             </div>
           </div>

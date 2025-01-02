@@ -36,7 +36,9 @@ const SidebarHeader = () => {
                 <React.Fragment key={index}>
                   <BreadcrumbItem
                     className={cn(
-                      isLastItem ? "link-label text-primary-lime" : "link",
+                      isLastItem
+                        ? "link-label text-secondary-orange dark:text-primary-lime"
+                        : "link",
                     )}
                   >
                     {formattedPath}
