@@ -73,12 +73,13 @@ body {
   }
 
   .border-gradient-outline {
-    @apply relative rounded-md border-none px-4 py-2 lg:items-center lg:justify-center;
+    @apply relative flex items-center justify-center rounded-md border-none px-4 py-2;
   }
 
   .border-gradient-outline::after {
-    @apply absolute -z-[1] h-[105%] w-[102%] rounded-md bg-gradient-to-r from-lime-500 to-orange-500;
+    @apply absolute -z-[1] h-[105%] rounded-md bg-gradient-to-r from-lime-500 to-orange-500;
     content: "";
+    width: calc(100% + 2px);
   }
 
   .text-gradient {
