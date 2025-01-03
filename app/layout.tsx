@@ -37,8 +37,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="th" suppressHydrationWarning>
-      <body className={`${sarabun.className} ${inter.variable} antialiased`}>
-        <div className="jun-layout">
+      <body
+        className={`${sarabun.className} ${inter.variable} bg-light100_dark900 antialiased`}
+      >
+        <div className="jun-layout gap-y-8">
           <div className="pointer-events-none absolute inset-x-0 top-0 -z-20 flex justify-center overflow-hidden">
             <div className="flex w-[150rem] flex-none justify-end">
               <img

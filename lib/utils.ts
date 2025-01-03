@@ -8,3 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export function checkDocsPath(path: string) {
   return path.startsWith("/docs");
 }
+
+export function checkHomePath(path: string) {
+  return path === "/";
+}

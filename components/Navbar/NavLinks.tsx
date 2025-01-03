@@ -17,21 +17,13 @@ import { navbarLinks } from "@/constants";
 import { checkDocsPath, cn } from "@/lib/utils";
 
 import Theme from "./Theme";
-import Search from "../Search/Search";
 
 const NavLinks = () => {
   const pathName = usePathname();
-  const isDocsPath = checkDocsPath(pathName);
 
   return (
     <div className="flex items-center gap-16">
-      {!isDocsPath && (
-        <div className="hidden lg:flex">
-          <Search />
-        </div>
-      )}
       <div className="flex-between gap-4 lg:hidden">
-        <Search />
         <DropdownMenu>
           <DropdownMenuTrigger>
             <EllipsisVertical />

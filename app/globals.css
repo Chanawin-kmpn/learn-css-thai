@@ -17,7 +17,7 @@ body {
   }
 
   .bg-nav {
-    @apply bg-light-100 dark:bg-dark-900 bg-opacity-60 dark:bg-opacity-60 backdrop-blur z-40;
+    @apply z-40 bg-light-100 bg-opacity-60 backdrop-blur dark:bg-dark-900 dark:bg-opacity-60;
   }
 
   .text-dark700_light400 {
@@ -29,11 +29,11 @@ body {
   }
 
   .h1-banner {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold;
+    @apply text-center text-4xl font-bold md:text-5xl lg:text-6xl;
   }
 
   .h2-banner {
-    @apply text-3xl md:text-4xl font-semibold;
+    @apply text-center text-3xl font-semibold md:text-4xl;
   }
 
   .h3-banner {
@@ -41,11 +41,11 @@ body {
   }
 
   .h1-section {
-    @apply text-3xl md:text-4xl font-bold;
+    @apply text-3xl font-bold md:text-4xl;
   }
 
   .h2-section {
-    @apply text-2xl md:text-3xl font-semibold;
+    @apply text-2xl font-semibold md:text-3xl;
   }
 
   .paragraph {
@@ -69,20 +69,20 @@ body {
   }
 
   .btn {
-    @apply bg-primary-lime text-white px-4 py-2 rounded-md;
+    @apply max-w-[250px] rounded-md bg-primary-lime px-4 py-2 text-center text-white;
   }
 
   .border-gradient-outline {
-    @apply relative px-4 py-2 rounded-md bg-white;
+    @apply relative rounded-md border-none px-4 py-2 lg:items-center lg:justify-center;
   }
 
-  .border-gradient-outline::before {
-    @apply absolute -inset-[2px] bg-gradient-to-r from-lime-500 to-orange-500 -z-10 rounded-lg;
+  .border-gradient-outline::after {
+    @apply absolute -z-[1] h-[105%] w-[102%] rounded-md bg-gradient-to-r from-lime-500 to-orange-500;
     content: "";
   }
 
   .text-gradient {
-    @apply bg-gradient-to-r from-lime-500 to-orange-500 text-transparent bg-clip-text;
+    @apply bg-gradient-to-r from-lime-500 to-orange-500 bg-clip-text text-transparent;
   }
 
   .invert-colors {
@@ -94,14 +94,14 @@ body {
   }
 
   .flex-center {
-    @apply flex justify-center items-center;
+    @apply flex items-center justify-center;
   }
 
   .flex-between {
-    @apply flex justify-between items-center;
+    @apply flex items-center justify-between;
   }
 
   .flex-start {
-    @apply flex justify-start items-center;
+    @apply flex items-center justify-start;
   }
 }
