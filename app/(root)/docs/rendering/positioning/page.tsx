@@ -1,7 +1,13 @@
 import React from "react";
 
+import Construction from "@/components/Construction";
+
 const page = () => {
-  return <div>Positioning</div>;
+  return (
+    <div>
+      <Construction />
+    </div>
+  );
 };
 
 export default page;

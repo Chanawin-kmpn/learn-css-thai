@@ -6,7 +6,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="pt-14 lg:pt-16">
       <SidebarHeader />
-      <div className="pl-8">{children}</div>
+      <div className="lg:pl-8">{children}</div>
     </div>
   );
 };
