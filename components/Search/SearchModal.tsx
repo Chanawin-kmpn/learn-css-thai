@@ -45,6 +45,7 @@ const SearchModal = () => {
           <CommandGroup key={head.label} heading={head.label}>
             {head.children?.map((child) => (
               <CommandItem
+                className="cursor-pointer"
                 key={child.label}
                 onSelect={() =>
                   handleSelect(
