@@ -7,7 +7,7 @@ import React from "react";
 import { checkHomePath, cn } from "@/lib/utils";
 
 import NavLinks from "./NavLinks";
-import SearchModal from "../Search/SearchModal";
+import SearchButton from "../Search/SearchButton";
 
 const Navbar = () => {
   const pathName = usePathname();
@@ -20,8 +20,12 @@ const Navbar = () => {
         </Link>
 
         <div className="flex flex-1 items-center justify-end gap-4 lg:gap-16">
-          <div className={cn(!isHomePath ? "lg:block lg:flex-1" : "lg:hidden")}>
-            <SearchModal />
+          <div
+            className={cn(
+              !isHomePath ? "lg:block lg:flex-1" : "block lg:hidden",
+            )}
+          >
+            <SearchButton />
           </div>
           <section>
             <NavLinks />

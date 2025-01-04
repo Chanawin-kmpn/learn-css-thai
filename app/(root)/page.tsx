@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import HowToLearnCard from "@/components/HowToLearnCard";
 import LottieAnimation from "@/components/LottieAnimation";
-import SearchModal from "@/components/Search/SearchModal";
+import SearchButton from "@/components/Search/SearchButton";
 import { howToLearn } from "@/constants";
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
           พร้อมตัวอย่างที่คุณสามารถทดลองแก้ไขได้ทันที
           เหมาะสำหรับผู้ที่เริ่มต้นเรียนรู้ CSS
         </p>
-        <div className="mx-auto flex max-w-[410px]">
+        <div className="mx-auto flex max-w-[450px]">
           <Link
             href="/docs/basics/introduction"
             className="btn mx-auto block flex-1"
@@ -25,7 +25,7 @@ export default function Home() {
             เริ่มกันเลย
           </Link>
           <div className="ml-4 hidden grow-[2] lg:block">
-            <SearchModal />
+            <SearchButton />
           </div>
         </div>
       </div>

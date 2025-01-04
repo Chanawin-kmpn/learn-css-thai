@@ -8,6 +8,8 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import Sidebar from "@/components/Navbar/Sidebar";
+import SearchModal from "@/components/Search/SearchModal";
+import { SearchModalProvider } from "@/context/SearchModalContext";
 import ThemeProvider from "@/context/Theme";
 
 const inter = localFont({
@@ -61,10 +63,13 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <Navbar />
-            {children}
-            <Sidebar />
-            <Footer />
+            <SearchModalProvider>
+              <Navbar />
+              <SearchModal />
+              {children}
+              <Sidebar />
+              <Footer />
+            </SearchModalProvider>
           </ThemeProvider>
         </div>
       </body>

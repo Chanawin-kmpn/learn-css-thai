@@ -69,7 +69,7 @@ body {
   }
 
   .btn {
-    @apply max-w-[250px] rounded-md bg-primary-lime px-4 py-2 text-center text-white;
+    @apply flex max-w-[250px] items-center justify-center rounded-md bg-primary-lime px-4 py-2 text-white;
   }
 
   .border-gradient-outline {
