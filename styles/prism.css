@@ -1,0 +1,31 @@
+/* styles/prism.css */
+/* Custom styles for code highlighting */
+
+/* Override Prism.js theme colors */
+code {
+  font-family: "Fira Code", monospace;
+}
+
+.token.selector {
+  color: #84cc16 !important;
+}
+
+.token.property {
+  color: #7cd9fa !important;
+}
+
+.token.punctuation {
+  color: #ffffff !important;
+}
+
+.token.number {
+  color: #b5cea8 !important;
+}
+
+.token.unit {
+  color: #b5cea8 !important;
+}
+
+.token.function {
+  color: #cd743a !important;
+}

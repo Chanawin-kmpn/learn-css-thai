@@ -38,6 +38,7 @@ export default {
       fontFamily: {
         inter: ["var(--font-inter)"],
         sarabun: ["var(--font-sarabun)"],
+        firaCode: ["var(--font-firaCode)"],
       },
       borderRadius: {
         lg: "var(--radius)",

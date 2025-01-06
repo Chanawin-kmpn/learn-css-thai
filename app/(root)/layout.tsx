@@ -2,6 +2,8 @@
 import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
 
+import "@/styles/prism.css";
+
 import InsetSidebar from "@/components/Navbar/InsetSidebar";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
