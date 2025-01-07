@@ -1,18 +1,14 @@
 "use client";
 
+import Editor from "@monaco-editor/react";
+import { Copy, Redo, Undo } from "lucide-react";
 import dynamic from "next/dynamic";
-import Prism from "prismjs";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "prismjs/components/prism-css";
 import "prismjs/themes/prism-tomorrow.css";
 
+import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-/**
- * ตัวอย่าง Live CSS Playground:
- * - ด้านซ้าย: Edit code CSS
- * - ด้านขวา: Preview ผลลัพธ์
- */
 
 interface LiveCSSPlaygroundProps {
   initialCSS?: string;
@@ -37,73 +33,153 @@ const CodeEditor: React.FC<LiveCSSPlaygroundProps> = ({
   transform: rotate(20deg) scale(1.2);
 }`,
   );
+
   const [htmlCode, setHtmlCode] = useState(
     initialHtml ||
-      `<div className="box flex items-center justify-center text-white">
-          Hover Me!
-        </div>`,
+      `<div class="box flex items-center justify-center text-white">
+  Hover Me!
+</div>`,
   );
 
-  // ฟังก์ชัน highlight โค้ดด้วย Prism
-  const highlightWithPrism = (code: string) => {
-    return Prism.highlight(code, Prism.languages.css, "css");
+  const [preview, setPreview] = useState("");
+  const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
+
+  useEffect(() => {
+    updatePreview();
+  }, [cssCode, htmlCode]);
+
+  const updatePreview = () => {
+    const combinedContent = `
+      <html>
+        <head>
+          <style>${cssCode}</style>
+          <script src="https://cdn.tailwindcss.com"></script>
+        </head>
+        <body>
+          ${htmlCode}
+        </body>
+      </html>
+    `;
+    setPreview(combinedContent);
+  };
+
+  function handleEditorDidMount(editor: string) {
+    setInterval(() => {
+      editorRef.current = editor;
+    }, 200);
+  }
+
+  const copyToClipboard = async (code: string) => {
+    try {
+      await navigator.clipboard.writeText(code);
+      // อาจจะเพิ่ม toast notification ตรงนี้
+    } catch (err) {
+      console.error("Failed to copy:", err);
+    }
+  };
+
+  const handleUndo = () => {
+    editorRef.current?.trigger("keyboard", "undo");
+  };
+
+  const handleRedo = () => {
+    editorRef.current?.trigger("keyboard", "redo");
   };
 
   return (
-    <div className="flex size-full flex-col gap-4 md:flex-row">
-      {/* Editor ด้านซ้าย */}
-      {/* <div className="md:w-1/2">
-        <Editor
-          value={cssCode}
-          onValueChange={(newCode) => setCssCode(newCode)}
-          highlight={(code) => highlightWithPrism(code)}
-          padding={16}
-          className="bg-zinc-700 p-4 font-firaCode text-sm lg:text-lg"
-        />
-      </div> */}
+    <div className="flex h-fit w-full gap-4 rounded-lg bg-zinc-700 p-4">
+      <div className="flex w-1/2 flex-col">
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-semibold text-white">Code Editor</h2>
+          <div className="flex gap-2">
+            <Button variant="ghost" size="icon" onClick={handleUndo}>
+              <Undo className="size-4" />
+            </Button>
+            <Button variant="ghost" size="icon" onClick={handleRedo}>
+              <Redo className="size-4" />
+            </Button>
+          </div>
+        </div>
 
-      {/* Preview ด้านขวา */}
-      {/* <div className="relative rounded-md border border-gray-600 p-4 md:w-1/2">
-        <style>{cssCode}</style>
-        {
-          <div className="box flex items-center justify-center text-white">
-            Hover Me!
-          </div>
-        }
-      </div> */}
-      <div>
-        <header className="relative flex h-8 items-center justify-between rounded-t-md bg-zinc-700 px-4 leading-8">
-          <p className="text-sm font-bold text-zinc-400">Code Playground</p>
-          <div>
-            <button></button>
-          </div>
-        </header>
-        <div>
-          <div>
-            <div>
-              <div>
-                <div>
-                  <div>
-                    <div>
-                      <div>
-                        <button></button>
-                      </div>
-                      <div>
-                        <button></button>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div>
-                      <div>{/* Editor */}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <Tabs defaultValue="html" className="flex-1">
+          <TabsList className="mb-2">
+            <TabsTrigger value="html">HTML</TabsTrigger>
+            <TabsTrigger value="css">CSS</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="html" className="flex-1 rounded-lg">
+            <div className="relative h-full">
+              <Editor
+                height="500px"
+                defaultLanguage="html"
+                value={htmlCode}
+                onChange={(value) => setHtmlCode(value || "")}
+                theme="vs-dark"
+                options={{
+                  minimap: { enabled: false },
+                  fontSize: 14,
+                  lineNumbers: "on",
+                  roundedSelection: false,
+                  scrollBeyondLastLine: false,
+                  readOnly: false,
+                  automaticLayout: true,
+                }}
+                onMount={handleEditorDidMount}
+              />
+
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute right-2 top-2"
+                onClick={() => copyToClipboard(htmlCode)}
+              >
+                <Copy className="size-4" />
+              </Button>
             </div>
-            <button></button>
-            <div></div>
-          </div>
+          </TabsContent>
+
+          <TabsContent value="css" className="flex-1 rounded-lg">
+            <div className="relative h-full">
+              <Editor
+                height="500px"
+                defaultLanguage="css"
+                value={cssCode}
+                onChange={(value) => setCssCode(value || "")}
+                theme="vs-dark"
+                options={{
+                  minimap: { enabled: false },
+                  fontSize: 14,
+                  lineNumbers: "on",
+                  roundedSelection: false,
+                  scrollBeyondLastLine: false,
+                  readOnly: false,
+                  automaticLayout: true,
+                }}
+                onMount={handleEditorDidMount}
+              />
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute right-2 top-2"
+                onClick={() => copyToClipboard(cssCode)}
+              >
+                <Copy className="size-4" />
+              </Button>
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+
+      <div className="w-1/2">
+        <div className="mb-4">
+          <h2 className="text-lg font-semibold text-white">Preview</h2>
+        </div>
+        <div className="h-full rounded-lg bg-white">
+          <iframe
+            srcDoc={preview}
+            className="size-full rounded-lg"
+            title="preview"
+          />
         </div>
       </div>
     </div>
