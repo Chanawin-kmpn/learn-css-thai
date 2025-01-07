@@ -106,4 +106,22 @@ body {
   .flex-start {
     @apply flex items-center justify-start;
   }
+
+  .resize {
+    @apply z-[2] hidden lg:pointer-events-auto lg:relative lg:block lg:w-4 lg:cursor-col-resize lg:p-0;
+  }
+
+  .resize::before,
+  .resize::after {
+    @apply absolute inset-0 m-auto content-[""];
+    height: calc(100% - 8px);
+  }
+
+  .resize::before {
+    @apply lg:w-[1px] lg:bg-zinc-950;
+  }
+
+  .resize::after {
+    @apply w-[11px] bg-transparent opacity-0 transition-opacity delay-500;
+  }
 }
