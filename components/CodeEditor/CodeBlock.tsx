@@ -6,7 +6,6 @@ import Prism from "prismjs";
 import React, { useEffect, useState } from "react";
 
 import "prismjs/components/prism-css"; // import language support
-import { cn } from "@/lib/utils";
 
 interface CodeBlockProps {
   code: string;
@@ -46,7 +45,9 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ code, language = "css" }) => {
       </button>
 
       <pre className="overflow-x-scroll rounded-md bg-zinc-700 p-4">
-        <code className={`language-${language} `}>{code}</code>
+        <code className={`language-${language} text-sm lg:text-base`}>
+          {code}
+        </code>
       </pre>
     </div>
   );

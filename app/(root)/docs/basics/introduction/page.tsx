@@ -1,14 +1,19 @@
 import React from "react";
 
 import CodeBlock from "@/components/CodeEditor/CodeBlock";
-import CodeEdit from "@/components/CodeEditor/CodeEdit";
-import { syntax } from "@/constants/code";
+import CodeEditor from "@/components/CodeEditor/CodeEditor";
+import { cssCode, syntax } from "@/constants/code";
 
 const page = () => {
   return (
     <div>
       <CodeBlock code={syntax} />
-      <CodeEdit />
+      <CodeEditor
+        code={cssCode}
+        initialValue={cssCode}
+        height="500px"
+        className="mb-4"
+      />
     </div>
   );
 };
