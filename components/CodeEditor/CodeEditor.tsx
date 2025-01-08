@@ -9,6 +9,9 @@ import "prismjs/themes/prism-tomorrow.css";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CSSCode, HTMLCode } from "@/constants/code";
 
+// * ไอเดีย ใช้ layout ของ sandpack แต่ว่า editor ใช้ของ Monaco
+// ! ศึกษา https://www.joshwcomeau.com/react/next-level-playground/
+
 const CodeEditor = () => {
   const [cssCode, setCssCode] = useState(CSSCode);
   const [htmlCode, setHtmlCode] = useState(HTMLCode);
@@ -56,7 +59,7 @@ const CodeEditor = () => {
         <div></div>
       </header>
       <div className="flex h-full flex-col p-4 lg:flex-row">
-        <div className="flex-1 rounded-md bg-zinc-500">
+        <div className="min-w-52 rounded-md bg-zinc-500">
           <div className="h-full overflow-hidden rounded-b-md">
             <Tabs defaultValue="css" className="h-full">
               <TabsList className="w-full justify-start rounded-b-none bg-zinc-700">
@@ -93,7 +96,7 @@ const CodeEditor = () => {
           </div>
         </div>
         <button className="resize"></button>
-        <div className="flex-1 overflow-hidden rounded-md bg-zinc-800">
+        <div className="min-w-52 overflow-hidden rounded-md bg-zinc-800">
           <div className="flex h-10 items-center justify-start px-4">
             <p className="text-base font-bold">Result</p>
           </div>
