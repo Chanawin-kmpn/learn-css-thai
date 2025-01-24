@@ -28,6 +28,7 @@ const sarabun = Sarabun({
 const firaCode = Fira_Code({
   variable: "--font-firaCode",
   weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
