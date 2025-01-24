@@ -1,11 +1,18 @@
 "use client";
-import Lottie from "@lottielab/lottie-player/react";
+import dynamic from "next/dynamic";
 import React from "react";
+
+const LottiePlayer = dynamic(
+  () => import("@lottielab/lottie-player/react").then((mod) => mod.default),
+  {
+    ssr: false,
+  },
+);
 
 const Construction = () => {
   return (
     <div className="flex flex-col items-center justify-center space-y-4">
-      <Lottie
+      <LottiePlayer
         src="https://cdn.lottielab.com/l/E8Wtj11Tsmi49s.json"
         autoplay
         className="lg:w-1/2"
