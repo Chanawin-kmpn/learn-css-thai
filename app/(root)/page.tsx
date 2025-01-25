@@ -51,7 +51,7 @@ export default function Home() {
           พร้อมที่จะเริ่มต้นแล้วหรือยัง
         </h2>
         <p className="paragraph text-dark700_light400 mb-8 text-center">
-          เริ่มต้นเรียนรู้ได้ทันทีไม่ต้องมีพื้อนฐานการเขียน CSS
+          เริ่มต้นเรียนรู้ได้ทันทีไม่ต้องมีพื้นฐานการเขียน CSS
           ด้วยบทเรียนที่ออกบแบบมาเพื่อผู้เริ่มต้นโดยเฉพาะ
         </p>
         <Link href="/docs/basics/introduction" className="btn mx-auto block">
