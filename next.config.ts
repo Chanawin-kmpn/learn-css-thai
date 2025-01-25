@@ -1,6 +1,7 @@
+import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
-
 const nextConfig: NextConfig = {
+  pageExtensions: ["md", "mdx", "ts", "tsx"], // กำหนดนามสกุลไฟล์ที่เป็นหน้าเว็บ
   images: {
     domains: ["fonts.googleapis.com"],
   },
@@ -16,4 +17,6 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+const withMdx = createMDX({});
+
+export default withMdx(nextConfig);

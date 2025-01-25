@@ -50,18 +50,29 @@ export default function RootLayout({
         className={`${sarabun.className} ${firaCode.variable} ${inter.variable} bg-light100_dark900 antialiased`}
       >
         <div className="jun-layout gap-y-8">
-          <div className="pointer-events-none absolute inset-x-0 top-0 -z-20 flex justify-center overflow-hidden">
-            <div className="flex w-[150rem] flex-none justify-end">
-              <img
-                src="/images/background/light-blur-blob-bg-mobile.png"
-                alt="background"
-                className="h-screen w-full max-w-none flex-none opacity-20 dark:hidden"
-              />
-              <img
-                src="/images/background/dark-blur-blob-bg-mobile.png"
-                alt="background"
-                className="hidden h-screen w-full max-w-none flex-none opacity-20 dark:block"
-              />
+          <div className="pointer-events-none absolute inset-x-0 top-0 -z-20">
+            <div className="relative h-screen w-full overflow-hidden">
+              {/* Light Mode Background */}
+              <div className="absolute inset-0 w-full">
+                <div className="relative aspect-[3/2] w-[150rem] max-w-none">
+                  <img
+                    src="/images/background/light-blur-blob-bg-mobile.png"
+                    alt="Light mode background"
+                    className="absolute inset-0 size-full object-cover opacity-20 dark:hidden"
+                  />
+                </div>
+              </div>
+
+              {/* Dark Mode Background */}
+              <div className="absolute inset-0 w-full">
+                <div className="relative aspect-[3/2] w-[150rem] max-w-none">
+                  <img
+                    src="/images/background/dark-blur-blob-bg-mobile.png"
+                    alt="Dark mode background"
+                    className="absolute inset-0 hidden size-full object-cover opacity-20 dark:block"
+                  />
+                </div>
+              </div>
             </div>
           </div>
           <ThemeProvider
