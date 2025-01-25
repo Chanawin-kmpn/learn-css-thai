@@ -1,5 +1,5 @@
 {
-  "build": {
+  "buildCommand": {
     "cache": true
   }
 }
