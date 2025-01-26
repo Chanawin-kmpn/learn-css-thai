@@ -1,5 +1,6 @@
 // components/SearchModal.tsx
 "use client";
+import { DialogTitle } from "@radix-ui/react-dialog";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -13,6 +14,8 @@ import {
 } from "@/components/ui/command";
 import ROUTES from "@/constants/router";
 import { useSearchModal } from "@/context/SearchModalContext";
+
+import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 
 const SearchModal = () => {
   const router = useRouter();
@@ -38,6 +41,9 @@ const SearchModal = () => {
 
   return (
     <CommandDialog open={open} onOpenChange={setOpen}>
+      <VisuallyHidden>
+        <DialogTitle>Search Module</DialogTitle>
+      </VisuallyHidden>
       <CommandInput placeholder="Search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>

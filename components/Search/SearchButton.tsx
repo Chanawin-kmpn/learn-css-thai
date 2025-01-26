@@ -3,6 +3,8 @@ import { Command, Search } from "lucide-react";
 
 import { useSearchModal } from "@/context/SearchModalContext";
 
+import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
+
 const SearchButton = () => {
   const { setOpen } = useSearchModal();
 
@@ -18,6 +20,7 @@ const SearchButton = () => {
       <span className="text-dark700_light400 hidden rounded-md border bg-white p-1 text-xs font-bold dark:border-zinc-700 dark:bg-zinc-700 lg:flex lg:items-center">
         <Command className="size-4" />/ CTRL K
       </span>
+      <VisuallyHidden>Open search modal</VisuallyHidden>
     </button>
   );
 };

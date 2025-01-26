@@ -4,6 +4,7 @@ import { X } from "lucide-react";
 import { triggerEdgeDrawer } from "tailwindcss-jun-layout";
 
 import { Button } from "./ui/button";
+import VisuallyHidden from "./VisuallyHidden/VisuallyHidden";
 
 export const CloseDrawerButton = () => {
   return (
@@ -13,6 +14,7 @@ export const CloseDrawerButton = () => {
       onClick={() => triggerEdgeDrawer()}
     >
       <X />
+      <VisuallyHidden>Side menu close button</VisuallyHidden>
     </Button>
   );
 };

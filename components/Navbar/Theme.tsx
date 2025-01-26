@@ -12,6 +12,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
+
 const Theme = ({ isMobile = false }: { isMobile?: boolean }) => {
   const { setTheme } = useTheme();
 
@@ -31,7 +33,7 @@ const Theme = ({ isMobile = false }: { isMobile?: boolean }) => {
         <Button variant="ghost" size="icon">
           <Sun className="size-6 rotate-0 scale-100 text-primary-lime transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute size-6 rotate-90 scale-0 text-primary-lime transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
+          <VisuallyHidden>Toggle theme button</VisuallyHidden>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="bg-white">

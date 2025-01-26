@@ -13,21 +13,26 @@ const Footer = () => {
   const isDocsPath = checkDocsPath(pathName);
   return (
     <div className="jun-footer flex flex-col gap-4 border-t border-dark-700/20 px-8 py-4 dark:border-light-400/20 lg:gap-8 lg:px-8 lg:py-4">
-      {isDocsPath && (
-        <div className="lg:hidden">
-          <Image src="/images/logo.png" alt="CSS logo" width={56} height={56} />
+      {/* {isDocsPath && (
+        <div className="relative aspect-[56/46] w-[56px] lg:hidden">
+          <Image
+            src="/images/logo.png"
+            fill
+            className="object-contain"
+            alt="CSS Logo"
+          />
         </div>
-      )}
-      {!isDocsPath && (
-        <div className="flex flex-col gap-4">
-          <div className="lg:hidden">
-            <Image
-              src="/images/logo.png"
-              alt="CSS logo"
-              width={56}
-              height={56}
-            />
-          </div>
+      )} */}
+      <div className="flex flex-col gap-4 lg:hidden">
+        <div className="relative aspect-[56/46] w-[56px]">
+          <Image
+            src="/images/logo.png"
+            fill
+            className="object-contain"
+            alt="CSS Logo"
+          />
+        </div>
+        {!isDocsPath && (
           <ul className="grid grid-cols-2 justify-start gap-8 lg:grid-cols-3">
             {ROUTES.map((section) => (
               <li className="" key={section.label}>
@@ -69,11 +74,16 @@ const Footer = () => {
               </li>
             ))}
           </ul>
-        </div>
-      )}
+        )}
+      </div>
       <div className="text-dark700_light400 flex items-center justify-between">
-        <div className="hidden lg:block">
-          <Image src="/images/logo.png" alt="CSS logo" width={56} height={56} />
+        <div className="relative hidden aspect-[56/46] w-[56px] lg:block">
+          <Image
+            src="/images/logo.png"
+            fill
+            className="object-contain"
+            alt="CSS Logo"
+          />
         </div>
 
         <p className="text-xs">Copyright &copy; 2024 Chanawin</p>

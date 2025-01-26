@@ -70,17 +70,18 @@ body {
   }
 
   .btn {
-    @apply flex max-w-[250px] items-center justify-center rounded-md bg-primary-lime px-4 py-2 text-white;
+    @apply flex max-w-[250px] items-center justify-center rounded-md bg-primary-lime px-4 py-2 text-white dark:text-zinc-900;
   }
 
   .border-gradient-outline {
-    @apply relative flex items-center justify-center rounded-md border-none px-4 py-2;
+    @apply relative flex items-center justify-center rounded-md px-4 py-2;
   }
 
-  .border-gradient-outline::after {
-    @apply absolute -z-[1] h-[105%] rounded-md bg-gradient-to-r from-lime-500 to-orange-500;
+  .border-gradient-outline::before {
+    @apply absolute inset-0 rounded-md bg-gradient-to-r from-lime-500 to-orange-500;
     content: "";
-    width: calc(100% + 2px);
+    margin: -1px; /* แทนการใช้ calc() */
+    z-index: -1;
   }
 
   .text-gradient {

@@ -8,25 +8,17 @@ code {
 }
 
 .token.selector {
-  color: #84cc16 !important;
+  @apply text-lime-800 dark:text-lime-500 !important;
 }
 
 .token.property {
-  color: #7cd9fa !important;
+  @apply text-sky-800 dark:text-sky-500 !important;
 }
 
 .token.punctuation {
-  color: #ffffff !important;
-}
-
-.token.number {
-  color: #b5cea8 !important;
-}
-
-.token.unit {
-  color: #b5cea8 !important;
+  @apply text-zinc-800 dark:text-zinc-500 !important;
 }
 
 .token.function {
-  color: #cd743a !important;
+  @apply text-orange-800 dark:text-orange-500 !important;
 }

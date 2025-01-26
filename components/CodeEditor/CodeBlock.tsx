@@ -6,6 +6,7 @@ import Prism from "prismjs";
 import React, { useEffect, useState } from "react";
 
 import "prismjs/components/prism-css"; // import language support
+import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 
 interface CodeBlockProps {
   code: string;
@@ -26,7 +27,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ code, language = "css" }) => {
   }, [code]);
 
   return (
-    <div className="relative">
+    <div className="relative rounded-md border border-primary-lime bg-zinc-200 dark:bg-transparent">
       <button
         onClick={copyToClipboard}
         className="absolute right-2 top-2 rounded-md bg-zinc-500 p-1"
@@ -42,9 +43,10 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ code, language = "css" }) => {
             Copy
           </span>
         )}
+        <VisuallyHidden>Copy button</VisuallyHidden>
       </button>
 
-      <pre className="overflow-x-scroll rounded-md bg-zinc-700 p-4">
+      <pre className="p-4">
         <code className={`language-${language} text-sm lg:text-base`}>
           {code}
         </code>

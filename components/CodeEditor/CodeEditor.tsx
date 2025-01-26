@@ -9,6 +9,8 @@ import "prismjs/themes/prism-tomorrow.css";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CSSCode, HTMLCode } from "@/constants/code";
 
+import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
+
 // * ไอเดีย ใช้ layout ของ sandpack แต่ว่า editor ใช้ของ Monaco
 // ! ศึกษา https://www.joshwcomeau.com/react/next-level-playground/
 
@@ -95,7 +97,12 @@ const CodeEditor = () => {
             </Tabs>
           </div>
         </div>
-        <button className="resize"></button>
+        <button className="resize">
+          <VisuallyHidden>
+            Resize button, Hold the button and drag left or right to resize
+            panel.
+          </VisuallyHidden>
+        </button>
         <div className="min-w-52 overflow-hidden rounded-md bg-zinc-800">
           <div className="flex h-10 items-center justify-start px-4">
             <p className="text-base font-bold">Result</p>

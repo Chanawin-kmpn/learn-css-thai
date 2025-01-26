@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/breadcrumb";
 import { cn } from "@/lib/utils";
 
+import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
+
 const SidebarHeader = () => {
   const pathName = usePathname();
   const getSeperatePath = pathName.split("/").slice(1);
@@ -22,6 +24,7 @@ const SidebarHeader = () => {
         onClick={() => triggerEdgeDrawer()}
       >
         <Menu />
+        <VisuallyHidden>Open side menu button</VisuallyHidden>
       </button>
       <div>
         <Breadcrumb>
