@@ -22,3 +22,15 @@ code {
 .token.function {
   @apply text-orange-800 dark:text-orange-500 !important;
 }
+
+.token.tag {
+  @apply text-orange-800 dark:text-orange-500 !important;
+}
+
+.token.attr-name {
+  @apply text-lime-800 dark:text-lime-500 !important;
+}
+
+.token.attr-value {
+  @apply text-sky-800 dark:text-sky-500 !important;
+}

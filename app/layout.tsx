@@ -51,27 +51,25 @@ export default function RootLayout({
       >
         <div className="jun-layout gap-y-8">
           <div className="pointer-events-none absolute inset-x-0 top-0 -z-20">
-            <div className="relative h-screen w-full overflow-hidden">
-              {/* Light Mode Background */}
-              <div className="absolute inset-0 w-full">
-                <div className="relative aspect-[3/2] w-[150rem] max-w-none">
-                  <img
-                    src="/images/background/light-blur-blob-bg-mobile.png"
-                    alt="Light mode background"
-                    className="absolute inset-0 size-full object-cover opacity-20 dark:hidden"
-                  />
-                </div>
+            {/* Light Mode Background */}
+            <div className="absolute inset-0 w-full">
+              <div className="relative mx-auto aspect-video w-full md:max-w-7xl lg:max-w-[120rem] xl:max-w-[150rem]">
+                <img
+                  src="/images/background/light-blur-blob-bg-mobile.png"
+                  alt="Light mode background"
+                  className="absolute inset-0 size-full object-cover opacity-20 dark:hidden"
+                />
               </div>
+            </div>
 
-              {/* Dark Mode Background */}
-              <div className="absolute inset-0 w-full">
-                <div className="relative aspect-[3/2] w-[150rem] max-w-none">
-                  <img
-                    src="/images/background/dark-blur-blob-bg-mobile.png"
-                    alt="Dark mode background"
-                    className="absolute inset-0 hidden size-full object-cover opacity-20 dark:block"
-                  />
-                </div>
+            {/* Dark Mode Background */}
+            <div className="absolute inset-0 w-full">
+              <div className="relative mx-auto aspect-video w-full md:max-w-7xl lg:max-w-[120rem] xl:max-w-[150rem]">
+                <img
+                  src="/images/background/dark-blur-blob-bg-mobile.png"
+                  alt="Dark mode background"
+                  className="absolute inset-0 hidden size-full object-cover opacity-20 dark:block"
+                />
               </div>
             </div>
           </div>

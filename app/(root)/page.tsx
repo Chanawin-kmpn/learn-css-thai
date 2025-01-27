@@ -6,7 +6,7 @@ import SearchButton from "@/components/Search/SearchButton";
 import { howToLearn } from "@/constants";
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center gap-8">
+    <div className="flex flex-col items-center justify-center gap-32">
       <div className="max-w-5xl px-8 py-4">
         <h1 className="h1-banner mb-4 lg:mb-16">
           เข้าใจ <span className="text-gradient">CSS</span>{" "}
