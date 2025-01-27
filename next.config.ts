@@ -1,4 +1,4 @@
-import createMDX from "@next/mdx";
+import { withContentCollections } from "@content-collections/next";
 import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   pageExtensions: ["md", "mdx", "ts", "tsx"], // กำหนดนามสกุลไฟล์ที่เป็นหน้าเว็บ
@@ -17,6 +17,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-const withMdx = createMDX({});
-
-export default withMdx(nextConfig);
+export default withContentCollections(nextConfig);
