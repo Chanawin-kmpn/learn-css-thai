@@ -1,22 +1,27 @@
 import { defineCollection, defineConfig } from "@content-collections/core";
 import { compileMDX } from "@content-collections/mdx";
+import normalizePath from "normalize-path";
 
-const posts = defineCollection({
-  name: "posts",
+const docs = defineCollection({
+  name: "Doc",
   directory: "content",
-  include: "*.mdx",
+  include: "**/*.mdx",
   schema: (z) => ({
     title: z.string(),
+    description: z.string(),
   }),
   transform: async (document, context) => {
-    const mdx = await compileMDX(context, document);
+    const doc = await compileMDX(context, document);
+    const normalizedPath = normalizePath(document._meta.path);
     return {
       ...document,
-      mdx,
+      slug: `/${normalizedPath}`,
+      slugAsParams: normalizedPath.split("/").slice(1).join("/"),
+      doc,
     };
   },
 });
 
 export default defineConfig({
-  collections: [posts],
+  collections: [docs],
 });
