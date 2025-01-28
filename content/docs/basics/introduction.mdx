@@ -33,6 +33,40 @@ CSS ย่อมาจาก Cascading Style Sheets ซึ่งเป็นภ�
 
 ## ทำไมต้องใช้ CSS
 
+<Playground
+  id="demo-3"
+  title="Tabbed Layout Demo"
+  html={`  
+	<style>
+  .pink.box {
+    margin-top: -32px;
+    margin-left: -32px;
+  }
+</style>
+
+<main>
+  <div class="pink box"></div>
+</main>
+`} css={`  
+	main {
+  width: 200px;
+  height: 200px;
+  border: 3px solid;
+}
+
+.box {
+width: 50%;
+height: 50%;
+background: white;
+}
+.pink.box {
+border: 3px solid deeppink;
+}
+`}
+mode="default" layoutMode="tabbed" size="normal" centered={true}
+boxSizing="border-box" splitRatio="0.5" startFullscreened={false}
+/>
+
 ## พื้นฐาน CSS
 
 ### หน่วย

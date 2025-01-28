@@ -4,11 +4,13 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 import CodeBlock from "./CodeBlock/CodeBlock";
+import Playground from "./CodeEditor/Playground";
 import Construction from "./Construction";
 
 const component = {
   Construction,
   CodeBlock,
+  Playground,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1 className={cn("h1-section", className)} {...props} />
   ),
