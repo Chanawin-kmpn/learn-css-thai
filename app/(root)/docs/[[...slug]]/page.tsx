@@ -1,29 +1,40 @@
 import { Metadata } from "next";
 
 import { allDocs } from "@/.content-collections/generated";
+import Construction from "@/components/Construction";
 import { Mdx } from "@/components/mdx-components";
-// import { notFound } from 'next/navigation';
 
 interface DocPageProps {
   params: Promise<{ slug: string[] }>;
 }
 
 interface Doc {
+  slug: string;
   slugAsParams: string;
+  doc: string;
+  content: string;
   title: string;
   description: string;
-  doc: string;
+  published: boolean;
+  date?: string | undefined;
+  _meta: {
+    filePath: string;
+    fileName: string;
+    directory: string;
+    path: string;
+    extension: string;
+  };
 }
 
-async function getDocFromParams(slug: string[]): Promise<Doc | null> {
+async function getDocFromParams(slug: string[]): Promise<Doc> {
   const slugPath = slug?.join("/") || "";
 
   try {
-    const doc = allDocs.find((doc) => doc.slugAsParams === slugPath);
-    return doc || null;
+    const doc = allDocs.find((doc) => doc.slugAsParams === slugPath)!;
+    return doc;
   } catch (error) {
     console.error("Error fetching doc:", error);
-    return null;
+    throw new Error(`Doc not found for slug: ${slugPath}`);
   }
 }
 
@@ -34,13 +45,13 @@ export async function generateMetadata({
 
   if (!doc) {
     return {
-      title: "ไม่พบเอกสาร | My Docs",
+      title: "ไม่พบเอกสาร | ซี เอสๆ",
       description: "ไม่พบเอกสารที่คุณต้องการ",
     };
   }
 
   return {
-    title: `${doc.title} | My Docs`,
+    title: `${doc.title} | ซี เอสๆ`,
     description: doc.description,
     openGraph: {
       title: doc.title,
@@ -58,12 +69,18 @@ export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
 
 export default async function DocPage({ params }: DocPageProps) {
   const doc = await getDocFromParams((await params).slug);
+
   // console.log("params", params);
   // console.log("doc", doc);
+
+  if (!doc.published) {
+    return <Construction />;
+  }
+
   return (
     <>
-      <h1>{doc!.title}</h1>
-      <Mdx code={doc!.doc} />
+      <h1>{doc.title}</h1>
+      <Mdx code={doc.doc} />
     </>
   );
 }
