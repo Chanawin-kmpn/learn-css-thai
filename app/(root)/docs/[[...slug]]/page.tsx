@@ -81,6 +81,10 @@ export default async function DocPage({ params }: DocPageProps) {
     <>
       <h1>{doc.title}</h1>
       <Mdx code={doc.doc} />
+      <div>
+        <p className="">อัพเดตล่าสุดเมื่อ</p>
+        <span>{doc.date}</span>
+      </div>
     </>
   );
 }
