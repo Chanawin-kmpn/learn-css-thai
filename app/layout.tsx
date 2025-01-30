@@ -55,7 +55,7 @@ export default function RootLayout({
             <div className="absolute inset-0">
               <div className="relative h-screen w-screen">
                 <img
-                  src="/images/background/light-blur-blob-backdrop.png"
+                  src="/images/background/light-blur-blob-backdrop.webp"
                   alt="Light mode background"
                   width="1920"
                   height="1080"
@@ -69,7 +69,7 @@ export default function RootLayout({
             <div className="absolute inset-0">
               <div className="relative h-screen w-screen">
                 <img
-                  src="/images/background/dark-blur-blob-backdrop.png"
+                  src="/images/background/dark-blur-blob-backdrop.webp"
                   alt="Dark mode background"
                   width="1920"
                   height="1080"
