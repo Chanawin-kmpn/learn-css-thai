@@ -38,7 +38,7 @@ export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
 export default async function DocPage({ params }: DocPageProps) {
   const doc = await getDocFromParams((await params).slug);
 
-  console.log("params slug", (await params).slug);
+  // console.log("params slug", (await params).slug);
   // console.log("doc", doc);
 
   if (!doc.published) {

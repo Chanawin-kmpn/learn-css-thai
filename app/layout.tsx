@@ -88,6 +88,7 @@ export default function RootLayout({
             <SearchModalProvider>
               <Navbar />
               <SearchModal />
+
               {children}
               <Sidebar />
               <Footer />

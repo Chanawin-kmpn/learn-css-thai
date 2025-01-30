@@ -18,7 +18,7 @@ const SidebarHeader = () => {
   const pathName = usePathname();
   const getSeperatePath = pathName.split("/").slice(1);
   return (
-    <div className="bg-nav fixed top-[4.6875rem] flex w-full gap-8 p-4 lg:hidden">
+    <div className="bg-nav flex w-full gap-8 p-4 lg:hidden">
       <button
         className="text-dark900_light100 jun-edgeDrawerTrigger"
         onClick={() => triggerEdgeDrawer()}

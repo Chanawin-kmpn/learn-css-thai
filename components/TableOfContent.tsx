@@ -51,8 +51,8 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
   if (headings.length === 0) return null;
 
   return (
-    <aside className="top-0 hidden self-start jun-insetSidebar jun-insetSidebar-sticky jun-insetSidebar-w-[250px] md:block">
-      <nav className="jun-insetContent sticky top-16 max-h-[calc(100vh-4rem)] w-64 overflow-y-auto p-4">
+    <aside className="top-16 hidden p-8 jun-insetSidebar jun-insetSidebar-fixed jun-insetSidebar-w-[250px] md:block">
+      <nav className="jun-insetContent max-h-[calc(100vh-4rem)] overflow-y-auto pt-24">
         <h4 className="mb-4 text-base font-medium">สารบัญ</h4>
         <ul className="space-y-2 text-sm">
           {headings.map((heading) => (
@@ -62,10 +62,10 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
             >
               <a
                 href={`#${heading.id}`}
-                className={`hover:text-primary block transition-colors ${
+                className={`block transition-colors hover:text-primary-lime ${
                   activeId === heading.id
-                    ? "text-primary font-medium"
-                    : "text-muted-foreground"
+                    ? "font-medium text-primary-lime"
+                    : "text-zinc-500"
                 }`}
                 onClick={(e) => {
                   e.preventDefault();
