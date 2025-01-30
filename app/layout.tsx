@@ -50,25 +50,31 @@ export default function RootLayout({
         className={`${sarabun.className} ${firaCode.variable} ${inter.variable} bg-light100_dark900 antialiased`}
       >
         <div className="jun-layout gap-y-8">
-          <div className="pointer-events-none absolute inset-x-0 top-0 -z-20">
+          <div className="pointer-events-none fixed inset-0 -z-20 h-screen w-screen overflow-hidden">
             {/* Light Mode Background */}
-            <div className="absolute inset-0 w-full">
-              <div className="relative mx-auto aspect-video w-full md:max-w-7xl lg:max-w-[120rem] xl:max-w-[150rem]">
+            <div className="absolute inset-0">
+              <div className="relative h-screen w-screen">
                 <img
-                  src="/images/background/light-blur-blob-bg-mobile.png"
+                  src="/images/background/light-blur-blob-backdrop.png"
                   alt="Light mode background"
-                  className="absolute inset-0 size-full object-cover opacity-20 dark:hidden"
+                  width="1920"
+                  height="1080"
+                  loading="lazy"
+                  className="absolute inset-0 size-full object-cover opacity-50 dark:hidden"
                 />
               </div>
             </div>
 
             {/* Dark Mode Background */}
-            <div className="absolute inset-0 w-full">
-              <div className="relative mx-auto aspect-video w-full md:max-w-7xl lg:max-w-[120rem] xl:max-w-[150rem]">
+            <div className="absolute inset-0">
+              <div className="relative h-screen w-screen">
                 <img
-                  src="/images/background/dark-blur-blob-bg-mobile.png"
+                  src="/images/background/dark-blur-blob-backdrop.png"
                   alt="Dark mode background"
-                  className="absolute inset-0 hidden size-full object-cover opacity-20 dark:block"
+                  width="1920"
+                  height="1080"
+                  loading="lazy"
+                  className="absolute inset-0 hidden size-full object-cover opacity-50 dark:block"
                 />
               </div>
             </div>
