@@ -1,21 +1,11 @@
-"use client";
-import { usePathname } from "next/navigation";
-import React, { useEffect } from "react";
+import React from "react";
 
 import "@/styles/prism.css";
+import { LayoutProps } from "@/.next/types/app/(root)/layout";
 
-import InsetSidebar from "@/components/Navbar/InsetSidebar";
-
-const Layout = ({ children }: { children: React.ReactNode }) => {
-  const pathname = usePathname();
-  useEffect(() => {
-    // เมื่อ pathname เปลี่ยน จะ scroll กลับไปด้านบน
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
+const Layout = ({ children }: LayoutProps) => {
   return (
     <main className="container jun-content relative mx-auto h-full">
-      <InsetSidebar />
       {children}
     </main>
   );

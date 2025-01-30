@@ -1,6 +1,9 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+import { allDocs } from "@/.content-collections/generated";
+import { Doc } from "@/types/types";
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prefer-spread */
 /* eslint-disable @typescript-eslint/no-unsafe-function-type */
@@ -65,3 +68,29 @@ export const normalize = (
     (number - currentScaleMin) / (currentScaleMax - currentScaleMin);
   return (newScaleMax - newScaleMin) * standardNormalization + newScaleMin;
 };
+
+export async function getDocFromParams(slug: string[] | null): Promise<Doc> {
+  const slugPath = slug?.join("/") || "";
+
+  try {
+    const doc = allDocs.find((doc) => doc.slugAsParams === slugPath)!;
+    return doc;
+  } catch (error) {
+    console.error("Error fetching doc:", error);
+    throw new Error(`Doc not found for slug: ${slugPath}`);
+  }
+}
+
+export async function getDocFromSegment(
+  segment: string[] | undefined,
+): Promise<Doc> {
+  const slugPath = segment?.join("/") || "";
+
+  try {
+    const doc = allDocs.find((doc) => doc.slugAsParams === slugPath)!;
+    return doc;
+  } catch (error) {
+    console.error("Error fetching doc:", error);
+    throw new Error(`Doc not found for slug: ${slugPath}`);
+  }
+}

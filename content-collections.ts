@@ -13,6 +13,7 @@ const docs = defineCollection({
     description: z.string(),
     published: z.boolean().default(true),
     date: z.string().optional(),
+    toc: z.boolean().optional().default(true),
   }),
   transform: async (document, context) => {
     const doc = await compileMDX(context, document, {

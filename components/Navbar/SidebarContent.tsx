@@ -2,7 +2,7 @@
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 
 import ROUTES from "@/constants/router";
 import { cn } from "@/lib/utils";
@@ -11,6 +11,10 @@ import { CloseDrawerButton } from "../Triggers";
 
 const SidebarContent = ({ isMobile = false }: { isMobile?: boolean }) => {
   const pathName = usePathname();
+  useEffect(() => {
+    // เมื่อ pathname เปลี่ยน จะ scroll กลับไปด้านบน
+    window.scrollTo(0, 0);
+  }, [pathName]);
   return (
     <>
       <CloseDrawerButton />
