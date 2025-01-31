@@ -14,8 +14,28 @@ export interface Doc {
     path: string;
     extension: string;
   };
+  toc?: boolean;
 }
 
 export interface DocPageProps {
   params: Promise<{ slug: string[] }>;
+}
+
+export interface PlaygroundProps {
+  id: string;
+  title: string;
+  html?: string;
+  css?: string;
+  js?: string;
+  mode: "default" | "react";
+  layoutMode: "codepen" | "side-by-side" | "vertical-stack" | "tabbed";
+  size: "normal" | "wide";
+  centered: boolean;
+  className?: string;
+  boxSizing: "content-box" | "border-box";
+  splitRatio: string;
+  resultStyle?: { [key: string]: string | number | undefined };
+  stacked?: boolean;
+  startFullscreened: boolean;
+  hideTabCheckbox?: boolean;
 }

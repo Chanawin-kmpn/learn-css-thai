@@ -6,6 +6,7 @@ import {
   usePrettier,
   usePaneData,
 } from "@/helpers/Playground.helpers";
+import { PlaygroundProps } from "@/types/types";
 
 import CodeWrapper from "./CodeWrapper";
 import Editor from "./Editor";
@@ -15,24 +16,6 @@ import SplitPane from "./SplitPane";
 import TabbedEditors from "./TabbedEditors";
 import RefreshButton from "./Toolbar/RefreshButton";
 import Toolbar from "./Toolbar/Toolbar";
-
-interface PlaygroundProps {
-  id: string;
-  title: string;
-  html?: string;
-  css?: string;
-  js?: string;
-  mode: "default" | "react";
-  layoutMode: "codepen" | "side-by-side" | "vertical-stack" | "tabbed";
-  size: "normal" | "wide";
-  centered: boolean;
-  boxSizing: "content-box" | "border-box";
-  splitRatio: string;
-  resultStyle?: { [key: string]: string | number | undefined };
-  stacked?: boolean;
-  startFullscreened: boolean;
-  hideTabCheckbox?: boolean;
-}
 
 const Playground = ({
   id,
@@ -44,6 +27,7 @@ const Playground = ({
   layoutMode,
   size = "normal",
   centered,
+  className,
   boxSizing = "border-box",
   splitRatio = "0.5",
   resultStyle = {},
@@ -262,6 +246,7 @@ const Playground = ({
       size={size}
       stacked={!!stacked}
       isFullscreened={isFullscreened}
+      className={className}
       // hideTabCheckbox={hideTabCheckbox}
     >
       <Toolbar

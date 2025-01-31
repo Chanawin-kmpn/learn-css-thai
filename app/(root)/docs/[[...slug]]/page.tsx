@@ -46,17 +46,15 @@ export default async function DocPage({ params }: DocPageProps) {
   }
 
   return (
-    <>
-      <div className="flex">
+    <div className="flex w-full">
+      <div className="w-full">
+        <h1>{doc.title}</h1>
+        <Mdx code={doc.doc} />
         <div>
-          <h1>{doc.title}</h1>
-          <Mdx code={doc.doc} />
-          <div>
-            <p className="">อัพเดตล่าสุดเมื่อ</p>
-            <span>{doc.date}</span>
-          </div>
+          <p className="">อัพเดตล่าสุดเมื่อ</p>
+          <span>{doc.date}</span>
         </div>
       </div>
-    </>
+    </div>
   );
 }

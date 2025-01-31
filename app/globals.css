@@ -56,6 +56,10 @@ body {
     @apply text-2xl font-semibold md:text-3xl;
   }
 
+  .h3-section {
+    @apply text-xl font-semibold md:text-2xl;
+  }
+
   .paragraph {
     @apply text-base;
   }
