@@ -4,96 +4,24 @@ description: "This is my first post!"
 date: "27-01-2025"
 ---
 
-# CSS คืออะไร
+# Introduction CSS
 
-CSS ย่อมาจาก <TextLink href="#"> Cascading Style Sheets </TextLink> ซึ่งเป็นภาษาที่ใช้สำหรับการออกแบบหน้าเว็บ โดย CSS จะช่วยให้เราสามารถกำหนดรูปแบบการแสดงผลของเว็บไซต์ได้ โดย CSS จะช่วยให้เราสามารถกำหนดสี ขนาด รูปแบบตัวอักษร รวมถึงการจัดวางเนื้อหาในเว็บไซต์ได้อย่างหลากหลาย
+## CSS คืออะไร?
 
-<CodeBlock>
-  {`.container {  
-    display: grid;  
-    grid-template-columns: repeat(3, 1fr);  
-    grid-gap: 20px;  
-  }
-`}
-</CodeBlock>
+CSS (Cascading Style Sheets) คือภาษาที่ใช้สำหรับตกแต่งและจัดรูปแบบการแสดงผลของเว็บไซต์เปรียบเสมือนการ “แต่งตัว” ให้กับโครงสร้าง HTML ของเรา ไม่ว่าจะเป็นการกำหนดสี ขนาด รูปแบบตัวอักษร การจัดวางองค์ประกอบต่างๆ รวมถึงการปรับแต่งเว็บไซต์ให้แสดงผลเหมาะสมบนทุกอุปกรณ์ ทั้งมือถือ แท็บเล็ต และเดสก์ทอป
 
-<CodeBlock language="html">
-  {`<nav className="jun-dock">
-    <ul className="jun-dockMenu">
-      <li className="jun-dockMenuItem">
-        <a className="jun-dockMenuButton">
-          <Icon />
-          Menu
-        </a>
-      </li>
-    </ul>
-</nav>
-`}
-</CodeBlock>
+## ทำไมต้องใช้ CSS?
 
-// สำหรับ Info
+CSS ทำหน้าที่กำหนดรูปแบบสำหรับเว็บของคุณ รวมถึงการออกแบบ การจัดวางเลย์เอาต์และ การแสดงผลที่แตกต่างกันสำหรับอุปกรณ์และขนาดต่างๆ นอกจากนี้ยังสามารถใช้สำหรับเอฟเฟกต์ต่างๆ เช่น แอนิเมชั่นได้อีกด้วย เพื่อดึงดูดและเพิ่มความน่าสนใจให้กับผู้ใช้หรือผู้เยี่ยมชมเว็บไซต์ของคุณ มาดูเหตุผลสำคัญที่เราจำเป็นต้องใช้ CSS:
 
-<Callout type="info" title="ข้อมูลเพิ่มเติม">
-  ข้อมูลเพิ่มเติม: คุณสามารถใช้{" "}
-  <TextCode backgroundMode="info">shortcut Command + S</TextCode>
-  เพื่อบันทึกไฟล์ได้อย่างรวดเร็ว
-</Callout>
+1.  สร้างเว็บไซต์ที่สวยงาม
 
-// สำหรับ Warning
+หากเว็บไซต์มีเพียง HTML อย่างเดียว จะได้เพียงข้อความและรูปภาพที่เรียงต่อกัน ไม่มีการจัดวางที่สวยงาม CSS ช่วยให้เราสามารถ:
 
-<Callout type="warning" title="คำเตือน">
-  คำเตือน: การเปลี่ยนแปลงที่คุณทำจะไม่สามารถยกเลิกได้{" "}
-  <TextCode backgroundMode="warning">-webkit</TextCode>
-</Callout>
+- ปรับแต่งสีและรูปแบบตัวอักษร
+- จัดวางองค์ประกอบให้น่าสนใจ
+- เพิ่มเอฟเฟกต์และการเคลื่อนไหว
 
-## ทำไมต้องใช้ CSS
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/891f9f54-88b6-4a83-b73b-53771762ac7f/b0d97f50-35ee-4a9f-bc9f-c9ed6d8df259/image.png)
 
-<Playground
-  id="demo-3"
-  title="Tabbed Layout Demo"
-  html={`  
-	<style>
-  .pink.box {
-    margin-top: -32px;
-    margin-left: -32px;
-  }
-</style>
-
-<main>
-  <div class="pink box"></div>
-</main>
-`} css=
-{`  
-main {
-    width: 200px;
-    height: 200px;
-    border: 3px solid;
-}
-.box {
-    width: 50%;
-    height: 50%;
-    background: white;
-}
-.pink.box {
-    border: 3px solid deeppink;
-}
-`}
-mode="default" layoutMode="tabbed" size="normal" centered={false}
-boxSizing="border-box" splitRatio="0.5" startFullscreened={false}
-/>
-
-## พื้นฐาน CSS
-
-พื้นฐานของ CSS <TextCode>color</TextCode> จะมีลักษณะการใช้งานที่ค่อนข้างง่าย โดยจะประกอบไปด้วย Selector, Property และ Value ซึ่งจะช่วยให้เราสามารถกำหนดรูปแบบการแสดงผลของเว็บไซต์ได้อย่างหลากหลาย ไม่ว่าจะเป็นการกำหนดสี ขนาด รูปแบบตัวอักษร รวมถึงการจัดวางเนื้อหาในเว็บไซต์ได้อย่างหลากหลาย
-
-### หน่วย
-
-### Syntax
-
-Syntax ของ CSS จะประกอบไปด้วย 3 ส่วนหลัก ได้แก่ Selector, Property และ Value โดยมีรูปแบบดังนี้
-
-```css
-selector {
-  property: value;
-}
-```
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/891f9f54-88b6-4a83-b73b-53771762ac7f/bd56c426-cdb7-4a61-83da-b6fdb196f142/image.png)
