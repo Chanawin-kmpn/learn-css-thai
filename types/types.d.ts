@@ -39,3 +39,8 @@ export interface PlaygroundProps {
   startFullscreened: boolean;
   hideTabCheckbox?: boolean;
 }
+
+export interface TextCodeProps {
+  children: string;
+  backgroundMode?: "default" | "warning" | "info";
+}

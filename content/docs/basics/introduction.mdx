@@ -34,14 +34,16 @@ CSS ย่อมาจาก <TextLink href="#"> Cascading Style Sheets </TextLi
 // สำหรับ Info
 
 <Callout type="info" title="ข้อมูลเพิ่มเติม">
-  ข้อมูลเพิ่มเติม: คุณสามารถใช้ shortcut Command + S
+  ข้อมูลเพิ่มเติม: คุณสามารถใช้{" "}
+  <TextCode backgroundMode="info">shortcut Command + S</TextCode>
   เพื่อบันทึกไฟล์ได้อย่างรวดเร็ว
 </Callout>
 
 // สำหรับ Warning
 
 <Callout type="warning" title="คำเตือน">
-  คำเตือน: การเปลี่ยนแปลงที่คุณทำจะไม่สามารถยกเลิกได้
+  คำเตือน: การเปลี่ยนแปลงที่คุณทำจะไม่สามารถยกเลิกได้{" "}
+  <TextCode backgroundMode="warning">-webkit</TextCode>
 </Callout>
 
 ## ทำไมต้องใช้ CSS
@@ -76,12 +78,22 @@ main {
     border: 3px solid deeppink;
 }
 `}
-mode="default" layoutMode="tabbed" size="normal" centered={true}
+mode="default" layoutMode="tabbed" size="normal" centered={false}
 boxSizing="border-box" splitRatio="0.5" startFullscreened={false}
 />
 
 ## พื้นฐาน CSS
 
+พื้นฐานของ CSS <TextCode>color</TextCode> จะมีลักษณะการใช้งานที่ค่อนข้างง่าย โดยจะประกอบไปด้วย Selector, Property และ Value ซึ่งจะช่วยให้เราสามารถกำหนดรูปแบบการแสดงผลของเว็บไซต์ได้อย่างหลากหลาย ไม่ว่าจะเป็นการกำหนดสี ขนาด รูปแบบตัวอักษร รวมถึงการจัดวางเนื้อหาในเว็บไซต์ได้อย่างหลากหลาย
+
 ### หน่วย
 
 ### Syntax
+
+Syntax ของ CSS จะประกอบไปด้วย 3 ส่วนหลัก ได้แก่ Selector, Property และ Value โดยมีรูปแบบดังนี้
+
+```css
+selector {
+  property: value;
+}
+```

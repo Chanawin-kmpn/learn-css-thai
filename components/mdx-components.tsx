@@ -8,6 +8,7 @@ import Callout from "./Callout";
 import CodeBlock from "./CodeBlock/CodeBlock";
 import Playground from "./CodeEditor/Playground";
 import Construction from "./Construction";
+import TextCode from "./TextCode";
 import TextLink from "./TextLink";
 
 const component = {
@@ -30,6 +31,7 @@ const component = {
       {children}
     </CodeBlock>
   ),
+  TextCode,
   TextLink,
   Playground: ({ className, ...props }: PlaygroundProps) => (
     <Playground className={cn("mb-12 mt-2", className)} {...props} />

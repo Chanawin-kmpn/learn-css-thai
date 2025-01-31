@@ -4,7 +4,7 @@
 /* Override Prism.js theme colors */
 code {
   font-family: "Fira Code", monospace;
-  @apply text-xs lg:text-sm !important;
+  /* @apply text-xs lg:text-sm !important; */
 }
 
 .token.selector {

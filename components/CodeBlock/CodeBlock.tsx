@@ -95,7 +95,9 @@ const CodeBlock: React.FC<CodeBlockProps> = memo(
       >
         <CopyButton />
         <pre className="p-4">
-          <code className={`language-${language}`}>{children}</code>
+          <code className={`language-${language} text-xs md:text-base`}>
+            {children}
+          </code>
         </pre>
       </div>
     );

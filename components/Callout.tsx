@@ -16,8 +16,8 @@ export default function Callout({
 }: CalloutProps) {
   const styles = {
     wrapper: {
-      info: "bg-blue-50 dark:bg-blue-950 border-l-4 border-blue-500",
-      warning: "bg-amber-50 dark:bg-amber-950 border-l-4 border-amber-500",
+      info: "bg-blue-50 dark:bg-blue-950/40 border-l-4 border-blue-500",
+      warning: "bg-amber-50 dark:bg-amber-950/40 border-l-4 border-amber-500",
     },
     icon: {
       info: "text-blue-500",
