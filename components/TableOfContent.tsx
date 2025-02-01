@@ -48,6 +48,18 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
     setTimeout(extractHeadings, 100);
   }, [content]); // เมื่อ content เปลี่ยน จะ re-run effect
 
+  const scrollToHeader = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offsetTop =
+        element.getBoundingClientRect().top + window.scrollY - 96; // ลบด้วย 64px
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth",
+      });
+    }
+  };
+
   if (headings.length === 0) return null;
 
   return (
@@ -68,9 +80,7 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
               }`}
               onClick={(e) => {
                 e.preventDefault();
-                document.getElementById(heading.id)?.scrollIntoView({
-                  behavior: "smooth",
-                });
+                scrollToHeader(heading.id);
               }}
             >
               {heading.text}

@@ -44,3 +44,13 @@ export interface TextCodeProps {
   children: string;
   backgroundMode?: "default" | "warning" | "info";
 }
+
+export interface ImageCompareProps {
+  className?: string;
+  firstImage: string;
+  firstImageLabel: string;
+  firstImageAlt: string;
+  secondImage: string;
+  secondImageLabel: string;
+  secondImageAlt: string;
+}

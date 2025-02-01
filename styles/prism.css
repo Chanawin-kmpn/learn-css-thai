@@ -34,3 +34,7 @@ code {
 .token.attr-value {
   @apply text-sky-800 dark:text-sky-500 !important;
 }
+
+.token.comment {
+  @apply text-zinc-800 dark:text-zinc-500 !important;
+}

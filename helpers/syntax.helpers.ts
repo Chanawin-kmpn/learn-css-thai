@@ -7,7 +7,7 @@ export const syntaxTheme: PrismTheme = {
   },
   styles: [
     {
-      types: ["prolog", "comment", "doctype", "cdata"],
+      types: ["prolog", "doctype", "cdata"],
       style: {
         color: "#6a737d", // แทน var(--syntax-comment)
       },

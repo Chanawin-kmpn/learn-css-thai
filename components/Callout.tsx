@@ -1,10 +1,10 @@
-import { Info, AlertTriangle } from "lucide-react";
+import { Info, AlertTriangle, Lightbulb } from "lucide-react";
 import React from "react";
 
 interface CalloutProps {
   children: React.ReactNode;
   className?: string;
-  type?: "info" | "warning";
+  type?: "info" | "warning" | "tip";
   title?: string;
 }
 
@@ -18,16 +18,19 @@ export default function Callout({
     wrapper: {
       info: "bg-blue-50 dark:bg-blue-950/40 border-l-4 border-blue-500",
       warning: "bg-amber-50 dark:bg-amber-950/40 border-l-4 border-amber-500",
+      tip: "bg-lime-50 dark:bg-lime-950/40 border-l-4 border-lime-500",
     },
     icon: {
       info: "text-blue-500",
       warning: "text-amber-500",
+      tip: "text-lime-500",
     },
   };
 
   const icons = {
     info: <Info className={`size-5 ${styles.icon[type]}`} />,
     warning: <AlertTriangle className={`size-5 ${styles.icon[type]}`} />,
+    tip: <Lightbulb className={`size-5 ${styles.icon[type]}`} />,
   };
 
   return (

@@ -60,6 +60,10 @@ body {
     @apply text-xl font-semibold md:text-2xl;
   }
 
+  .h4-section {
+    @apply text-lg font-semibold md:text-xl;
+  }
+
   .paragraph {
     @apply text-base;
   }

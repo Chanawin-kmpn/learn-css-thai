@@ -2,12 +2,14 @@ import { useMDXComponent } from "@content-collections/mdx/react";
 import React from "react";
 
 import { cn } from "@/lib/utils";
-import { PlaygroundProps } from "@/types/types";
+import { ImageCompareProps, PlaygroundProps } from "@/types/types";
 
 import Callout from "./Callout";
 import CodeBlock from "./CodeBlock/CodeBlock";
 import Playground from "./CodeEditor/Playground";
 import Construction from "./Construction";
+import ImageCompare from "./ImageCompare";
+import CarouselGallery from "./ImageGallery";
 import TextCode from "./TextCode";
 import TextLink from "./TextLink";
 
@@ -31,10 +33,19 @@ const component = {
       {children}
     </CodeBlock>
   ),
+  CarouselGallery: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof CarouselGallery>) => (
+    <CarouselGallery className={cn("", className)} {...props} />
+  ),
   TextCode,
   TextLink,
   Playground: ({ className, ...props }: PlaygroundProps) => (
     <Playground className={cn("mb-12 mt-2", className)} {...props} />
+  ),
+  ImageCompare: ({ className, ...props }: ImageCompareProps) => (
+    <ImageCompare className={cn("mb-12 mt-2", className)} {...props} />
   ),
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
@@ -57,6 +68,12 @@ const component = {
       {...props}
     />
   ),
+  h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h4
+      className={cn("h4-section text-dark900_light100 mb-2 mt-6", className)}
+      {...props}
+    />
+  ),
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
       className={cn(
@@ -73,7 +90,10 @@ const component = {
     <ol className={cn("ml-6 list-decimal", className)} {...props} />
   ),
   li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <li className={cn("mt-2", className)} {...props} />
+    <li
+      className={cn("text-dark700_light400 mt-2 gap-6 last:mb-12", className)}
+      {...props}
+    />
   ),
   blockquote: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <blockquote
