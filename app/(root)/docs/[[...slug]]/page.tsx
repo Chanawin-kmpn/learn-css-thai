@@ -46,13 +46,35 @@ export default async function DocPage({ params }: DocPageProps) {
   }
 
   return (
-    <div className="flex w-full">
-      <div className="w-full">
-        <h1>{doc.title}</h1>
-        <Mdx code={doc.doc} />
-        <div>
-          <p className="">อัพเดตล่าสุดเมื่อ</p>
-          <span>{doc.date}</span>
+    <div className="flex w-full flex-col">
+      <div className="flex w-full justify-between">
+        <h1 className="h1-section">{doc.title}</h1>
+        <div className="self-end">
+          <span className="paragraph-sm text-zinc-700 dark:text-zinc-400">
+            อัพเดตล่าสุดเมื่อ
+          </span>
+          <p className="paragraph text-zinc-900 dark:text-zinc-100">
+            {doc.updatedDate}
+          </p>
+        </div>
+      </div>
+      <Mdx code={doc.doc} />
+      <div className="flex w-full justify-between">
+        <div className="">
+          <span className="paragraph-sm text-zinc-700 dark:text-zinc-400">
+            สร้างเมื่อ
+          </span>
+          <p className="paragraph text-zinc-900 dark:text-zinc-100">
+            {doc.createdDate}
+          </p>
+        </div>
+        <div className="self-end">
+          <span className="paragraph-sm text-zinc-700 dark:text-zinc-400">
+            อัพเดตล่าสุดเมื่อ
+          </span>
+          <p className="paragraph text-zinc-900 dark:text-zinc-100">
+            {doc.updatedDate}
+          </p>
         </div>
       </div>
     </div>

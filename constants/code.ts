@@ -9,4 +9,4 @@ export const CSSCode = `.container {
 }  
 `;
 
-export const HTMLCode = `<div class="container">Hello world</div>`;
+export const HTMLCode = {};

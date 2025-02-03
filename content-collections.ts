@@ -11,8 +11,9 @@ const docs = defineCollection({
   schema: (z) => ({
     title: z.string(),
     description: z.string(),
-    published: z.boolean().default(true),
-    date: z.string().optional(),
+    published: z.boolean().default(false),
+    createdDate: z.string().optional(),
+    updatedDate: z.string().optional(),
     toc: z.boolean().optional().default(true),
   }),
   transform: async (document, context) => {

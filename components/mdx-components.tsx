@@ -29,7 +29,7 @@ const component = {
     children,
     ...props
   }: React.HTMLAttributes<HTMLElement> & { children: string }) => (
-    <CodeBlock className={cn("mb-12 mt-2", className)} {...props}>
+    <CodeBlock className={cn("mb-12 mt-4", className)} {...props}>
       {children}
     </CodeBlock>
   ),

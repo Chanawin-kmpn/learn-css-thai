@@ -6,7 +6,8 @@ export interface Doc {
   title: string;
   description: string;
   published: boolean;
-  date?: string | undefined;
+  createdDate?: string | undefined;
+  updatedDate?: string | undefined;
   _meta: {
     filePath: string;
     fileName: string;
