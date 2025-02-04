@@ -15,7 +15,7 @@ export default function Callout({
   className,
   type = "info",
   title,
-  initialHeight = 250,
+  initialHeight = 300,
 }: CalloutProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState(0);
