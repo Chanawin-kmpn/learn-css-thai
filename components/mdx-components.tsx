@@ -77,7 +77,7 @@ const component = {
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
       className={cn(
-        "paragraph text-dark700_light400 mb-5 last:mb-0",
+        "text-dark700_light400 mb-5 text-base leading-7 last:mb-0",
         className,
       )}
       {...props}

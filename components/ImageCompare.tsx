@@ -22,10 +22,10 @@ const ImageCompare = ({
 
   return (
     <div
-      className={`flex flex-col items-center space-y-4 rounded-md border border-primary-lime px-8 pb-8 pt-6 ${className}`}
+      className={`flex flex-col items-center space-y-4 rounded-md border border-primary-lime bg-zinc-200 px-8 pb-8 pt-6 dark:bg-zinc-900 ${className}`}
     >
       {/* ส่วนแสดงรูปภาพ */}
-      <div className="relative h-[400px] self-stretch">
+      <div className="relative self-stretch md:h-[400px]">
         {isExpanded ? (
           // โหมด Expanded
           <div className="grid grid-cols-2 gap-4">
@@ -39,7 +39,9 @@ const ImageCompare = ({
                   alt={firstImageAlt}
                   fill
                   className="block rounded-lg object-contain"
-                  loading="lazy"
+                  loading="eager"
+                  priority
+                  sizes="(max-width: 600px) 100vw, 50vw" // Responsive sizes
                 />
               </div>
             </div>
@@ -53,7 +55,9 @@ const ImageCompare = ({
                   alt={secondImageAlt}
                   fill
                   className="block rounded-lg object-contain"
-                  loading="lazy"
+                  loading="eager"
+                  priority
+                  sizes="(max-width: 600px) 100vw, 50vw" // Responsive sizes
                 />
               </div>
             </div>
@@ -64,7 +68,7 @@ const ImageCompare = ({
             <h4 className="h4-section text-dark900_light100 mb-2">
               {showSecondImage ? secondImageLabel : firstImageLabel}
             </h4>
-            <div className="relative h-[360px] w-[600px]">
+            <div className="relative size-64 w-full md:h-[360px]">
               {/* รูปแรก */}
               <div
                 className="absolute inset-0 transition-opacity duration-300"
@@ -78,7 +82,9 @@ const ImageCompare = ({
                   alt={firstImageAlt}
                   fill
                   className="block rounded-lg object-contain"
-                  loading="lazy"
+                  loading="eager"
+                  priority
+                  sizes="(max-width: 600px) 100vw, 50vw" // Responsive sizes
                 />
               </div>
               {/* รูปที่สอง */}
@@ -94,7 +100,9 @@ const ImageCompare = ({
                   alt={secondImageAlt}
                   fill
                   className="block rounded-lg object-contain"
-                  loading="lazy"
+                  loading="eager"
+                  priority
+                  sizes="(max-width: 600px) 100vw, 50vw" // Responsive sizes
                 />
               </div>
             </div>

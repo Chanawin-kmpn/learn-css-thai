@@ -143,6 +143,9 @@ body {
 }
 
 @layer components {
+  .jun-header {
+    @apply h-fit !important;
+  }
   .code-editor {
     & > textarea,
     & .token-line,

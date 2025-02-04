@@ -17,7 +17,7 @@ const Toolbar = ({ title, handleReset, handleFormat }: ToolbarProps) => {
   return (
     <TooltipProvider>
       <div className="relative flex h-8 items-center justify-between rounded-t-[4px] bg-zinc-400 px-4 leading-8 dark:bg-zinc-700">
-        <p className="font-firaCode text-sm font-bold">
+        <p className="font-firaCode text-xs font-bold md:text-sm">
           {title || "Code Playground"}
         </p>
         <div className="mr-[-10px] flex gap-2 text-white">
