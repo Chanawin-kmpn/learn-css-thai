@@ -29,7 +29,10 @@ const component = {
     className,
     children,
     ...props
-  }: React.HTMLAttributes<HTMLElement> & { children: string }) => (
+  }: React.HTMLAttributes<HTMLElement> & {
+    children: string;
+    index: number;
+  }) => (
     <CodeBlock className={cn("mb-12 mt-4", className)} {...props}>
       {children}
     </CodeBlock>
