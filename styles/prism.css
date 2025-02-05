@@ -11,7 +11,8 @@ code {
   @apply text-lime-800 dark:text-lime-500 !important;
 }
 
-.token.property {
+.token.property,
+.token.rule {
   @apply text-sky-800 dark:text-sky-500 !important;
 }
 
@@ -19,7 +20,8 @@ code {
   @apply text-zinc-800 dark:text-zinc-500 !important;
 }
 
-.token.function {
+.token.function,
+.token.keyword {
   @apply text-orange-800 dark:text-orange-500 !important;
 }
 

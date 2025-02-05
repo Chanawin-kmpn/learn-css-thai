@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import React from "react";
 
@@ -13,6 +12,7 @@ const TextLink = ({ href, children }: TextLinkProps) => {
       <Link
         className="inline-flex items-center gap-1 font-bold underline transition-colors duration-200 hover:text-secondary-orange dark:hover:text-primary-lime"
         href={href}
+        target="_blank"
       >
         {children}
       </Link>

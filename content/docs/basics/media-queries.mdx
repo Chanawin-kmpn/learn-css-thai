@@ -2,8 +2,135 @@
 title: "Media Query"
 description: "This is my first post!"
 createdDate: "27-01-2025"
-updatedDate: "3-02-2025"
-published: false
+updatedDate: "5-02-2025"
+published: true
 ---
 
-# Media Query คืออะไร
+## Media Query คืออะไร
+
+ต้องย้อนกลับไปเมื่อ 10-20 ปีที่แล้ว เรายังไม่มีสมาร์ทโฟนที่สามารถพกพาไปได้ทุกที่ เว็บไซต์ส่วนใหญ่ถูกออกแบบสำหรับคอมพิวเตอร์ตั้งโต๊ะเพียงอย่างเดียว แต่ปัจจุบันเราใช้สมาร์ทโฟนและอุปกรณ์ที่มีขนาดหน้าจอแตกต่างกันมากมาย เว็บไซต์ต้องสามารถปรับตัวให้เหมาะสมกับทุกขนาดหน้าจอ
+
+ในปัจจุบันเพื่อสามารถเข้าถึงเว็บไซต์ได้ง่ายขึ้น Media Queries จึงถูกสร้างมาเพื่อแก้ปัญหานี้ โดยเป็นคุณสมบัติของ CSS ที่ช่วยให้เราสามารถปรับแต่งสไตล์และการจัดวางที่แตกต่างกันที่ขึ้นอยู่กับขนาดและคุณสมบัติของหน้าจอ
+
+แนวคิดของ Media Queries คล้ายกับเงื่อนไข <TextCode>if</TextCode> ใน JavaScript ก็คือ "ถ้าหน้าจอมีขนาดเป็นอย่างนี้ ให้ใช้การตกแต่งแบบนี้" ซึ่งช่วยให้เว็บไซต์สามารถปรับตัวและตอบสนองกับอุปกรณ์ที่หลากหลายได้อย่างมีประสิทธิภาพ
+
+## โครงสร้างพื้นฐานของ Media Queries
+
+Media Queries เป็นคุณสมบัติของ CSS ที่ช่วยให้เราสามารถกำหนดสไตล์ที่แตกต่างกันตามขนาดหน้าจอ โดยใช้ไวยากรณ์ <TextCode>@media</TextCode> ซึ่งสามารถเปรียบเทียบได้กับคำสั่ง <TextCode>if</TextCode> ใน JavaScript เช่น:
+
+<CodeBlock language="js" index={1}>
+{`if (เงื่อนไข) {
+
+// โค้ด JavaScript ที่ต้องการให้ทำงานเมื่อเงื่อนไขเป็นจริง
+
+}
+`}
+
+</CodeBlock>
+
+<CodeBlock index={2}>
+{`@media (เงื่อนไข) {
+
+/\* โค้ด CSS ที่จะทำงานหากเงื่อนไขเป็นจริง \*/
+
+}
+`}
+
+</CodeBlock>
+
+### รูปแบบการเขียนเบื้องต้น
+
+<CodeBlock index={3}>
+{`@media (max-width: 300px) {
+
+/\* สไตล์สำหรับหน้าจอที่มีความกว้างไม่เกินหรือน้อยกว่า 300px \*/
+
+}
+`}
+
+</CodeBlock>
+
+ในตัวอย่างนี้ หากหน้าต่างมีความกว้างระหว่าง 0px ถึง 300px สไตล์ภายในจะถูกนำไปใช้ ซึ่งช่วยให้เราสามารถปรับแต่งการแสดงผลให้เหมาะสมกับอุปกรณ์ที่ผู้ใช้ใช้งาน
+
+### การเขียนเงื่อนไขที่ถูกต้อง
+
+ในวงเล็บโดยส่วนใหญ่แล้วจะใช้ <TextCode>max-width</TextCode> กับ <TextCode>min-width</TextCode> ซึ่ง 2 อันนี้ก็จะมีความแตกต่างดังนี้ :
+
+1\. <TextCode>max-width</TextCode>
+
+- ใช้สำหรับกำหนดเงื่อนไขการแสดงผลบนหน้าจอที่มีขนาดไม่เกินค่าที่กำหนด
+- ตัวอย่าง: <TextCode>@media (max-width: 300px)</TextCode> จะใช้สไตล์เมื่อหน้าจอมีความกว้างไม่เกินหรือน้อยกว่า
+  300px
+
+2\. <TextCode>min-width</TextCode>
+
+- ใช้สำหรับกำหนดเงื่อนไขการแสดงผลบนหน้าจอที่มีขนาดตั้งแต่ค่าที่กำหนดขึ้นไป
+- ตัวอย่าง: <TextCode>@media (min-width: 300px)</TextCode> จะใช้สไตล์เมื่อหน้าจอมีความกว้างตั้งแต่ 300px ขึ้นไป
+
+<Callout type="warning" title="CSS Property และ Media Property ไม่เหมือนกัน">
+  ในการเขียน Media query <TextCode>max-width</TextCode> เป็น คุณสมบัติของ Media
+  เท่านั้น ไม่ใช่คุณสมบัติของ CSS หรือ CSS Property แค่ใช้ชื่อเหมือนกันเท่านั้น
+  สามารถดูคุณสมบัติเพิ่มเติมของ <Link href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">Media ได้ที่นี่</Link>
+
+</Callout>
+
+## ตัวอย่างการใช้งานจริง
+
+ในการใช้งาน Media Queries ทั่วไปที่เราเห็นกันก็จะเป็นการแสดงเนื้อหาที่แตกต่างกันตามขนาดของหน้าจอ
+
+ในตัวอย่างนี้เราจะเห็นแค่หนึ่งใน HTML element เหล่านี้ในเวลาเดียวกัน
+
+{/* prettier-ignore */}
+<Playground   
+  id="media-queries-1"   
+  title={"Media Queries เบื้องต้น"}   
+  html={`
+
+        <style>
+        .large-screens {
+            display: none;
+        }
+
+        @media (min-width: 300px) {
+            .large-screens {
+            display: block;
+        }
+        .small-screens {
+            display: none;
+        }
+    }
+
+  </style>
+<div class="large-screens">
+    ข้อความนี้จะปรากฏเฉพาะในหน้าจอขนาดใหญ่
+</div>
+<div class="small-screens">
+    ในขณะเดียวกัน ข้อความนี้จะปรากฏเฉพาะในหน้าจอขนาดเล็ก
+</div>
+
+`}  
+ layoutMode='side-by-side'  
+ centered={false}  
+/>
+
+เราใช้ CSS Property <TextCode>display: none</TextCode> เพื่อซ่อน element ที่เราไม่ต้องการให้แสดงผล จากตัวอย่างข้างต้น หากหน้าจอมีความกว้างตั้งแต่ 300px ขึ้นไป ข้อความที่อยู่ในคลาส <TextCode>large-screens</TextCode> จะปรากฏ และข้อความที่อยู่ในคลาส <TextCode>small-screens</TextCode> จะถูกซ่อนไว้
+
+ถ้าขนาดหน้าจอมีความกว้างน้อยกว่า 300px ข้อความที่อยู่ในคลาส <TextCode>small-screens</TextCode> จะปรากฏและข้อความที่อยู่ในคลาส <TextCode>large-screens</TextCode> จะถูกซ่อนไว้
+
+<Callout
+  type="tip"
+  title="ทำไม คลาส small-screens ไม่มีการกำหนด display: block; ในตอนแรก ?"
+>
+  โดยทั่วไปคุณสมบัติ <TextCode>display: block;</TextCode>{" "}
+  จะถูกใช้เป็นค่าเริ่มต้นของ element ที่เราสร้างขึ้น
+  ดังนั้นเราไม่จำเป็นต้องกำหนด <TextCode>display: block;</TextCode> ให้กับคลาส
+  <TextCode>small-screens</TextCode>
+  ในกรณีนี้
+</Callout>
+
+<Callout type="info" title="Mobile First">
+  การออกแบบเว็บไซต์ในปัจจุบันนิยมใช้แนวคิด "Mobile First"
+  คือออกแบบสำหรับมือถือก่อน แล้วค่อยขยายการแสดงผลสำหรับหน้าจอที่ใหญ่ขึ้น
+</Callout>
+
+ในหัวข้อ <TextLink href="/docs/modern-layout/responsive-design">CSS Responsive</TextLink> จะเป็นการลงรายละเอียดเพิ่มเติมเกี่ยวกับการใช้งาน Media Queries ในการออกแบบเว็บไซต์ให้เหมาะสมกับทุกขนาดหน้าจอ

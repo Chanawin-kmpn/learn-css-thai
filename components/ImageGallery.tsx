@@ -49,6 +49,7 @@ const CarouselGallery = ({ images, className }: CarouselGalleryProps) => {
                 src={image}
                 alt={`Slide ${index + 1}`}
                 className="size-full object-contain"
+                sizes="(max-width: 600px) 100vw, 50vw"
                 loading="lazy"
               />
             </div>

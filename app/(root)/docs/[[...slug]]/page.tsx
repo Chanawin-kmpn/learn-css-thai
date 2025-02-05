@@ -59,7 +59,7 @@ export default async function DocPage({ params }: DocPageProps) {
         </div>
       </div>
       <Mdx code={doc.doc} />
-      <div className="flex w-full justify-between">
+      <div className="mt-12 flex w-full justify-between">
         <div className="">
           <span className="paragraph-sm text-zinc-700 dark:text-zinc-400">
             สร้างเมื่อ

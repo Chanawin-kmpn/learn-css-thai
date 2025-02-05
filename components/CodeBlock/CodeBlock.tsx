@@ -26,10 +26,11 @@ interface CodeBlockProps {
   copyable?: boolean;
   language?: string;
   className?: string;
+  index: number;
 }
 
 const CodeBlock: React.FC<CodeBlockProps> = memo(
-  ({ children, language = "css", className, copyable = false }) => {
+  ({ children, language = "css", className, copyable = false, index }) => {
     const [copied, setCopied] = useState(false);
 
     // 2. แยก copy logic ออกมาเป็น callback
@@ -52,10 +53,12 @@ const CodeBlock: React.FC<CodeBlockProps> = memo(
 
         try {
           const Prism = await loadPrism();
-          if (mounted) {
-            Prism!.highlightElement(
-              document.querySelector(`code[class*="language-${language}"]`)!,
-            );
+          if (mounted && Prism) {
+            const codeElement = document.querySelector(`#code-${index}`);
+            if (codeElement) {
+              Prism.highlightElement(codeElement);
+              // console.log("Highlighted code:", codeElement);
+            }
           }
         } catch (error) {
           console.error("Failed to load Prism:", error);
@@ -67,7 +70,7 @@ const CodeBlock: React.FC<CodeBlockProps> = memo(
       return () => {
         mounted = false;
       };
-    }, [children, language]);
+    }, [children, language, index]);
 
     // 4. แยก Button component
     const CopyButton = () => (
@@ -96,7 +99,10 @@ const CodeBlock: React.FC<CodeBlockProps> = memo(
       >
         {copyable && <CopyButton />}
         <pre className="p-4">
-          <code className={`language-${language} text-xs md:text-base`}>
+          <code
+            id={`code-${index}`}
+            className={`language-${language} text-xs md:text-base`}
+          >
             {children}
           </code>
         </pre>
@@ -111,10 +117,12 @@ CodeBlock.displayName = "CodeBlock";
 // 6. ใช้ dynamic import with loading optimization
 export default dynamic(() => Promise.resolve(CodeBlock), {
   ssr: false,
-  loading: () => (
+  loading: (index) => (
     <div className="relative rounded-md border border-primary-lime bg-zinc-200 dark:bg-transparent">
       <pre className="p-4">
-        <code className="text-sm opacity-50 lg:text-base">Loading...</code>
+        <code id={`code-${index}`} className="text-sm opacity-50 lg:text-base">
+          Loading...
+        </code>
       </pre>
     </div>
   ),

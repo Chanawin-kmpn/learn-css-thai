@@ -1,4 +1,5 @@
 import { useMDXComponent } from "@content-collections/mdx/react";
+import Link from "next/link";
 import React from "react";
 
 import { cn } from "@/lib/utils";
@@ -41,6 +42,21 @@ const component = {
   ),
   TextCode,
   TextLink,
+  Link: ({
+    href,
+    className,
+    ...props
+  }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+    <Link
+      target="_blank"
+      href={href ?? "#"}
+      {...props}
+      className={cn(
+        "font-bold underline transition-colors duration-200 hover:text-secondary-orange dark:hover:text-primary-lime",
+        className,
+      )}
+    />
+  ),
   Playground: ({ className, ...props }: PlaygroundProps) => (
     <Playground className={cn("mb-12 mt-2", className)} {...props} />
   ),
