@@ -32,7 +32,8 @@ const SidebarContent = ({ isMobile = false }: { isMobile?: boolean }) => {
                     {section.children.map((item) => {
                       let isActive = pathName.includes(item.path);
                       return item.label !== "Flexbox" &&
-                        item.label !== "CSS Grid" ? (
+                        item.label !== "CSS Grid" &&
+                        item.label !== "Selectors" ? (
                         <li
                           className="jun-sidebarMenuItem"
                           key={`Sub Section ${item.label}`}

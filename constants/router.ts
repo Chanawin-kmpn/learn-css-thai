@@ -13,6 +13,24 @@ const ROUTES = [
       {
         label: "Selectors",
         path: "/docs/basics/selectors",
+        children: [
+          {
+            label: "Selectors",
+            path: "/docs/basics/selectors/selectors",
+          },
+          {
+            label: "Pseudo-classes",
+            path: "/docs/basics/selectors/pseudo-classes",
+          },
+          {
+            label: "Pseudo-elements",
+            path: "/docs/basics/selectors/pseudo-elements",
+          },
+          {
+            label: "Combinators",
+            path: "/docs/basics/selectors/combinators",
+          },
+        ],
       },
       {
         label: "Color",
