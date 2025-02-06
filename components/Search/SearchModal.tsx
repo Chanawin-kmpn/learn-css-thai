@@ -55,7 +55,9 @@ const SearchModal = () => {
                 key={child.label}
                 onSelect={() =>
                   handleSelect(
-                    child.label === "Flexbox" || child.label === "CSS Grid"
+                    child.label === "Flexbox" ||
+                      child.label === "CSS Grid" ||
+                      child.label === "Selectors"
                       ? child.children![0].path
                       : child.path,
                   )

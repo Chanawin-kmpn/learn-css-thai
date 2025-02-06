@@ -3,7 +3,140 @@ title: "Selectors"
 description: "This is my first post!"
 createdDate: "27-01-2025"
 updatedDate: "3-02-2025"
-published: false
+published: true
 ---
 
-# Selectors คืออะไร
+## Selectors คืออะไร
+
+ในหัวข้อ Introduction เราได้ทำความรู้จักกับ Selector แล้ว ซึ่งเป็นส่วนหนึ่งในกส่วนประกอบที่สำคัญที่ใช้ "ระบุ" Element ใน DOM ของเรา และก็มีหลากหลายรูปแบบด้วยกัน ในบทนี้เราจะมาเรียนรู้เกี่ยวกับ Selector ที่มีอยู่ใน CSS กัน
+
+### Simple Selector
+
+Selector เบื้องต้นที่พบเห็นได้บ่อยและสื่อถึง Element ที่ต้องการได้อย่างตรงตัว โดยใช้ชื่อของ Element นั้นๆ โดยเราสามารถใช้ Tag Name, Class และ Id ของ Element ในการระบุได้เลย เช่น
+
+#### Element Selector:
+
+เลือกจากชื่อแท็ก เช่น <TextCode>p</TextCode>, <TextCode>div</TextCode>, <TextCode>span</TextCode> ฯลฯ
+
+<CodeBlock index={1}>
+  {`p { 
+    color: blue;  /* เปลี่ยนสีข้อความทุก <p> เป็นน้ำเงิน */
+}  
+  `}
+</CodeBlock>
+
+#### Class Selector:
+
+เลือกจากชื่อ Class ที่กำหนดให้กับ Element ด้วย <TextCode>.</TextCode> เช่น <TextCode>.highlight</TextCode>
+
+<CodeBlock index={2}>
+  {`.highlight { 
+  background-color: yellow;  /* เปลี่ยนพื้นหลังทุก element ที่มี class="highlight" */
+  }
+`}
+</CodeBlock>
+
+#### ID Selector:
+
+เลือกจากชื่อ ID ที่กำหนดให้กับ Element ด้วย <TextCode>#</TextCode> เช่น <TextCode>#header</TextCode>
+
+<CodeBlock index={3}>
+  {`#header { 
+  font-size: 24px;  /* เปลี่ยนขนาดตัวอักษรของ element ที่มี id="header" */
+  }
+`}
+</CodeBlock>
+
+<Callout type="warning" title="ข้อควรระวังการใช้ Class และ ID">
+##### 1. การตั้งชื่อ ID และ Class
+ห้ามขึ้นต้นด้วยตัวเลข หรือสัญลักษณ์พิเศษ
+<CodeBlock index={4}>
+{`.1st-class { /*❌*/
+  color: red;
+}
+
+.first-class { /\*✅\*/
+color: red;
+}
+`}
+
+</CodeBlock>
+เหตุผล: ตามมาตรฐานของ CSS ที่กำหนดไว้ ห้ามขึ้นต้นด้วยตัวเลข หรือสัญลักษณ์พิเศษ เพราะอาจทำให้เกิดความสับสนในการอ่านและแก้ไขโค้ด และอาจทำให้เกิดปัญหาในการเข้าถึง Element ในภายหลัง
+
+##### 2. ID
+
+ห้ามใช้ ID ซ้ำกันในหน้าเว็บเพจเดียวกัน ใช้ได้เพียง 1 ครั้งต่อหน้าเว็บเพจเท่านั้น
+
+<CodeBlock language='html' index={5}>
+{`<!-- ✅ ถูกต้อง: ID ใช้ครั้งเดียว -->  
+<div id="main-header">...</div>
+
+<!-- ❌ ผิด: ห้ามใช้ ID ซ้ำ -->
+
+<div id="main-header">...</div>  
+<div id="main-header">...</div>  
+`}
+</CodeBlock>
+
+เหตุผล: การใช้ ID ซ้ำกันอาจทำให้เกิดปัญหาในการเข้าถึง Element ในภายหลังยกตัวอย่างเช่น หากมีสอง <TextCode>{`<div>`}</TextCode> ที่มี ID เดียวกัน เช่น <TextCode>{`<div id="header">`}</TextCode> และ <TextCode>{`<div id="header">`}</TextCode> การใช้ JavaScript เพื่อเข้าถึง Element ด้วย <TextCode>document.getElementById("header")</TextCode> จะทำให้ได้ผลลัพธ์เพียง Element แรกที่พบ ซึ่งอาจไม่ใช่ Element ที่ต้องการในบางกรณี นี่จึงเป็นเหตุผลที่ควรหลีกเลี่ยงการใช้ ID ซ้ำกัน.
+
+</Callout>
+
+<Callout type="info" title="Multiple Class" initialHeight={500}>
+
+สามารถใช้ Class ซ้ำกันได้หลายครั้งในหน้าเว็บเพจเดียวกัน และในหนึ่ง Element ก็สามารถใช้ Class ได้หลายครั้ง โดยคั่นด้วยช่องว่าง เช่น <TextCode>{`<div class="class1 class2 class3">`}</TextCode>
+
+<CodeBlock language='html' index={6}>
+{`<!-- สามารถใช้ Class ร่วมกันได้ -->
+
+<div class="container flex-row text-center">...</div>  
+`}
+</CodeBlock>
+
+การใช้ Class ซ้ำกันไม่มีผลกระทบต่อการเข้าถึง Element ด้วย JavaScript และสามารถใช้ Class ร่วมกันได้เพื่อกำหนดรูปแบบการแสดงผลที่ต้องการ และเพิ่มความยืดหยุ่นในการออกแบบเว็บไซต์ได้
+
+จากตัวอย่างข้างต้น <TextCode>{`<div class="container flex-row text-center">`}</TextCode> จะช่วยให้เราสามารถกำหนดรูปแบบการแสดงผลได้อย่างยืดหยุ่น
+และเปลี่ยนแปลงได้ง่ายขึ้น โดยในตัวอย่างคลาส <TextCode>container</TextCode> จะกำหนดขนาดของ
+Element และ <TextCode>flex-row</TextCode> จะกำหนดให้ Element แสดงผลในแนวนอน และ <TextCode>text-center</TextCode> จะกำหนดให้ข้อความอยู่ตรงกลางของ Element
+
+</Callout>
+
+## ตัวอย่างการใช้งานจริง
+
+{/* prettier-ignore */}
+<Playground
+  id="selectors-1"
+  title="Simple Selectors"
+  html={`
+<div
+    id="main-content"
+    class="container highlight"
+>
+    <p class="intro">
+      Selectors
+    </p>
+</div>
+
+`}
+  css={`
+
+#main-content {
+width: 100%;
+}
+.container {
+max-width: 300px;
+margin: 0 auto;
+}
+.highlight {
+background-color: lightblue;
+}
+.intro {
+color: red;
+font-size: 18px;
+}
+
+`}
+mode="default"
+layoutMode="codepen"
+centered={true}
+/>
