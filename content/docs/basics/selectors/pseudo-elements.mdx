@@ -1,9 +1,42 @@
 ---
-title: "Selectors"
-description: "This is my first post!"
-createdDate: "27-01-2025"
-updatedDate: "3-02-2025"
-published: false
+title: "Pseudo-elements"
+description: "Pseudo-elements ใช้สำหรับเลือกส่วนของ element ที่ไม่มีอยู่ใน DOM จริง ๆ"
+createdDate: "6-02-2025"
+updatedDate: "6-02-2025"
+published: true
 ---
 
-# Selectors คืออะไร
+## Pseudo-elements คืออะไร?
+
+Pseudo-elements ช่วยให้เราสามารถเข้าถึง Sub-element หรือ Element ย่อย ที่ไม่ได้ประกาศอย่างชัดเจนใน HTML และไม่ได้ขึ้นอยู่กับสถานะเหมือนกับ Pseudo-classes
+
+### ไวยากรณ์การเขียน Pseudo-elements (Syntax)
+
+<CodeBlock index={1}>
+  {`selector::pseudo-element {
+    property: value;
+}
+`}
+</CodeBlock>
+
+## Pseudo-element <TextCode>::before</TextCode> และ <TextCode>::after</TextCode>
+
+<TextCode>::before</TextCode> และ <TextCode>::after</TextCode> เป็น
+Pseudo-element ที่นิยมใช้มากที่สุด เหมาะสำหรับสร้าง Element
+ที่มีเนื้อหาไม่สำคัญหรือใช้ในการตกแต่งไอคอน
+
+### ตัวอย่างการใช้ Pseudo-elements <TextCode>::before</TextCode> และ <TextCode>::after</TextCode>
+
+{/* prettier-ignore */}
+<Playground id="pseudo-element-1" title="ตัวอย่างการใช้ Pseudo-elements ::before และ ::after" html={`
+<style>
+    p::before {  
+     content: "🎉";
+    }
+    p::after {
+     content: "🎊";
+    }
+</style>
+
+<p>Paragraph นี้มี Emoji 2 อัน</p>
+`} layoutMode="side-by-side" centered={true}/>

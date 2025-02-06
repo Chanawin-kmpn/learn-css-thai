@@ -10,6 +10,15 @@ published: true
 
 Pseudo-classes เป็นเครื่องมือใน CSS ที่จะช่วยปรับแต่ง style ตามสถานะต่างๆของ Element ยกตัวอย่างเช่น เปลี่ยนสีปุ่มเมื่อเมาส์เข้าไปวางอยู่บนปุ่ม หรือ กำหนดสีของลิงค์ที่เยี่ยมชมแล้วกับยังไม่ได้เยี่ยมชม เป็นต้น
 
+### ไวยากรณ์การเขียน Pseudo-classes (Syntax)
+
+<CodeBlock>
+  {`selector:pseudo-class {
+    property: value;
+}
+`}
+</CodeBlock>
+
 ### ตัวอย่าง Pseudo-classes สำหรับลิงก์
 
 {/* prettier-ignore */}
@@ -48,7 +57,7 @@ Pseudo-classes สามารถใช้ร่วมกับ Class และ 
 `}
 </CodeBlock>
 
-<CodeBlock index={1}>
+<CodeBlock index={2}>
   {`#main-content:hover {  
   background-color: red;  
 } 
