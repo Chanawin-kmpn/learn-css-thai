@@ -1,9 +1,209 @@
 ---
-title: "Selectors"
+title: "Pseudo-classes"
 description: "This is my first post!"
-createdDate: "27-01-2025"
-updatedDate: "3-02-2025"
-published: false
+createdDate: "5-02-2025"
+updatedDate: "6-02-2025"
+published: true
 ---
 
-# Selectors คืออะไร
+## Pseudo-classes คืออะไร
+
+Pseudo-classes เป็นเครื่องมือใน CSS ที่จะช่วยปรับแต่ง style ตามสถานะต่างๆของ Element ยกตัวอย่างเช่น เปลี่ยนสีปุ่มเมื่อเมาส์เข้าไปวางอยู่บนปุ่ม หรือ กำหนดสีของลิงค์ที่เยี่ยมชมแล้วกับยังไม่ได้เยี่ยมชม เป็นต้น
+
+### ตัวอย่าง Pseudo-classes สำหรับลิงก์
+
+{/* prettier-ignore */}
+<Playground id="pseudo-classes-1" title="ตัวอย่าง pseudo-classes สำหรับ link" html={`
+<style>
+    /* ลิงก์ที่ยังไม่ได้เยี่ยมชม */
+    a:link { 
+      color: red; 
+    } 
+    /* ลิงก์ที่เยี่ยมชมแล้ว */
+    a:visited { 
+      color: pink; 
+    }   
+    /* เมื่อวางเมาส์เหนือลิงก์ */
+    a:hover { 
+      color: green;
+    }      
+    /* ขณะกดลิงก์ */
+    a:active { 
+      color: blue; 
+    }     
+</style>
+
+<a href="#">Link</a>
+`} layoutMode="side-by-side" centered="false"/>
+
+### การใช้ Pseudo-classes ร่วมกับ Class และ ID
+
+Pseudo-classes สามารถใช้ร่วมกับ Class และ ID ได้ โดยใช้เครื่องหมาย `.` และ `#` ตามลำดับ ดังตัวอย่าง
+
+{/* prettier-ignore */}
+<CodeBlock index={1}>
+{`.highlight:hover {  
+  background-color: yellow;  
+} 
+`}
+</CodeBlock>
+
+<CodeBlock index={1}>
+  {`#main-content:hover {  
+  background-color: red;  
+} 
+`}
+</CodeBlock>
+
+## Pseudo-class <TextCode>:hover</TextCode>
+
+<TextCode>:hover</TextCode>
+คือเครื่องมือที่ใช้กำหนดสไตล์เมื่อเมาส์วางอยู่เหนือ Element{" "}
+
+### ตัวอย่างการใช้ <TextCode>:hover</TextCode>
+
+{/* prettier-ignore */}
+<Playground id="pseudo-classes-2" title="ตัวอย่างการใช้ :hover" html={`
+<style>
+    a {
+      color:blue;
+      text-decoration:none;
+    }
+    a:hover {
+      color:red;
+      text-decoration:underline;
+    }
+    p:hover {
+      background-color:yellow;
+      cursor:pointer;
+    }
+</style>
+<div class="container">
+    <a href="#">Hover me</a>
+    <p>Hover me</p>
+</div>
+
+`} css=
+{`
+.container {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100px;
+width: 100px;
+border: 1px solid black;
+}
+`}
+layoutMode="tabbed" centered={true}/>
+
+## Pseudo-class <TextCode>:focus</TextCode>
+
+<TextCode>:focus</TextCode>ใช้กำหนดสไตล์เมื่อองค์ประกอบได้รับการเลือกหรือคลิก
+
+### ตัวอย่างการใช้ <TextCode>:focus</TextCode>
+
+{/* prettier-ignore */}
+<Playground id="pseudo-classes-3" title="ตัวอย่างการใช้ :focus" html={`
+<style>
+    input:focus {
+      outline: 20px solid red;
+      box-shadow: 0 0 5px rgba(0,0,255,0.5);
+    }
+    button:focus {
+      background-color: lightblue;
+    }
+</style>
+
+  <input
+    type="text"
+    placeholder="Type here"
+  />
+  <button>Click me</button>
+`}
+css=
+{`
+
+`}
+layoutMode="side-by-side" centered={true}/>
+
+<Callout title="ทำไม Pseudo-classes focus ถึงสำคัญ?">
+  ในการพัฒนาเว็บไซต์ปัจจุบัน ความสามารถในการเข้าถึง (Accessibility)
+  เป็นสิ่งสำคัญ การใช้ Pseudo-classes focus
+  ช่วยให้ผู้ใช้ที่ใช้คีย์บอร์ดหรือไม่สามารถควบคุมด้วยมือสามารถใช้งานเว็บไซต์ได้ง่ายขึ้น
+  โดยไม่ต้องใช้เมาส์.
+</Callout>
+
+## Pseudo-classes <TextCode>:first-child</TextCode> และ <TextCode>:last-child</TextCode>
+
+<TextCode>:first-child</TextCode>
+คือ Pseudo-classes ที่เลือก Element แรกภายในคอนเทนเนอร์
+
+<TextCode>:last-child</TextCode>
+คือ Pseudo-classes ที่เลือก Element สุดท้ายภายในคอนเทนเนอร์
+
+### ตัวอย่างการใช้ <TextCode>:first-child</TextCode> และ <TextCode>:last-child</TextCode>
+
+{/* prettier-ignore */}
+<Playground id="pseudo-classes-3" title="ตัวอย่างการใช้ :first-child กับ :last-child" html={`
+<style>
+    li:first-child {  
+      color: blue;  
+      font-weight: bold;  
+    }
+    li:last-child {
+      color: red;
+      font-weight: bold;
+    }
+</style>
+  <ul>
+    <li>รายการที่ 1</li>
+    <li>รายการที่ 2</li>
+    <li>รายการที่ 3</li>
+    <li>รายการที่ 4</li>
+    <li>รายการที่ 5</li>
+    <li>รายการที่ 6</li>
+  </ul>
+`} />
+
+<Callout title="Pseudo-classes first-of-type กับ last-of-type คืออะไร?" initialHeight={600}>
+  นอกจาก :first-child กับ :last-child เรายังมี :first-of-type กับ :last-of-type
+  ด้วย ทั้ง 4 อย่างนี้อาจจะดูเหมือนกันแต่ก็มีอย่างนึงที่ต่างกันอย่างสิ้นเชิง
+  นั้นก็คือ <TextCode>:first-of-type</TextCode> กับ
+  <TextCode>:last-of-type</TextCode> จะพิจารณาจากประเภทของ Tag HTML
+
+{/* prettier-ignore */}
+<Playground id="pseudo-classes-4" title="ความแตกต่างระหว่าง :first-of-type กับ :first-child" html={`
+<style>
+    p:first-child {  
+      color: blue;  
+      font-weight: bold;  
+    }
+</style>
+<div>
+    <h1>Header 1</h1>
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+    <p>Paragraph 3</p>
+</div>
+`} layoutMode="side-by-side" centered={false}/>
+
+จากตัวอย่างจะเห็นว่า แม้ว่า <TextCode>p:first-child</TextCode> จะเลือก Element แรกของคอนเทนเนอร์ แต่จะไม่สามารถเลือก Element แรกของประเภทของ Tag HTML ได้ ดังนั้น จึงมี <TextCode>p:first-of-type</TextCode> มาช่วยในกรณีนี้
+
+{/* prettier-ignore */}
+<Playground id="pseudo-classes-4" title="ความแตกต่างระหว่าง :first-of-type กับ :first-child" html={`
+<style>
+    p:first-of-type {  
+      color: blue;  
+      font-weight: bold;  
+    }
+</style>
+<div>
+    <h1>Header 1</h1>
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+    <p>Paragraph 3</p>
+</div>
+`} layoutMode="side-by-side" centered={false}/>
+
+</Callout>
