@@ -8,6 +8,7 @@ import { ImageCompareProps, PlaygroundProps } from "@/types/types";
 import Callout from "./Callout";
 import CodeBlock from "./CodeBlock/CodeBlock";
 import Playground from "./CodeEditor/Playground";
+import HEXInteractive from "./ColorsInteractive/HEX/HEXInteractive";
 import Construction from "./Construction";
 import ImageCompare from "./ImageCompare";
 import CarouselGallery from "./ImageGallery";
@@ -45,6 +46,7 @@ const component = {
   ),
   TextCode,
   TextLink,
+  HEXInteractive,
   Link: ({
     href,
     className,

@@ -1,9 +1,147 @@
 ---
-title: "Selectors"
-description: "This is my first post!"
-createdDate: "27-01-2025"
-updatedDate: "3-02-2025"
-published: false
+title: "Combinators"
+description: "Combinators ใช้สำหรับเลือก Element ที่อยู่ในความสัมพันธ์กัน"
+createdDate: "6-02-2025"
+updatedDate: "6-02-2025"
+published: true
 ---
 
-# Selectors คืออะไร
+## Combinators คืออะไร?
+
+สมมุติว่าในเว็บไซต์หนึ่งหน้ามี paragraph หรือ tag <TextCode>{`<p>`}</TextCode> อยู่มากมาย ที่อยู่ทั้ง แถบด้านข้าง และ ส่วนเนื้อหาหลัก
+
+แล้วถ้าหากว่าเราอยากจะตกแต่งแค่ paragraph ที่อยู่ในแถบด้านข้างหล่ะ Combinators จึงเข้ามามีบทบาทนี้
+
+{/* prettier-ignore */}
+<Playground
+  id={"combinator-1"}
+  title="แนะนำ Combinators"
+  html={`
+<style>
+    aside p {
+        color: red; /* เลือกเฉพาะ paragraph ที่อยู่ใน aside */
+    }
+</style>
+<main>
+    <aside>
+      <p>
+        Paragraph ที่อยู่ในแถบด้านข้าง
+      </p>
+    </aside>
+    <p> 
+      Paragraph ที่อยู่ในส่วนเนื้อหาหลัก
+    </p>
+</main>
+`}
+  css={`
+    body {
+    height: 100dvh;
+}
+main {
+    display: flex;
+    height: 100%;
+}
+aside {
+    width: 200px;
+    background-color: lightblue;
+}
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+Combinator จะแบ่งออกเป็น 4 combinators ด้วยกัน ซึ่งจะประกอบด้วย
+
+- Descendant combinator (space)
+- Child combinator (>)
+- Next sibling combinator (+)
+- Subsequent-sibling combinator (~)
+
+แต่จะลงรายละเอียดเฉพาะ Descendant combinator (space) กับ Child combinator (>) และสามารถดู Combinator ตัวอื่นๆอีกได้<Link href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors">ที่นี่</Link>
+
+## Descendant combinator (space)
+
+Descendant Combinator จะเลือก Elements "ทุกตัว" ที่อยู่ภายใน Element หลักที่กำหนด
+
+### ตัวอย่างการใช้ Descendant combinator
+
+{/* prettier-ignore */}
+<Playground
+  id={"combinator-2"}
+  title="ตัวอย่างการใช้ Descendant combinator"
+  html={`
+  <style>
+    div p {
+      background-color: lightblue;
+    }
+  </style>
+<div>
+    <p>Paragraph ที่อยู่ใน div</p>
+    <p>Paragraph ที่อยู่ใน div</p>
+    <section>
+      <p>Paragraph ที่อยู่ใน section</p>
+    </section>
+</div>
+
+<p>Paragraph ที่อยู่นอก div</p>
+<p>Paragraph ที่อยู่นอก div</p>
+
+`}
+css={`
+body {
+display: flex;
+flex-direction: column;
+gap: 16px;
+}
+
+div {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+`}
+layoutMode="side-by-side" centered={false}/>
+
+จากตัวอย่างจะเห็นว่า ทุก <TextCode>{`<p>`}</TextCode> ที่อยู่ใน <TextCode>{`<div>`}</TextCode> จะถูกเลือกถึงแม้ว่า <TextCode>{`<p>`}</TextCode> ที่อยู่ใน <TextCode>{`<section>`}</TextCode> ก็ตาม ซึ่งก็จะอธิบายได้ว่า style ควรใช้ได้เฉพาะกับแท็ก <TextCode>{`<p>`}</TextCode> ที่อยู่ใน <TextCode>{`<div>`}</TextCode> เท่านั้น
+
+## Child combinator (>)
+
+Child Combinator จะเลือก Elements ที่เป็นเฉพาะ Element ลูกของ Element หลักเท่านั้น
+
+### ตัวอย่างการใช้ Child combinator
+
+{/* prettier-ignore */}
+<Playground
+  id={"combinator-3"}
+  title="ตัวอย่างการใช้ Child combinator"
+  html={`
+  <style>
+    div > p {
+      background-color: lightblue;
+    }
+  </style>
+<div>
+    <p>Paragraph ที่อยู่ใน div</p>
+    <p>Paragraph ที่อยู่ใน div</p>
+    <section>
+      <p>Paragraph ที่อยู่ใน section</p>
+    </section>
+</div>
+
+<p>Paragraph ที่อยู่นอก div</p>
+<p>Paragraph ที่อยู่นอก div</p>
+`} css={`
+body {
+display: flex;
+flex-direction: column;
+gap: 16px;
+}
+
+div {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+`} layoutMode="side-by-side" centered={false}/>
+
+จากตัวอย่าง Child combinator จะเลือกเฉพาะ <TextCode>{`<p>`}</TextCode> ที่อยู่ใน <TextCode>{`<div>`}</TextCode> และไม่เลือก <TextCode>{`<p>`}</TextCode> ที่อยู่ใน <TextCode>{`<section>`}</TextCode> ซึ่งก็จะอธิบายได้ว่า style ควรใช้ได้เฉพาะกับแท็ก <TextCode>{`<p>`}</TextCode> ที่อยู่ใน <TextCode>{`<div>`}</TextCode> เท่านั้น
