@@ -282,4 +282,17 @@ body {
       opacity: 1;
     }
   }
+
+  .hsl-slider {
+    background-image: linear-gradient(
+      to right,
+      hsl(0deg 100% 50%),
+      hsl(60deg 100% 50%),
+      hsl(120deg 100% 50%),
+      hsl(180deg 100% 50%),
+      hsl(240deg 100% 50%),
+      hsl(300deg 100% 50%),
+      hsl(360deg 100% 50%)
+    );
+  }
 }

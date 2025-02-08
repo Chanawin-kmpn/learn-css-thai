@@ -55,3 +55,13 @@ export interface ImageCompareProps {
   secondImageLabel: string;
   secondImageAlt: string;
 }
+
+export interface RGBInteractiveProps {
+  className?: string;
+  hasAlpha: boolean;
+}
+
+export interface HSLInteractiveProps {
+  className?: string;
+  hasAlpha: boolean;
+}

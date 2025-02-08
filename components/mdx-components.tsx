@@ -3,12 +3,18 @@ import Link from "next/link";
 import React from "react";
 
 import { cn } from "@/lib/utils";
-import { ImageCompareProps, PlaygroundProps } from "@/types/types";
+import {
+  ImageCompareProps,
+  PlaygroundProps,
+  RGBInteractiveProps,
+} from "@/types/types";
 
 import Callout from "./Callout";
 import CodeBlock from "./CodeBlock/CodeBlock";
 import Playground from "./CodeEditor/Playground";
 import HEXInteractive from "./ColorsInteractive/HEX/HEXInteractive";
+import HSLInteractive from "./ColorsInteractive/HSL/HSLInteractive";
+import RGBInteractive from "./ColorsInteractive/RGB/RGBInteractive";
 import Construction from "./Construction";
 import ImageCompare from "./ImageCompare";
 import CarouselGallery from "./ImageGallery";
@@ -67,6 +73,12 @@ const component = {
   ),
   ImageCompare: ({ className, ...props }: ImageCompareProps) => (
     <ImageCompare className={cn("mb-12 mt-2", className)} {...props} />
+  ),
+  RGBInteractive: ({ className, ...props }: RGBInteractiveProps) => (
+    <RGBInteractive className={cn("mb-12 mt-2", className)} {...props} />
+  ),
+  HSLInteractive: ({ className, ...props }: RGBInteractiveProps) => (
+    <HSLInteractive className={cn("mb-12 mt-2", className)} {...props} />
   ),
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1

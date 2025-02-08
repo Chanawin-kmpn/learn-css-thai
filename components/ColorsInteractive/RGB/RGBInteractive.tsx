@@ -1,27 +1,53 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 
-const HEXInteractive = () => {
+import { RGBInteractiveProps } from "@/types/types";
+
+const RGBInteractive = ({ hasAlpha, className }: RGBInteractiveProps) => {
   const [red, setRed] = useState(128);
   const [green, setGreen] = useState(128);
   const [blue, setBlue] = useState(128);
+  const [alpha, setAlpha] = useState(1);
 
-  const rgbToHex = (r: number, g: number, b: number) => {
-    return `#${[r, g, b]
-      .map((x) => {
-        const hex = x.toString(16);
-        return hex.length === 1 ? "0" + hex : hex;
-      })
-      .join("")}`;
-  };
+  // สร้าง gradient สำหรับแต่ละ slider
+  const redBG = useMemo(
+    () =>
+      `linear-gradient(to right, 
+      rgb(0, ${green}, ${blue}), 
+      rgb(255, ${green}, ${blue})
+    )`,
+    [green, blue],
+  );
 
-  const hexColor = rgbToHex(red, green, blue);
+  const greenBG = useMemo(
+    () =>
+      `linear-gradient(to right, 
+      rgb(${red}, 0, ${blue}), 
+      rgb(${red}, 255, ${blue})
+    )`,
+    [red, blue],
+  );
+
+  const blueBG = useMemo(
+    () =>
+      `linear-gradient(to right, 
+      rgb(${red}, ${green}, 0), 
+      rgb(${red}, ${green}, 255)
+    )`,
+    [red, green],
+  );
+
+  const rgbColor = hasAlpha
+    ? `rgba(${red}, ${green}, ${blue}, ${alpha})`
+    : `rgb(${red}, ${green}, ${blue})`;
 
   return (
-    <div className="rounded-lg border border-primary-lime bg-zinc-100 p-4 dark:bg-zinc-900">
+    <div
+      className={`rounded-lg border border-primary-lime bg-zinc-100 p-4 dark:bg-zinc-900 ${className}`}
+    >
       <div
         className="relative mb-6 h-40 w-full rounded-lg border border-zinc-900 dark:border-zinc-200"
-        style={{ backgroundColor: hexColor }}
+        style={{ backgroundColor: rgbColor }}
       >
         <div
           className="absolute inset-0 opacity-20"
@@ -31,7 +57,7 @@ const HEXInteractive = () => {
           }}
         />
         <p className="absolute inset-x-0 bottom-0 rounded-b-xl bg-black/50 p-2 text-center font-bold text-white">
-          Hex Code: {hexColor}
+          RGB Code: {rgbColor}
         </p>
       </div>
 
@@ -50,7 +76,8 @@ const HEXInteractive = () => {
             max="255"
             value={red}
             onChange={(e) => setRed(Number(e.target.value))}
-            className="slider bg-gradient-to-r from-black to-[#ff0000]"
+            className="slider"
+            style={{ backgroundImage: redBG }}
           />
         </div>
 
@@ -68,7 +95,8 @@ const HEXInteractive = () => {
             max="255"
             value={green}
             onChange={(e) => setGreen(Number(e.target.value))}
-            className="slider bg-gradient-to-r from-black to-[#00ff00]"
+            className="slider"
+            style={{ backgroundImage: greenBG }}
           />
         </div>
 
@@ -86,12 +114,39 @@ const HEXInteractive = () => {
             max="255"
             value={blue}
             onChange={(e) => setBlue(Number(e.target.value))}
-            className="slider bg-gradient-to-r from-black to-[#0000ff]"
+            className="slider"
+            style={{ backgroundImage: blueBG }}
           />
         </div>
+
+        {hasAlpha && (
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <label>Alpha (0-1): {alpha}</label>
+              <div
+                className="size-6 rounded-full border"
+                style={{
+                  background: `linear-gradient(to right, 
+                    transparent, 
+                    ${rgbColor}
+                  )`,
+                }}
+              />
+            </div>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step={0.1}
+              value={alpha}
+              onChange={(e) => setAlpha(Number(e.target.value))}
+              className="slider bg-gradient-to-r from-transparent to-black"
+            />
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
-export default HEXInteractive;
+export default RGBInteractive;
