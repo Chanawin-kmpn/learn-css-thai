@@ -1,11 +1,130 @@
 ---
 title: "Unit"
 description: "This is my first post!"
-createdDate: "27-01-2025"
-updatedDate: "3-02-2025"
-published: false
+createdDate: "8-02-2025"
+updatedDate: "8-02-2025"
+published: true
 ---
 
-# Unit คืออะไร
+## Units ของ CSS มีอะไรบ้าง?
 
-<Construction />
+ใน CSS มีหน่วยวัดหลากหลายสำหรับกำหนดค่า Property ต่างๆ เช่น width, height, margin, padding และอื่นๆ ซึ่งแต่ละหน่วยก็จะมีความเหมาะสมในการใช้งานต่างกัน
+
+<CodeBlock index={1} language="css" copyable={true}>
+{`div {
+    width: 100px;
+    height: 100px;
+    margin: 1rem;
+    padding: 1em;
+}
+p {
+    font-size: 24px;
+}
+`}
+
+</CodeBlock>
+
+### Pixel (px)
+
+Pixel เป็นหน่วยที่ใช้กันอย่างแพร่หลายในการกำหนดขนาดของ Element ใน CSS โดยมีความสัมพันธ์โดยตรงกับสิ่งที่ปรากฏบนหน้าจอ เช่น ขนาดของภาพหรือกล่อง เป็นหน่วยที่ใช้งานง่ายและพบเห็นได้ทั่วไป
+
+<strong>เมื่อไหร่ควรใช้:</strong> ใช้เมื่อคุณต้องการความแม่นยำและควบคุมขนาดที่แน่นอน
+เช่น ขนาดของภาพหรือปุ่มที่ต้องการให้มีขนาดคงที่ โดยไม่ขึ้นกับ Element ใดๆ
+
+{/* prettier-ignore */}
+<Playground id="unit-1" title="ตัวอย่างการใช้ Pixel" html={`
+<style>
+    .box {
+	    width: 100px;
+	    height: 100px;
+	    margin: 16px;
+	    padding: 8px;
+        border: 1px solid black;
+    }
+</style>
+<div class="box">
+    ตัวอย่างการใช้ Pixel
+</div>
+
+`} layoutMode="side-by-side" centered={false}/>
+
+### Ems (em)
+
+Ems เป็นหน่วยสัมพัทธ์ที่ขึ้นอยู่กับขนาดฟอนต์ของ Element ที่เป็น Parent หาก Element Parent มีขนาดฟอนต์24px ถ้ากำหนด padding เป็น <TextCode>2em</TextCode> จะมีขนาด 48px (2 × 24px)
+
+<strong>เมื่อไหร่ควรใช้:</strong> ใช้เมื่อคุณต้องการให้ขนาดของ Element
+สัมพันธ์กับขนาดฟอนต์ของ root element (แท็ก <TextCode>{`<html>`}</TextCode>)
+ซึ่งทำให้การออกแบบมีความสม่ำเสมอและคาดเดาได้
+
+{/* prettier-ignore */}
+<Playground id="unit-2" title="ตัวอย่างการใช้ Ems" html={`
+<style>
+    div {
+        font-size: 16px; /* ลองเปลี่ยนค่าเพื่อดูความเปลี่ยนแปลง */
+    }
+    p {
+        margin-top: 1em;
+    }
+</style>
+<div>
+    <p style="font-size: 2em;">
+      ข้อความที่ใช้ Ems เป็น 2 เท่าของ font-size ของ div
+    </p>
+    <p style="font-size: 1.75em;">
+      ข้อความที่ใช้ Ems เป็น 1.75 เท่าของ font-size ของ div
+    </p>
+    <p style="font-size: 1.5em;">
+      ข้อความที่ใช้ Ems เป็น 1.5 เท่าของ font-size ของ div
+    </p>
+    <p style="font-size: 1.25em;">
+      ข้อความที่ใช้ Ems เป็น 1.25 เท่าของ font-size ของ div
+    </p>
+    <p style="font-size: 1em;">
+      ข้อความที่ใช้ Ems เป็น 1 เท่าของ font-size ของ div
+    </p>
+    <p style="font-size: 0.75em;">
+      ข้อความที่ใช้ Ems เป็น 0.75 เท่าของ font-size ของ div
+    </p>
+    <p style="font-size: 0.5em;">
+      ข้อความที่ใช้ Ems เป็น 0.5 เท่าของ font-size ของ div
+    </p>
+    <p style="font-size: 0.25em;">
+      ข้อความที่ใช้ Ems เป็น 0.25 เท่าของ font-size ของ div
+    </p>
+</div>
+`} layoutMode="side-by-side" centered={false}/>
+
+### Rems (rem)
+
+Rem เป็นหน่วยที่คล้ายกับ em แต่มีความแตกต่างที่สำคัญคือมันสัมพันธ์กับขนาดฟอนต์ของ root element (แท็ก <TextCode>{`<html>`}</TextCode>) เสมอ
+
+<strong>เมื่อไหร่ควรใช้:</strong> ช้เมื่อคุณต้องการให้ขนาดของ Element
+สัมพันธ์กับขนาดฟอนต์ของ root element (แท็ก <TextCode>{`<html>`}</TextCode>)
+ซึ่งทำให้การออกแบบมีความสม่ำเสมอและคาดเดาได้
+
+{/* prettier-ignore */}
+<Playground id="unit-3" title="ตัวอย่างการใช้ Rems" html={`
+<style>
+    html {
+        font-size: 24px; /* ลองเปลี่ยนค่าเพื่อดูความเปลี่ยนแปลง */
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    p {
+        font-size: 1rem;
+    }
+</style>
+<h1>
+    ข้อความที่ใช้ Rems จะมีขนาดเป็น 2 เท่าของ font-size ของ root element
+</h1>
+<p>
+    ข้อความที่ใช้ Rems จะมีขนาดเป็น 1 เท่าของ font-size ของ root element
+</p>
+`} layoutMode="side-by-side" centered={false}/>
+
+<Callout type="warning" title="คำแนะนำในการแก้ไขขนาด font ของ html">
+  จริงๆแล้วไม่แนะนำให้ตั้งค่า font-size ของ html เป็น pixel
+  แต่เพื่อแสดงให้เห็นตัวอย่างเท่านั้น
+  เพราะอาจกระทบกับการตั้งค่าฟอนต์ของผู้ใช้ในเบราว์เซอร์ของพวกเขาได้
+</Callout>
