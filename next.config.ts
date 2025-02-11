@@ -3,7 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   pageExtensions: ["md", "mdx", "ts", "tsx"], // กำหนดนามสกุลไฟล์ที่เป็นหน้าเว็บ
   images: {
-    domains: ["fonts.googleapis.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "fonts.googleapis.com",
+      },
+    ],
   },
   /* config options here */
   eslint: {
