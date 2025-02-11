@@ -128,3 +128,38 @@ Rem เป็นหน่วยที่คล้ายกับ em แต่ม
   แต่เพื่อแสดงให้เห็นตัวอย่างเท่านั้น
   เพราะอาจกระทบกับการตั้งค่าฟอนต์ของผู้ใช้ในเบราว์เซอร์ของพวกเขาได้
 </Callout>
+
+### Percent (%)
+
+หน่วยเปอร์เซ็นต์มักใช้ในการกำหนดขนาดความกว้างและความสูง โดยจะคำนวณจากขนาดของ Element หลัก
+
+<strong>เมื่อไหร่ควรใช้:</strong> ใช้เมื่อคุณต้องการให้ขนาดของ Element
+สัมพันธ์กับขนาดของ Element Parent เช่น ความกว้างหรือความสูงของกล่อง
+
+{/* prettier-ignore */}
+<Playground id="unit-4" title="ตัวอย่างการใช้ Percent" html={`
+<style>
+    .parent {
+    width: 400px;
+    height: 400px;
+    background-color: lime;
+    }
+
+    .child {
+      width: 50%;
+      height: 25%;
+      background-color: orange;
+    }
+
+</style>
+<div class="parent">
+    <div class="child">
+      Element มีความกว้าง 50% และความสูง 25% ของ
+      Element Parent
+    </div>
+</div>
+
+`}
+layoutMode="side-by-side" centered={false}/>
+
+สำหรับข้อมูลเพิ่มเติมเกี่ยวกับการเลือกใช้หน่วยที่เหมาะสมและผลกระทบต่อการเข้าถึง (accessibility) คุณสามารถอ่านบทความที่เขียน โดย Josh W Comeau ได้อย่างน่าสนใจได้ที่ <Link href="https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/">“The Surprising Truth about Pixels and Accessibility”</Link>.
