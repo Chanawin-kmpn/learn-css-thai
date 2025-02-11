@@ -51,7 +51,7 @@ const ROUTES = [
     children: [
       {
         label: "Debugging",
-        path: "/docs/rendering/debugging-browser",
+        path: "/docs/rendering/debugging",
       },
       {
         label: "Rendering CSS",
@@ -70,12 +70,8 @@ const ROUTES = [
         path: "/docs/rendering/flow-layout",
       },
       {
-        label: "Positioning",
-        path: "/docs/rendering/positioning",
-      },
-      {
-        label: "Containing blocks",
-        path: "/docs/rendering/containing-blocks",
+        label: "Position",
+        path: "/docs/rendering/position",
       },
       {
         label: "Stacking contexts",
@@ -100,11 +96,11 @@ const ROUTES = [
         children: [
           {
             label: "Introduction",
-            path: "/docs/modern-layout/flexbox/introduction",
+            path: "/docs/modern-layout/flexbox/flexbox-introduction",
           },
           {
             label: "Fundamentals",
-            path: "/docs/modern-layout/flexbox/fundamentals",
+            path: "/docs/modern-layout/flexbox/flexbox-fundamentals",
           },
         ],
       },
@@ -114,11 +110,11 @@ const ROUTES = [
         children: [
           {
             label: "Introduction",
-            path: "/docs/modern-layout/grid/introduction",
+            path: "/docs/modern-layout/grid/grid-introduction",
           },
           {
             label: "Fundamentals",
-            path: "/docs/modern-layout/grid/fundamentals",
+            path: "/docs/modern-layout/grid/grid-fundamentals",
           },
         ],
       },

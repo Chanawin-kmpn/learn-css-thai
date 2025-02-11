@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 
 import { allDocs } from "@/.content-collections/generated";
-import Construction from "@/components/Construction";
 import { Mdx } from "@/components/mdx-components";
 import { getDocFromParams } from "@/lib/utils";
 import { DocPageProps } from "@/types/types";
@@ -40,10 +39,6 @@ export default async function DocPage({ params }: DocPageProps) {
 
   // console.log("params slug", (await params).slug);
   // console.log("doc", doc);
-
-  if (!doc.published) {
-    return <Construction />;
-  }
 
   return (
     <div className="flex w-full flex-col">
