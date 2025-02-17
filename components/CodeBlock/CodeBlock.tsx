@@ -23,14 +23,14 @@ const loadPrism = async () => {
 
 interface CodeBlockProps {
   children: string;
-  copyable?: boolean;
+  copiable?: boolean;
   language?: string;
   className?: string;
   index: number;
 }
 
 const CodeBlock: React.FC<CodeBlockProps> = memo(
-  ({ children, language = "css", className, copyable = false, index }) => {
+  ({ children, language = "css", className, copiable = false, index }) => {
     const [copied, setCopied] = useState(false);
 
     // 2. แยก copy logic ออกมาเป็น callback
@@ -97,7 +97,7 @@ const CodeBlock: React.FC<CodeBlockProps> = memo(
       <div
         className={`${className} relative overflow-auto rounded-md border border-primary-lime bg-zinc-200 dark:bg-transparent`}
       >
-        {copyable && <CopyButton />}
+        {copiable && <CopyButton />}
         <pre className="p-4">
           <code
             id={`code-${index}`}
