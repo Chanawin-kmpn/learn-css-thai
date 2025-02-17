@@ -6,12 +6,16 @@
   :root {
     --syntax-txt: #18181b;
     --syntax-str: #18181b;
+    --syntax-bg: #ffffff;
+    --syntax-bg-invert: #18181b;
     --radius: 0.5rem;
   }
 
   .dark {
     --syntax-txt: #e4e4e7;
     --syntax-str: #e4e4e7;
+    --syntax-bg: #18181b;
+    --syntax-bg-invert: #ffffff;
   }
 }
 
@@ -295,5 +299,41 @@ body {
       hsl(300deg 100% 50%),
       hsl(360deg 100% 50%)
     );
+  }
+
+  .group-select {
+    @apply relative w-fit;
+  }
+
+  .group-select-content {
+    @apply text-dark900_light100 rounded-lg bg-zinc-200 px-3 py-2 pr-[52px] text-base outline-offset-2 transition-all group-focus-within/select:ring-2 group-focus-within/select:ring-lime-500 group-focus-within/select:ring-offset-2 group-hover/select:bg-zinc-400 dark:bg-zinc-700;
+  }
+
+  .axis-toggle {
+    @apply relative w-9;
+  }
+
+  .axis-toggle:focus {
+    outline-color: #84cc16;
+  }
+
+  .axis-toggle::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: -8px;
+  }
+
+  .axis-toggle::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 4px;
+    right: 4px;
+    bottom: 0;
+    margin: auto;
+    height: 2px;
+    background-color: var(--syntax-bg-invert);
   }
 }

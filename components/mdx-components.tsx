@@ -16,6 +16,7 @@ import HEXInteractive from "./ColorsInteractive/HEX/HEXInteractive";
 import HSLInteractive from "./ColorsInteractive/HSL/HSLInteractive";
 import RGBInteractive from "./ColorsInteractive/RGB/RGBInteractive";
 import Construction from "./Construction";
+import FlexDirection from "./FlexboxInteraction/FlexDirection";
 import ImageCompare from "./ImageCompare";
 import CarouselGallery from "./ImageGallery";
 import TextCode from "./TextCode";
@@ -50,6 +51,7 @@ const component = {
   }: React.ComponentProps<typeof CarouselGallery>) => (
     <CarouselGallery className={cn("", className)} {...props} />
   ),
+  FlexDirection,
   TextCode,
   TextLink,
   HEXInteractive,

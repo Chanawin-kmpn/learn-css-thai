@@ -3,5 +3,34 @@ title: "Flex Introduction"
 description: "This is my first post!"
 createdDate: "11-2-2025"
 updatedDate: "11-2-2025"
-published: false
+published: true
 ---
+
+## Flexbox คืออะไร?
+
+Flexbox เป็นหนึ่งใน layout mode ใน CSS เหมือนกับ Flow Layout หรือ Positioned Layout โดย Flexbox จะมีหน้าที่ควบคุม Element ต่างๆ ตามแกนหลัก ซึ่งแกนหลักก็สามารถเป็นได้ทั้งแนวตั้ง(column)และแนวนอน(row)
+
+## แนวคิดพื้นฐานของ Flexbox
+
+### One-dimensional Layout Concept
+
+Flexbox ถูกออกแบบมาเพื่อจัดการ layout ในแนวเดียว (One-dimensional) ซึ่งหมายความว่า Flexbox จะเน้นที่การจัดเรียงองค์ประกอบในแนวแกนเดียวเท่านั้น ไม่ว่าจะเป็นแนวนอน (row) หรือแนวตั้ง (column)
+
+เมื่อเราใช้ Flexbox เราจะกำหนด “main axis” ซึ่งเป็นแกนหลักสำหรับจัดเรียงทุก ๆ element ที่อยู่ใน container นั้น ๆ ซึ่งจะมีทิศทางเดียว ไม่ว่าจะเป็นในแนวตั้งหรือแนวนอน
+
+### Main Axis vs Cross Axis
+
+Flexbox ใช้แนวคิดของแกนสองแกน โดยเรียกว่า Main Axis และ Cross Axis ซึ่งช่วยให้เราเข้าใจวิธีการจัดวาง Flex Items ภายใน Container ได้ชัดเจนมากขึ้น
+
+- **Main Axis (แกนหลัก):**
+  - กำหนดโดยค่า flex-direction
+  - เมื่อ flex-direction เป็น row → Main Axis คือแนวนอน (จากซ้ายไปขวา)
+  - เมื่อ flex-direction เป็น column → Main Axis คือแนวตั้ง (จากบนลงล่าง)
+  - ควบคุมการจัดเรียงในแกนหลักด้วยค่าเช่น justify-content
+- **Cross Axis (แกนรอง):**
+  - เป็นแกนที่ตั้งฉากกับ Main Axis
+  - เมื่อ Main Axis เป็นแนวนอน → Cross Axis คือแนวตั้ง
+  - เมื่อ Main Axis เป็นแนวตั้ง → Cross Axis คือแนวนอน
+  - ควบคุมการจัดเรียงในแกนรองด้วยค่าเช่น align-items
+
+<FlexDirection withAlignment={true} />
