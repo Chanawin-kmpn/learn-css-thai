@@ -2,7 +2,7 @@
 title: "Flex Introduction"
 description: "This is my first post!"
 createdDate: "11-2-2025"
-updatedDate: "11-2-2025"
+updatedDate: "17-2-2025"
 published: true
 ---
 
@@ -105,7 +105,12 @@ Flex Items คือองค์ประกอบลูกทั้งหมด
   มีการปรับตัวตามขนาดที่แตกต่างกันเพื่อให้พอดีกับพื้นที่ใน containerการใช้
   shorthand flex ทำให้โค้ดดูเรียบร้อยและเข้าใจง่ายขึ้น
 
-<Playground id="flexbox-introduction" title="Flexbox" splitRatio="0.4" html={`
+{/* prettier-ignore */}
+<Playground
+  id="flexbox-introduction"
+  title="Flexbox"
+  splitRatio="0.4"
+  html={`
 <style>
       .container {  
         display: flex;  
@@ -116,27 +121,30 @@ Flex Items คือองค์ประกอบลูกทั้งหมด
       .item {
         flex: 0 0 150px; /* ขยาย, หดตัว, และมีขนาดพื้นฐาน 200px */
     }
-
 </style>
 <div class="container">
-    <div class="item">Item 1</div>
-    <div class="item">Item 2</div>
-    <div class="item">Item 3</div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
 </div>
-`} css={`
-.item {
+`}
+  css={`
+  .item {
     text-align: center;
     height: 200px;
     border: 1px solid green;
     background-color: lightgreen;
     border-radius: 8px;
-}
-.item:first-child {
+  }
+  .item:first-child {
     border-color: red;
     background-color: lightcoral;
-}
-.item:last-child {
+  }
+  .item:last-child {
     border-color: blue;
     background-color: lightblue;
-}
-`} layoutMode="tabbed" centered={false}/>
+  }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>

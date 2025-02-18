@@ -1,7 +1,448 @@
 ---
-title: "Flex fundamentals"
+title: "Flex Fundamentals"
 description: "This is my first post!"
 createdDate: "11-2-2025"
-updatedDate: "11-2-2025"
-published: false
+updatedDate: "17-2-2025"
+published: true
 ---
+
+## การตั้งค่า Flex Container
+
+Flex Container คือพื้นฐานที่สำคัญของ Flexbox เพราะเป็นตัวที่กำหนดว่าองค์ประกอบลูก (Flex Items) ภายใน container นี้จะถูกจัดวางแบบยืดหยุ่นอย่างไร
+
+<Playground
+  id="flexbox-fundamentals-1"
+  title="Flexbox"
+  html={`
+<style>
+    .container {  
+        display: flex; /* เปิดใช้งาน Flexbox */  
+        gap: 16px;
+        border: 2px solid #333;  
+        padding: 10px;  
+        flex-wrap: wrap;
+    }  
+    .item {  
+        flex: 1 1 150px;
+        background-color: #84cc16;  
+        color: #fff;  
+        padding: 24px;   
+        text-align: center;  
+    }
+</style>
+<div class="container">  
+    <div class="item">Item 1</div>  
+    <div class="item">Item 2</div>  
+    <div class="item">Item 3</div>  
+</div>
+`}
+/>
+
+## คุณสมบัติของ Flex Container
+
+Flex Container มี property หลักหลายตัวที่ช่วยกำหนดทิศทางและลักษณะการจัดวางของ Flex Items
+
+### 1. `flex-direction`
+
+ทำหน้าที่กำหนดทิศทางหลังที่ Flex Items ให้จัดเรียงกันตามแนวแกนที่กำหนด
+
+- ค่าที่ใช้คือ:
+  1. <TextCode>row</TextCode> (ค่าเริ่มต้น, จัดเรียงจากซ้ายไปขวา)
+  2. <TextCode>row-reverse</TextCode> (จัดเรียงจากขวาไปซ้าย)
+  3. <TextCode>column</TextCode> (จัดเรียงจากบนลงล่าง)
+  4. <TextCode>column-reverse</TextCode> (จัดเรียงจากล่างขึ้นบน)
+
+<Playground
+  id="flexbox-fundamentals-2"
+  title="flex-direction"
+  html={`
+  <style>
+    .flex-container {  
+        display: flex; 
+        flex-direction: row; 
+        gap: 8px;
+    }
+    .item {  
+        background-color: #84cc16;  
+        color: #fff;  
+        padding: 24px;   
+        text-align: center;  
+    }
+  </style>
+  <div class="flex-container">  
+    <div class="item">Item 1</div>  
+    <div class="item">Item 2</div>  
+    <div class="item">Item 3</div>
+  </div>
+  `}
+  layoutMode="side-by-side"
+  centered={false}
+/>
+
+### 2. `flex-wrap`
+
+เมื่อพื้นที่ใน container ไม่พอให้แสดงทุก item ในบรรทัดเดียว สามารถใช้ Property flex-wrap ให้ items ขึ้นบรรทัดถัดไปได้
+
+- ค่าที่ใช้คือ:
+  1. <TextCode>nowrap</TextCode> (ค่าเริ่มต้น, ไม่ขึ้นบรรทัดใหม่)
+  2. <TextCode>wrap</TextCode> (ให้องค์ประกอบขึ้นบรรทัดถัดไป)
+  3. <TextCode>wrap-reverse</TextCode> (ขึ้นบรรทัดใหม่ในแนวกลับด้าน)
+
+<Playground
+  id="flexbox-fundamentals-3"
+  title="flex-wrap"
+  html={`
+  <style>
+    .flex-container {  
+        display: flex; 
+        flex-wrap: wrap; /* ย่อขนาด panel เพื่อดูผลลัพท์ */
+        gap: 8px;
+    }
+    .item {  
+        background-color: #84cc16;  
+        color: #fff;  
+        padding: 24px;   
+        text-align: center;  
+    }
+  </style>
+  <div class="flex-container">  
+    <div class="item">Item 1</div>  
+    <div class="item">Item 2</div>  
+    <div class="item">Item 3</div>
+  </div>
+  `}
+  layoutMode="side-by-side"
+  centered={false}
+/>
+
+### 3. Flex Container alignment ที่ใช้บ่อย
+
+- **justify-content:** จัดตำแหน่ง Flex Items ตามแกนหลัก
+  ค่าทั่วไป: <TextCode>flex-start</TextCode>, <TextCode>flex-end</TextCode>, <TextCode>center</TextCode>, <TextCode>space-between</TextCode>, <TextCode>space-around</TextCode>, <TextCode>space-evenly</TextCode>
+- **align-items:** จัดตำแหน่ง Flex Items ในแกนรอง (ตั้งฉากกับแกนหลัก)
+  ค่าทั่วไป: <TextCode>flex-start</TextCode>, <TextCode>flex-end</TextCode>, <TextCode>center</TextCode>, <TextCode>baseline</TextCode>, <TextCode>stretch</TextCode>
+
+  <FlexDirection withAlignment={true} />
+
+### 4. Gap
+
+Gap เป็นคุณสมบัติที่ถูกพัฒนามาเพื่อเพิ่มระยะห่างระหว่าง Flex Items โดยอัตโนมัติ ทำให้การจัดวาง spacing มีความเป็นระเบียบมากขึ้น
+
+<Playground
+  id="flexbox-fundamentals-4"
+  title="Gap"
+  splitRatio="0.4"
+  html={`
+  <style>
+    .flex-container {  
+        display: flex; 
+        gap: 16px;
+    }
+    .item {  
+        background-color: #84cc16;  
+        color: #fff;  
+        padding: 24px;   
+        text-align: center;  
+    }
+  </style>
+  <div class="flex-container">  
+    <div class="item">Item 1</div>  
+    <div class="item">Item 2</div>  
+    <div class="item">Item 3</div>
+  </div>
+  `}
+  layoutMode="side-by-side"
+  centered={false}
+/>
+
+<Callout>
+  Gap สามารถกำหนดแบบแยกได้ ซึ่งจะประกอบไปด้วย row-gap กับ column-gap โดย
+  <TextCode>row-gap:</TextCode>กำหนดช่องว่างระหว่างแถวของ Flex Items
+  (ในกรณีที่มีการ wrap) และ
+  <TextCode>column-gap:</TextCode>กำหนดช่องว่างระหว่างคอลัมน์ของ Flex Items
+  <Playground
+    id="flexbox-fundamentals-5"
+    title="row-gap and column-gap"
+    splitRatio="0.6"
+    html={`
+  <style>
+    .flex-container {  
+        display: flex;  
+        row-gap: 10px; /* ช่องว่างระหว่างแถว */  
+        column-gap: 20px; /* ช่องว่างระหว่างคอลัมน์ */
+        flex-wrap: wrap;  
+    }
+    .item {  
+        background-color: #84cc16;  
+        color: #fff;  
+        padding: 24px;   
+        text-align: center;  
+    }
+  </style>
+  <div class="flex-container">  
+    <div class="item">Item 1</div>  
+    <div class="item">Item 2</div>  
+    <div class="item">Item 3</div>
+    <div class="item">Item 4</div>
+  </div>
+  `}
+    layoutMode="side-by-side"
+    centered={false}
+  />
+</Callout>
+
+## คุณสมบัติของ Flex Items
+
+Flex Items คือองค์ประกอบลูกที่อยู่ใน Flex Container ซึ่งแต่ละ item สามารถกำหนด property เพื่อตั้งค่าการขยายตัวและการหดตัวตามพื้นที่ที่มี
+
+### 1. `flex-grow`
+
+ค่าที่กำหนดว่า Flex Item นั้นขยายตัวออกมากน้อยเพียงใดเมื่อมีพื้นที่ว่างใน container
+
+<Playground
+  id="flexbox-fundamentals-6"
+  title="flex-grow"
+  html={`
+  <style>
+    .container {  
+        display: flex;   
+        justify-content: center;
+    }
+    aside {  
+        flex-grow: 1;  
+    }
+    main {  
+        flex-grow: 2;       
+    }
+  </style>
+  <div class="container">  
+    <aside></aside>  
+    <main></main>
+  </div>
+  `}
+  css={`
+    aside {
+      background-color: lightgreen;
+      border: 2px solid green;
+      color: #fff;
+      padding: 24px;
+      text-align: center;
+    }
+    main {
+      background-color: lightcoral;
+      border: 2px solid red;
+      padding: 24px;
+      text-align: center;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+โดยหลักการทำงานของ <TextCode>flex-grow</TextCode> จะใช้การกำหนดอัตราส่วนการขยายตัวของ Flex Items ใน container โดยค่าที่กำหนดจะเป็นตัวเลขที่บวก ซึ่งหมายถึงอัตราส่วนการขยายตัวของ item นั้นๆ
+
+ค่าเริ่มต้นของ <TextCode>flex-grow</TextCode> คือ 0 ซึ่งหมายถึงว่า item จะไม่ขยายตัวเลย
+
+จากตัวอย่างโค้ด <TextCode>{`<aside>`}</TextCode> มี <TextCode>flex-grow: 1</TextCode> และ <TextCode>{`<main>`}</TextCode> มี <TextCode>flex-grow: 2</TextCode> สามารถรวมค่า <TextCode>flex-grow</TextCode> ทั้งหมด = 1 + 2 = 3
+
+**คำนวณสัดส่วน**
+
+- aside จะได้พื้นที่ 1/3 ของพื้นที่ว่างที่เหลือ
+- main จะได้พื้นที่ 2/3 ของพื้นที่ว่างที่เหลือ
+
+**ตัวอย่างการคำนวณ**
+
+ถ้าหากว่าพื้นที่ว่างใน container คือ 600px และมี aside กับ main อยู่ใน container นี้ จะได้
+
+- aside จะได้ 200px
+- main จะได้ 400px
+
+จากภาพผลลัพธ์จะเห็นว่าพื้นที่สีเขียว (aside) มีขนาด 1 ส่วน และพื้นที่สีแดง (main) มีขนาด 2 ส่วน ตามค่า flex-grow ที่กำหนด
+
+### 2. `flex-shrink`
+
+ค่าที่กำหนดว่า Flex Item จะหดตัวลงมากน้อยเพียงใด เมื่อพื้นที่ใน container ถูกจำกัด
+
+<Playground
+  id="flexbox-fundamentals-7"
+  title="flex-shrink"
+  html={`
+  <style>
+    .container {  
+      display: flex;  
+    }
+    .no-shrink {
+      flex-shrink: 0;
+    }
+    .normal-shrink {
+      flex-shrink: 1;
+    }
+    .double-shrink {
+      flex-shrink: 2;
+    }
+  </style>
+  <div class="container">  
+    <div class="item no-shrink">  
+      ไม่หด  
+      <br />(shrink: 0)  
+    </div>  
+    <div class="item normal-shrink">  
+      หดปกติ  
+      <br />(shrink: 1)  
+    </div>  
+    <div class="item double-shrink">  
+      หดเร็ว  
+      <br />(shrink: 2)  
+    </div>  
+</div>  
+  `}
+  css={`
+    .item {
+      width: 200px;
+      padding: 20px;
+      text-align: center;
+      margin: 5px;
+    }
+    .no-shrink {
+      background: #ff6b6b;
+    }
+    .normal-shrink {
+      background: #4ecdc4;
+    }
+    .double-shrink {
+      background: #45b7d1;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+จากตัวอย่างเมื่อ container มีพื้นที่จำกัด และมี Flex Items ที่กำหนดค่า <TextCode>flex-shrink</TextCode> ต่างกัน จะเห็นว่า กล่องแรก (สีแดง) จะไม่หดตัวเลยเพราะ <TextCode>flex-shrink: 0</TextCode> ส่วนกล่องที่สอง (สีเขียว) จะหดตัวเป็นปกติเพราะ <TextCode>flex-shrink: 1</TextCode> และกล่องสุดท้าย (สีน้ำเงิน) จะหดตัวเร็วขึ้นเพราะ <TextCode>flex-shrink: 2</TextCode>
+
+### 3. `flex-basis`
+
+ใช้กำหนดขนาดเริ่มต้นตามแนวแกนหลักของ Flex Item เทียบเท่ากับ width ในแนวนอนและ height ในแนวตั้ง ก่อนที่จะดำเนินการขยายหรือหดพื้นที่ตาม <TextCode>flex-grow</TextCode> และ <TextCode>flex-shrink</TextCode>
+
+<Playground
+  id="flexbox-fundamentals-8"
+  title="flex-basis"
+  html={`
+  <style>
+    .container {  
+      display: flex;    
+    }
+    .auto {  
+      flex-basis: auto; /* ขนาดตามเนื้อหา */  
+    }
+    .pixels {  
+      flex-basis: 200px; /* ขนาดคงที่ */  
+    }
+    .percentage {  
+      flex-basis: 30%; /* ขนาดเป็นเปอร์เซ็นต์ */  
+    }
+  </style>
+  <div class="container">  
+    <div class="box auto">  
+        flex-basis: auto  
+        <br />ขนาดตามเนื้อหา  
+    </div>  
+    <div class="box pixels">  
+        flex-basis: 200px  
+        <br />ขนาดคงที่  
+    </div>  
+    <div class="box percentage">  
+        flex-basis: 30%  
+        <br />ขนาดเป็น %  
+    </div>  
+</div>  
+  `}
+  css={`
+.box {
+  padding: 15px;
+  margin: 5px;
+  text-align: center;
+}
+
+.auto {
+background: #ff6b6b;
+}
+
+.pixels {
+background: #4ecdc4;
+}
+
+.percentage {
+background: #45b7d1;
+}
+`}
+layoutMode="tabbed"
+centered={false}
+/>
+
+### 4. `flex` (Shorthand)
+
+เป็น shorthand รวมสาม Property เข้าไว้ด้วยกัน คือ <TextCode>flex-grow</TextCode> , <TextCode>flex-shrink</TextCode> และ <TextCode>flex-basis</TextCode>
+
+<CodeBlock copiable={true} index={1}>
+{`.item {  
+    /* แบบแยก */  
+    flex-grow: 1;    /* ความสามารถในการขยาย */  
+    flex-shrink: 1;  /* ความสามารถในการหด */  
+    flex-basis: auto;/* ขนาดเริ่มต้น */
+    /* แบบ shorthand */  
+    flex: 1 1 auto; /* เขียนในบรรทัดเดียว */  
+}
+`}
+
+</CodeBlock>
+
+<Playground
+  id="flexbox-fundamentals-9"
+  title="flex (shorthand)"
+  html={`
+  <style>
+    .container {  
+      display: flex;  
+      gap: 10px;  
+      padding: 10px;  
+      background: #f0f0f0;  
+}
+    /* ตัวอย่างที่ 1: ยืดหยุ่นเต็มที่ */  
+    .one {  
+      flex: 1; /* เท่ากับ flex: 1 1 0 */  
+    }
+    /* ตัวอย่างที่ 2: ขนาดคงที่ ไม่ยืด ไม่หด */  
+    .two {  
+      flex: 0 0 100px; /* grow shrink basis */  
+    }
+    /* ตัวอย่างที่ 3: ยืดได้ แต่ไม่หด */  
+      .three {  
+        flex: 1 0 100px;  
+      }
+  </style>
+ <div class="container">  
+    <div class="box one">1</div>  
+    <div class="box two">2</div>  
+    <div class="box three">3</div>  
+</div> 
+  `}
+  css={`
+    .box {
+      height: 200px;
+      text-align: center;
+    }
+    .one {
+      background: #ff6b6b;
+    }
+    .two {
+      background: #4ecdc4;
+    }
+    .three {
+      background: #45b7d1;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+สามารถเรียนรู้เพิ่มเติมเกี่ยวกับการใช้งาน Flexbox มากขึ้นจากบทความของ Josh W Comeau <Link href="https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/">Interactive Guide to Flexbox</Link>
