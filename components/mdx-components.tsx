@@ -118,6 +118,9 @@ const component = {
       {...props}
     />
   ),
+  strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <strong className={cn("text-light-100", className)} {...props} />
+  ),
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
     <ul className={cn("ml-6 list-disc", className)} {...props} />
   ),
