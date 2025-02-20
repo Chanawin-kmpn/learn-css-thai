@@ -70,8 +70,8 @@ const ROUTES = [
         path: "/docs/rendering/flow-layout",
       },
       {
-        label: "Position",
-        path: "/docs/rendering/position",
+        label: "Positioning",
+        path: "/docs/rendering/positioning",
       },
       {
         label: "Stacking contexts",

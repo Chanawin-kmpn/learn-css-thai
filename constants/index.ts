@@ -19,7 +19,7 @@ export const howToLearn = [
     icon: Footprints,
   },
   {
-    title: "ทดสอบได้ทันที",
+    title: "ทดสอบและเห็นผลลัพท์ได้ทันที",
     descritpion:
       "แก้ไขโค้ดและดูผลลัพธ์แบบ Real-time ช่วยให้เข้าใจการทำงานของ CSS ได้ดียิ่งขึ้น",
     icon: Code,

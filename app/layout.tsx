@@ -50,7 +50,7 @@ export default function RootLayout({
         className={`${sarabun.className} ${firaCode.variable} ${inter.variable} bg-light100_dark900 antialiased`}
       >
         <div className="jun-layout gap-y-8">
-          <div className="pointer-events-none absolute inset-0 -z-20 h-screen w-screen overflow-hidden">
+          <div className="pointer-events-none absolute inset-0 -z-20 h-screen w-full overflow-hidden">
             {/* Light Mode Background */}
             <div className="absolute inset-0">
               <div className="relative h-screen w-screen">

@@ -1,7 +1,6 @@
-export interface Doc {
+export interface BaseContent {
   slug: string;
   slugAsParams: string;
-  doc: string;
   content: string;
   title: string;
   description: string;
@@ -18,7 +17,17 @@ export interface Doc {
   toc?: boolean;
 }
 
-export interface DocPageProps {
+export interface Doc extends BaseContent {
+  doc: string;
+}
+
+export interface Blog extends BaseContent {
+  blog: string;
+  authorName: string;
+  authorImage?: string;
+}
+
+export interface PageProps {
   params: Promise<{ slug: string[] }>;
 }
 

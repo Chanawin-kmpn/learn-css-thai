@@ -1,8 +1,8 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-import { allDocs } from "@/.content-collections/generated";
-import { Doc } from "@/types/types";
+import { allBlogs, allDocs } from "@/.content-collections/generated";
+import { Blog, Doc } from "@/types/types";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prefer-spread */
@@ -71,10 +71,20 @@ export const normalize = (
 
 export async function getDocFromParams(slug: string[] | null): Promise<Doc> {
   const slugPath = slug?.join("/") || "";
-
   try {
-    const doc = allDocs.find((doc) => doc.slugAsParams === slugPath)!;
+    const doc = allDocs.find((doc) => doc.slug === slugPath)!;
     return doc;
+  } catch (error) {
+    console.error("Error fetching doc:", error);
+    throw new Error(`Doc not found for slug: ${slugPath}`);
+  }
+}
+
+export async function getBlogFromParams(slug: string[] | null): Promise<Blog> {
+  const slugPath = slug?.join("/") || "";
+  try {
+    const blog = allBlogs.find((blog) => blog.slug === slugPath)!;
+    return blog;
   } catch (error) {
     console.error("Error fetching doc:", error);
     throw new Error(`Doc not found for slug: ${slugPath}`);
@@ -87,7 +97,7 @@ export async function getDocFromSegment(
   const slugPath = segment?.join("/") || "";
 
   try {
-    const doc = allDocs.find((doc) => doc.slugAsParams === slugPath)!;
+    const doc = allDocs.find((doc) => doc.slug === slugPath)!;
     return doc;
   } catch (error) {
     console.error("Error fetching doc:", error);

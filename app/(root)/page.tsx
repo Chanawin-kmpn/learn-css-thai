@@ -13,8 +13,8 @@ export default function Home() {
           ได้ง่ายขึ้นผ่านการเรียนรู้แบบ Interactive
         </h1>
         <p className="paragraph text-dark700_light400 mx-auto mb-8 text-center lg:mb-16 lg:w-1/2">
-          เราออกแบบบทเรียนให้เข้าใจง่าย
-          พร้อมตัวอย่างที่คุณสามารถทดลองแก้ไขได้ทันที
+          เว็บไซต์นี้ออกแบบบทเรียนให้เข้าใจง่าย
+          พร้อมตัวอย่างที่สามารถทดลองแก้ไขได้ทันที
           เหมาะสำหรับผู้ที่เริ่มต้นเรียนรู้ CSS
         </p>
         <div className="mx-auto flex max-w-[450px]">
@@ -30,7 +30,7 @@ export default function Home() {
         </div>
       </div>
       <div className="px-8 py-4">
-        <h2 className="h2-banner mb-8 lg:text-start">วิธีการเรียนของเรา</h2>
+        <h2 className="h2-banner mb-8 lg:text-start">เรียนอย่างไรดี?</h2>
         <div className="flex flex-col gap-4 lg:flex-row">
           {howToLearn.map((item) => (
             <HowToLearnCard
@@ -43,16 +43,16 @@ export default function Home() {
         </div>
       </div>
       <div className="px-8 py-4">
-        <h2 className="h2-banner mb-8 lg:text-start">เนื้อหาบทเรียน</h2>
+        <h2 className="h2-banner mb-8 lg:text-start">เนื้อหาทั้งหมด</h2>
         <LottieAnimation />
       </div>
       <div className="px-8 py-4">
         <h2 className="mb-2 text-center text-2xl font-bold">
-          พร้อมที่จะเริ่มต้นแล้วหรือยัง
+          พร้อมที่จะเริ่มต้นแล้วหรือยัง?
         </h2>
         <p className="paragraph text-dark700_light400 mb-8 text-center">
           เริ่มต้นเรียนรู้ได้ทันทีไม่ต้องมีพื้นฐานการเขียน CSS
-          ด้วยบทเรียนที่ออกบแบบมาเพื่อผู้เริ่มต้นโดยเฉพาะ
+          ด้วยบทความที่ออกบแบบมาเพื่อผู้เริ่มต้นโดยเฉพาะ
         </p>
         <Link href="/docs/basics/introduction" className="btn mx-auto block">
           เริ่มเลยตอนนี้

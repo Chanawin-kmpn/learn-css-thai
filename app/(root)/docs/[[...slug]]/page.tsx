@@ -3,11 +3,11 @@ import { Metadata } from "next";
 import { allDocs } from "@/.content-collections/generated";
 import { Mdx } from "@/components/mdx-components";
 import { getDocFromParams } from "@/lib/utils";
-import { DocPageProps } from "@/types/types";
+import { PageProps } from "@/types/types";
 
 export async function generateMetadata({
   params,
-}: DocPageProps): Promise<Metadata> {
+}: PageProps): Promise<Metadata> {
   const doc = await getDocFromParams((await params).slug);
 
   if (!doc) {
@@ -34,7 +34,7 @@ export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
   }));
 }
 
-export default async function DocPage({ params }: DocPageProps) {
+export default async function DocPage({ params }: PageProps) {
   const doc = await getDocFromParams((await params).slug);
 
   // console.log("params slug", (await params).slug);
