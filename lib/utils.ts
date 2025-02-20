@@ -104,3 +104,17 @@ export async function getDocFromSegment(
     throw new Error(`Doc not found for slug: ${slugPath}`);
   }
 }
+
+export async function getBlogFromSegment(
+  segment: string[] | undefined,
+): Promise<Blog> {
+  const slugPath = segment?.join("/") || "";
+
+  try {
+    const blog = allBlogs.find((blog) => blog.slug === slugPath)!;
+    return blog;
+  } catch (error) {
+    console.error("Error fetching doc:", error);
+    throw new Error(`Doc not found for slug: ${slugPath}`);
+  }
+}

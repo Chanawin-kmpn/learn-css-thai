@@ -56,11 +56,15 @@ const BlogPage = async ({ params }: PageProps) => {
           <h1 className="h1-section">{blog.title}</h1>
           <div className="flex items-center space-x-4">
             {blog.authorImage ? (
-              <Image
-                src={blog.authorImage}
-                alt={blog.authorName}
-                className="size-9 rounded-full"
-              />
+              <div className="relative flex size-9 shrink-0 items-center justify-center self-start overflow-hidden rounded-full">
+                <Image
+                  src={blog.authorImage}
+                  alt={blog.authorName}
+                  fill
+                  className="object-cover"
+                  sizes="100%"
+                />
+              </div>
             ) : (
               <CircleUserRound size={36} />
             )}

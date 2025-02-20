@@ -23,6 +23,7 @@ const Navbar = () => {
               fill
               className="object-contain"
               alt="CSS Logo"
+              sizes="100%"
             />
           </div>
         </Link>

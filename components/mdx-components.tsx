@@ -1,4 +1,6 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { useMDXComponent } from "@content-collections/mdx/react";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -82,6 +84,9 @@ const component = {
   HSLInteractive: ({ className, ...props }: RGBInteractiveProps) => (
     <HSLInteractive className={cn("mb-12 mt-2", className)} {...props} />
   ),
+  div: ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+    <div className={cn("", className)} {...props} />
+  ),
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn("h1-section text-dark900_light100 mb-5", className)}
@@ -116,6 +121,15 @@ const component = {
         className,
       )}
       {...props}
+    />
+  ),
+  Image: ({
+    className,
+    ...props
+  }: React.ImgHTMLAttributes<HTMLImageElement>) => (
+    <Image
+      className={cn("w-full rounded-lg", className)}
+      {...(props as { src: string; alt: string })}
     />
   ),
   strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (

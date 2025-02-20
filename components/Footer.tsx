@@ -12,12 +12,13 @@ const Footer = () => {
   const pathName = usePathname();
   const isDocsPath = checkDocsPath(pathName);
   return (
-    <div className="jun-footer z-50 flex flex-col gap-4 border-t border-dark-700/20 px-8 py-4 dark:border-light-400/20 lg:gap-8 lg:px-8 lg:py-4">
+    <div className="jun-footer z-40 flex flex-col gap-4 border-t border-dark-700/20 px-8 py-4 dark:border-light-400/20 lg:gap-8 lg:px-8 lg:py-4">
       <div className="flex flex-col gap-4 lg:hidden">
         <Link href="/">
           <div className="relative aspect-[56/46] w-[56px]">
             <Image
               src="/images/logo.png"
+              sizes="100%"
               fill
               className="object-contain"
               alt="CSS Logo"
@@ -73,6 +74,7 @@ const Footer = () => {
           <div className="relative hidden aspect-[56/46] w-[56px] lg:block">
             <Image
               src="/images/logo.png"
+              sizes="100%"
               fill
               className="object-contain"
               alt="CSS Logo"

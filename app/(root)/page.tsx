@@ -12,7 +12,7 @@ export default function Home() {
           เข้าใจ <span className="text-gradient">CSS</span>{" "}
           ได้ง่ายขึ้นผ่านการเรียนรู้แบบ Interactive
         </h1>
-        <p className="paragraph text-dark700_light400 mx-auto mb-8 text-center lg:mb-16 lg:w-1/2">
+        <p className="description text-dark700_light400 mx-auto mb-8 text-center lg:mb-16 lg:w-1/2">
           เว็บไซต์นี้ออกแบบบทเรียนให้เข้าใจง่าย
           พร้อมตัวอย่างที่สามารถทดลองแก้ไขได้ทันที
           เหมาะสำหรับผู้ที่เริ่มต้นเรียนรู้ CSS
