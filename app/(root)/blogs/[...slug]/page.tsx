@@ -75,6 +75,14 @@ const BlogPage = async ({ params }: PageProps) => {
       <div>
         <Mdx code={blog.blog} />
       </div>
+      <div className="self-end">
+        <span className="paragraph-sm text-zinc-700 dark:text-zinc-400">
+          อัพเดตล่าสุดเมื่อ
+        </span>
+        <p className="paragraph text-zinc-900 dark:text-zinc-100">
+          {blog.updatedDate}
+        </p>
+      </div>
     </div>
   );
 };
