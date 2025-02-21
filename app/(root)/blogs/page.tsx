@@ -4,7 +4,7 @@ import React from "react";
 
 import { allBlogs } from "@/.content-collections/generated";
 
-const page = () => {
+const BlogPage = () => {
   return (
     <div className="flex flex-col items-center space-y-8">
       <div className="space-y-4 lg:text-center">
@@ -51,4 +51,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default BlogPage;

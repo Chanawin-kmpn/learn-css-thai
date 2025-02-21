@@ -34,7 +34,7 @@ export async function generateMetadata({
 
 export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
   return allBlogs.map((blog) => ({
-    slug: blog.slugAsParams.split("/"),
+    slug: [blog.slugAsParams],
   }));
 }
 

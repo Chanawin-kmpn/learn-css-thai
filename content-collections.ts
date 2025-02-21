@@ -35,7 +35,7 @@ const docs = defineCollection({
     return {
       ...document,
       slug: `${normalizedPath}`,
-      slugAsParams: normalizedPath.split("/").slice(1).join("/"),
+      slugAsParams: normalizedPath.split("/").join("/"),
       doc,
     };
   },
@@ -74,7 +74,7 @@ const blogs = defineCollection({
     return {
       ...document,
       slug: `${normalizedPath}`,
-      slugAsParams: normalizedPath.split("/").slice(1).join("/"),
+      slugAsParams: normalizedPath,
       blog,
     };
   },

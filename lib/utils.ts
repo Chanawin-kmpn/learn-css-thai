@@ -72,7 +72,7 @@ export const normalize = (
 export async function getDocFromParams(slug: string[] | null): Promise<Doc> {
   const slugPath = slug?.join("/") || "";
   try {
-    const doc = allDocs.find((doc) => doc.slug === slugPath)!;
+    const doc = allDocs.find((doc) => doc.slugAsParams === slugPath)!;
     return doc;
   } catch (error) {
     console.error("Error fetching doc:", error);
