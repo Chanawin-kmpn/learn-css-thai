@@ -52,7 +52,7 @@ Flexboxกำหนดทิศทางการจัดวาง (flex-direct
 ขององค์ประกอบลูกได้รับผิดชอบการควบคุมตำแหน่งโดยใช้คุณสมบัติอย่าง justify-content (จัดตำแหน่งในแกนหลัก)
 และ align-items (จัดตำแหน่งในแกนรอง)
 
-<CodeBlock copiable={true} index={1}>
+<CodeBlock copiable={true}>
   {`.flex-container {  
     display: flex;  
     flex-direction: row;    /* กำหนดให้เรียงในแกนแนวนอน */  
@@ -81,7 +81,7 @@ Flex Items คือองค์ประกอบลูกทั้งหมด
 - <TextCode>flex:</TextCode> เป็น shorthand ที่รวม flex-grow, flex-shrink และ
   flex-basis เข้าด้วยกัน
 
-<CodeBlock copiable={true} index={2}>
+<CodeBlock copiable={true}>
   {`.flex-item {  
   flex-grow: 1;      /* อนุญาตให้ item ขยายตัวได้เท่า ๆ กัน */  
   flex-shrink: 1;    /* อนุญาตให้ item หดตัวลงเมื่อพื้นที่ไม่เพียงพอ */  

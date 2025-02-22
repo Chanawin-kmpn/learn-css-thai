@@ -2,7 +2,7 @@
 "use client";
 import { Check, Copy } from "lucide-react";
 import dynamic from "next/dynamic";
-import React, { useEffect, useState, memo } from "react";
+import React, { useEffect, useState, memo, useId } from "react";
 
 // 1. แยก Prism import และ highlight ให้โหลดแบบ lazy
 const loadPrism = async () => {
@@ -26,12 +26,12 @@ interface CodeBlockProps {
   copiable?: boolean;
   language?: string;
   className?: string;
-  index: number;
 }
 
 const CodeBlock: React.FC<CodeBlockProps> = memo(
-  ({ children, language = "css", className, copiable = false, index }) => {
+  ({ children, language = "css", className, copiable = false }) => {
     const [copied, setCopied] = useState(false);
+    const id = useId().replace(/:/g, "");
 
     // 2. แยก copy logic ออกมาเป็น callback
     const copyToClipboard = React.useCallback(async () => {
@@ -54,7 +54,7 @@ const CodeBlock: React.FC<CodeBlockProps> = memo(
         try {
           const Prism = await loadPrism();
           if (mounted && Prism) {
-            const codeElement = document.querySelector(`#code-${index}`);
+            const codeElement = document.querySelector(`#code-${id}`);
             if (codeElement) {
               Prism.highlightElement(codeElement);
               // console.log("Highlighted code:", codeElement);
@@ -70,7 +70,7 @@ const CodeBlock: React.FC<CodeBlockProps> = memo(
       return () => {
         mounted = false;
       };
-    }, [children, language, index]);
+    }, [children, language, id]);
 
     // 4. แยก Button component
     const CopyButton = () => (
@@ -100,7 +100,7 @@ const CodeBlock: React.FC<CodeBlockProps> = memo(
         {copiable && <CopyButton />}
         <pre className="p-4">
           <code
-            id={`code-${index}`}
+            id={`code-${id}`}
             className={`language-${language} text-xs md:text-base`}
           >
             {children}
@@ -117,10 +117,10 @@ CodeBlock.displayName = "CodeBlock";
 // 6. ใช้ dynamic import with loading optimization
 export default dynamic(() => Promise.resolve(CodeBlock), {
   ssr: false,
-  loading: (index) => (
+  loading: (id) => (
     <div className="relative rounded-md border border-primary-lime bg-zinc-200 dark:bg-transparent">
       <pre className="p-4">
-        <code id={`code-${index}`} className="text-sm opacity-50 lg:text-base">
+        <code id={`code-${id}`} className="text-sm opacity-50 lg:text-base">
           Loading...
         </code>
       </pre>

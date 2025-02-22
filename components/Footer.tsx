@@ -82,9 +82,14 @@ const Footer = () => {
           </div>
         </Link>
 
-        <p className="text-xs">Copyright &copy; 2024 Chanawin</p>
-        <Link href="https://github.com/Chanawin-kmpn" target="_blank">
-          <Github />
+        <p className="text-xs">Copyright &copy; 2025 Chanawin</p>
+        <Link
+          href="https://github.com/Chanawin-kmpn"
+          target="_blank"
+          aria-label="Github Profile"
+          className="group"
+        >
+          <Github className="transition-colors group-hover:text-zinc-100" />
         </Link>
       </div>
     </div>
