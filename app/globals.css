@@ -19,6 +19,15 @@
   }
 }
 
+@keyframes radientGradientMove {
+  0% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
 body {
   font-family: "Sarabun", sans-serif;
 }
@@ -150,6 +159,18 @@ body {
   .jun-header {
     @apply h-fit !important;
   }
+
+  .learnCard::after {
+    @apply rounded-lg bg-gradient-to-r from-lime-500 to-orange-500;
+    position: absolute;
+    content: "";
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    top: -1px;
+    left: -1px;
+    z-index: -1;
+  }
+
   .code-editor {
     & > textarea,
     & .token-line,
@@ -220,6 +241,43 @@ body {
         opacity: 1;
         transition: opacity 250ms;
       }
+    }
+  }
+
+  .cta-button {
+    @apply relative inline-block rounded-lg text-center font-bold text-dark-900 transition-transform duration-200;
+    background: radial-gradient(
+      circle at top left,
+      hsl(84deg 81% 44%) 0%,
+      hsl(84deg 81% 44%) 16%,
+      hsl(84deg 81% 44%) 23%,
+      hsl(80deg 82% 45%) 29%,
+      hsl(64deg 85% 47%) 34%,
+      hsl(48deg 89% 50%) 39%,
+      hsl(33deg 93% 52%) 43%,
+      hsl(33deg 93% 52%) 48%,
+      hsl(33deg 93% 52%) 52%,
+      hsl(33deg 93% 52%) 57%,
+      hsl(48deg 89% 50%) 61%,
+      hsl(64deg 85% 47%) 66%,
+      hsl(80deg 82% 45%) 71%,
+      hsl(84deg 81% 44%) 77%,
+      hsl(84deg 81% 44%) 84%,
+      hsl(84deg 81% 44%) 100%
+    );
+    background-size: 800%;
+    animation: radientGradientMove 10s infinite ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &::before {
+      @apply absolute left-1.5 right-1.5 top-0.5 z-10 h-1/5 rounded-[20px_20px_100px_100px/14px_14px_30px_30px] bg-gradient-to-b from-white/30 to-transparent content-[''] !important;
+    }
+
+    &::after {
+      @apply absolute bottom-0 left-0 right-0 z-10 h-[30%] rounded-b-lg bg-gradient-to-b from-transparent to-black/20 content-[''] !important;
     }
   }
 

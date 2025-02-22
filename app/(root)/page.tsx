@@ -6,7 +6,7 @@ import SearchButton from "@/components/Search/SearchButton";
 import { howToLearn } from "@/constants";
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center gap-32">
+    <div className="flex flex-col items-center justify-center gap-16 lg:gap-32">
       <div className="max-w-5xl px-8 py-4">
         <h1 className="h1-banner mb-4 lg:mb-16">
           เข้าใจ <span className="text-gradient">CSS</span>{" "}
@@ -20,7 +20,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-[450px]">
           <Link
             href="/docs/basics/introduction"
-            className="btn mx-auto block flex-1"
+            className="cta-button mx-auto flex-1 px-4 py-2"
           >
             เริ่มกันเลย
           </Link>
@@ -29,7 +29,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="px-8 py-4">
+      <div className="lg:px-8 lg:py-4">
         <h2 className="h2-banner mb-8 lg:text-start">เรียนอย่างไรดี?</h2>
         <div className="flex flex-col gap-4 lg:flex-row">
           {howToLearn.map((item) => (
@@ -46,7 +46,7 @@ export default function Home() {
         <h2 className="h2-banner mb-8 lg:text-start">เนื้อหาทั้งหมด</h2>
         <LottieAnimation />
       </div>
-      <div className="px-8 py-4">
+      <div className="flex flex-col px-8 py-4">
         <h2 className="mb-2 text-center text-2xl font-bold">
           พร้อมที่จะเริ่มต้นแล้วหรือยัง?
         </h2>
@@ -54,7 +54,10 @@ export default function Home() {
           เริ่มต้นเรียนรู้ได้ทันทีไม่ต้องมีพื้นฐานการเขียน CSS
           ด้วยบทความที่ออกบแบบมาเพื่อผู้เริ่มต้นโดยเฉพาะ
         </p>
-        <Link href="/docs/basics/introduction" className="btn mx-auto block">
+        <Link
+          href="/docs/basics/introduction"
+          className="cta-button px-4 py-2 lg:self-center lg:px-8 lg:py-4"
+        >
           เริ่มเลยตอนนี้
         </Link>
       </div>

@@ -66,7 +66,7 @@ const Editor = ({
     }
   }
   return (
-    <div data-in={String(ignoreTabKey)} className={`max-h-[${maxHeight}px]`}>
+    <div data-in={String(ignoreTabKey)} style={{ maxHeight: `${maxHeight}px` }}>
       <button
         ref={focusTrapperRef}
         onFocus={() => setIsFocusingYellowBox(true)}
