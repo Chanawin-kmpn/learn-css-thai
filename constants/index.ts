@@ -1,4 +1,10 @@
-import { Code, Footprints, MonitorCheck } from "lucide-react";
+import {
+  Code,
+  Footprints,
+  Lightbulb,
+  ListChecks,
+  MonitorCheck,
+} from "lucide-react";
 
 export const navbarLinks = [
   {
@@ -12,6 +18,12 @@ export const navbarLinks = [
 ];
 
 export const howToLearn = [
+  {
+    title: "คำอธิบายที่เข้าใจง่าย",
+    descritpion:
+      "เรียนรู้แนวคิด CSS ผ่านบทความและคำอธิบายที่ออกแบบมาให้เข้าใจง่าย พร้อมตัวอย่างที่ช่วยให้คุณนำไปปรับใช้ได้จริงในโปรเจกต์ของคุณ",
+    icon: ListChecks,
+  },
   {
     title: "เรียนรู้แบบ Step by Step",
     descritpion:
@@ -29,5 +41,11 @@ export const howToLearn = [
     descritpion:
       "เรียนรู้ผ่านตัวอย่างที่นำไปใช้ได้จริงพร้อมคำอธิบายที่เข้าใจง่าย",
     icon: MonitorCheck,
+  },
+  {
+    title: "จุดประกายไอเดียด้วย CSS",
+    descritpion:
+      "เปลี่ยนแนวคิดธรรมดาให้กลายเป็นเว็บไซต์ที่ยอดเยี่ยม ด้วยเทคนิค CSS ที่ช่วยให้ไอเดียของคุณสร้างสรรค์ได้อย่างไม่สิ้นสุด",
+    icon: Lightbulb,
   },
 ];

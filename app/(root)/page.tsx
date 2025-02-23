@@ -31,7 +31,7 @@ export default function Home() {
       </div>
       <div className="lg:px-8 lg:py-4">
         <h2 className="h2-banner mb-8 lg:text-start">เรียนอย่างไรดี?</h2>
-        <div className="flex flex-col gap-4 lg:flex-row">
+        <div className="learn-container">
           {howToLearn.map((item) => (
             <HowToLearnCard
               key={item.title}

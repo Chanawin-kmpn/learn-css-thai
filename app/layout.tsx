@@ -60,7 +60,7 @@ export default function RootLayout({
                   width="1920"
                   height="1080"
                   loading="lazy"
-                  className="absolute inset-0 size-full object-cover opacity-50 dark:hidden"
+                  className="absolute inset-0 size-full object-cover opacity-90 dark:hidden"
                 />
               </div>
             </div>
@@ -74,7 +74,7 @@ export default function RootLayout({
                   width="1920"
                   height="1080"
                   loading="lazy"
-                  className="absolute inset-0 hidden size-full object-cover opacity-50 dark:block"
+                  className="absolute inset-0 hidden size-full object-cover opacity-90 dark:block"
                 />
               </div>
             </div>
