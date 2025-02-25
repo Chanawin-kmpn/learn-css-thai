@@ -68,7 +68,7 @@ const HEXInteractive = () => {
             max="255"
             value={green}
             onChange={(e) => setGreen(Number(e.target.value))}
-            className="slider bg-gradient-to-r from-black to-[#00ff00]"
+            className="slider bg-gradient-to-r from-black to-[#00ff00] dark:border-zinc-400"
           />
         </div>
 
@@ -86,7 +86,7 @@ const HEXInteractive = () => {
             max="255"
             value={blue}
             onChange={(e) => setBlue(Number(e.target.value))}
-            className="slider bg-gradient-to-r from-black to-[#0000ff]"
+            className="slider bg-gradient-to-r from-black to-[#0000ff] dark:border-zinc-400"
           />
         </div>
       </div>

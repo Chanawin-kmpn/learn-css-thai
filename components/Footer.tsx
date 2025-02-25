@@ -89,7 +89,7 @@ const Footer = () => {
           aria-label="Github Profile"
           className="group"
         >
-          <Github className="transition-colors group-hover:text-zinc-100" />
+          <Github className="transition-colors group-hover:text-zinc-900 dark:group-hover:text-zinc-100" />
         </Link>
       </div>
     </div>

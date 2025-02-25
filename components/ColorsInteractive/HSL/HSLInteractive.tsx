@@ -48,7 +48,7 @@ const HSLInteractive = ({ hasAlpha, className }: HSLInteractiveProps) => {
             backgroundSize: "20px 20px",
           }}
         />
-        <p className="absolute inset-x-0 bottom-0 rounded-b-xl bg-black/50 p-2 text-center font-bold text-white">
+        <p className="absolute inset-x-0 bottom-0 rounded-b-lg bg-black/50 p-2 text-center font-bold text-white">
           HSL Code: {hslColor}
         </p>
       </div>
