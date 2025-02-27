@@ -19,6 +19,7 @@ import HSLInteractive from "./ColorsInteractive/HSL/HSLInteractive";
 import RGBInteractive from "./ColorsInteractive/RGB/RGBInteractive";
 import Construction from "./Construction";
 import FlexDirection from "./FlexboxInteraction/FlexDirection";
+import GridAutoFlowInteract from "./GridInteraction/GridAutoFlowInteract";
 import ImageCompare from "./ImageCompare";
 import CarouselGallery from "./ImageGallery";
 import TextCode from "./TextCode";
@@ -54,6 +55,7 @@ const component = {
     <CarouselGallery className={cn("", className)} {...props} />
   ),
   FlexDirection,
+  GridAutoFlowInteract,
   TextCode,
   TextLink,
   HEXInteractive,
@@ -73,7 +75,7 @@ const component = {
     />
   ),
   Playground: ({ className, ...props }: PlaygroundProps) => (
-    <Playground className={cn("mb-12 mt-2", className)} {...props} />
+    <Playground className={cn("mb-12 mt-6", className)} {...props} />
   ),
   ImageCompare: ({ className, ...props }: ImageCompareProps) => (
     <ImageCompare className={cn("mb-12 mt-2", className)} {...props} />
@@ -136,14 +138,17 @@ const component = {
     <strong className={cn("text-light-100", className)} {...props} />
   ),
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className={cn("ml-6 list-disc", className)} {...props} />
+    <ul
+      className={cn("ml-6 list-disc last-of-type:mb-6", className)}
+      {...props}
+    />
   ),
   ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
     <ol className={cn("ml-6 list-decimal", className)} {...props} />
   ),
   li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <li
-      className={cn("text-dark700_light400 mt-2 gap-6 last:mb-12", className)}
+      className={cn("text-dark700_light400 mt-2 gap-6", className)}
       {...props}
     />
   ),

@@ -23,12 +23,15 @@ const CarouselGallery = ({ images, className }: CarouselGalleryProps) => {
 
   useEffect(() => {
     // สร้าง plugin ใน client-side
-    setPlugin([
-      Autoplay({
-        delay: 5000,
-      }),
-    ]);
-  }, []);
+    if (images.length > 1) {
+      // ถ้ามีรูปมากกว่า 1 รูป ให้เริ่ม autoplay
+      setPlugin([
+        Autoplay({
+          delay: 5000,
+        }),
+      ]);
+    }
+  }, [images]);
 
   if (!images || images.length === 0) return null;
 

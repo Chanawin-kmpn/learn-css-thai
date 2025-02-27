@@ -41,7 +41,7 @@ const CodeWrapper = ({
     return (
       <>
         <div
-          className="inline-outer-wrapper mb-12 max-md:mb-8"
+          className={`inline-outer-wrapper max-md:mb-8 ${className}`}
           data-stacked={String(!!stacked)}
           // as={size === 'wide' ? FullWidthChild : 'div'}
         >
@@ -54,7 +54,7 @@ const CodeWrapper = ({
   }
   return (
     <div
-      className="inline-outer-wrapper mb-12 overflow-hidden rounded-md border border-zinc-700 max-md:mb-8"
+      className={`inline-outer-wrapper overflow-hidden rounded-md border border-zinc-700 max-md:mb-8 ${className}`}
       data-stacked={String(!!stacked)}
       // as={size === 'wide' ? FullWidthChild : 'div'}
     >

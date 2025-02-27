@@ -1,7 +1,1175 @@
 ---
 title: "Grid Fundamentals"
 description: "This is my first post!"
-createdDate: "11-2-2025"
-updatedDate: "11-2-2025"
-published: false
+createdDate: "21-2-2025"
+updatedDate: "26-2-2025"
+published: true
 ---
+
+## Grid Container Properties
+
+Grid Container คือคอนเทนเนอร์หลักที่ครอบคลุมไอเท็มทั้งหมดในกริด
+เราสามารถกำหนดให้เป็นกริดได้ด้วยคำสั่ง <TextCode>display: grid</TextCode>
+และใช้สมบัติสำหรับควบคุมโครงสร้างกริด เช่น จำนวนคอลัมน์, แถว, และช่องว่าง
+
+### `grid-template-columns`
+
+คุณสมบัติ <TextCode>grid-template-columns</TextCode> ทำหน้าที่กำหนด 2 อย่างคือ
+
+- จำนวน columns ที่ต้องการให้มีใน Grid
+- ความกว้างแต่ละ column
+
+<Playground
+  id="grid-fundamentals-1"
+  title="ตัวอย่างการใช้ grid-template-columns"
+  html={`
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: 100px 200px;
+    }
+</style>
+<div class="container">
+    <div class="item">คอลัมน์แรก</div>
+    <div class="item">คอลัมน์สอง</div>
+</div>
+`}
+  css={`
+    .item {
+      border: 2px solid #000000;
+      padding: 8px;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+จากตัวอย่างได้มีการกำหนดให้มี 2 columns ใน grid ซึ่ง column แรกมีความกว้าง 100px
+และ column ที่ 2 มีความกว้าง 200px
+
+### `grid-template-rows`
+
+โดยปกติของ Grid แล้ว Element ที่เป็นลูก แต่ละตัวจะมีเซลล์เป็นของตัวเองและ Grid ก็จะสร้างแถว (row) เพิ่มขึ้นอัตโนมัติตามจำนวน Element ลูกที่มี
+
+ในตัวอย่างแรกจะลองกำหนดแค่ column และไม่กำหนด row
+
+<Playground
+  id="grid-fundamentals-2"
+  title="สังเกตุการแถวที่สร้างขึ้นโดยอัตโนมัติ"
+  html={`
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+</style>
+<div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+    <div class="item">7</div>
+</div>
+`}
+  css={`
+    .item {
+      border: 2px solid #000000;
+      padding: 8px;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+จากตัวอย่างจะเห็นว่ามีการกำหนดแถวและความสูงให้โดยอัตโนมัติ
+
+แล้วถ้าเราต้องการกำหนดขนาดให้แต่ละแถวเองหล่ะ เราสามารถกำหนดความสูงให้แต่ละแถวได้โดยใช้คุณสมบัติ <TextCode>grid-template-rows</TextCode>
+
+<Playground
+  id="grid-fundamentals-3"
+  title="สังเกตุการแถวที่สร้างขึ้นโดยอัตโนมัติ"
+  html={`
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 50px 75px 100px auto;
+    }
+</style>
+<div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+    <div class="item">7</div>
+</div>
+`}
+  css={`
+    .item {
+      border: 2px solid #000000;
+      padding: 8px;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+จากตัวอย่างเราได้กำหนดความสูงให้ในแต่ละแถวโดยแถวแรกกำหนดให้มีความสูง 50px, แถวที่สอง 75px, แถวที่สาม 100px และแถวสุดท้ายกำหนดให้เป็น auto ซึ่งจะขยายตามขนาดของ Element ลูก
+
+<Callout title="หน่วย ' fr ' คืออะไร?" initialHeight={550}>
+  <TextCode>fr</TextCode> ย่อมาจาก "fraction" เป็นหน่วยที่คำนวณจากพื้นที่ว่างใน
+  Flexbox
+  <Playground
+    id="grid-fundamentals-4"
+    title="สังเกตุการแถวที่สร้างขึ้นโดยอัตโนมัติ"
+    html={`
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+</style>
+<div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+</div>
+`}
+    css={`
+      .item {
+        border: 2px solid #000000;
+        padding: 8px;
+      }
+    `}
+    layoutMode="tabbed"
+    centered={false}
+  />
+
+จากตัวอย่างจะเห็นว่ามีการกำหนด column 2 อันด้วยกัน โดยอันแรกจะมีค่า 1 หน่วย ส่วนอันที่ 2 มีค่า 2 หน่วย รวมกันจะเท่ากับ 3 หน่วย ซึ่ง column แรกจะมีพื้นที่ 1/3 ของพื้นที่ทั้งหมด และ column ที่สองจะมีพื้นที่ 2/3 ของพื้นที่ทั้งหมด
+
+สรุปก็คือ <TextCode>fr</TextCode> เป็นหน่วยที่ช่วยให้ขนาดคอลัมน์หรือความสูงของแถวปรับตัวแบบยืดหยุ่นได้ตามพื้นที่ที่เหลือจากค่าคงที่ โดยทำให้การออกแบบเลย์เอาต์ง่ายต่อการปรับขนาดตามความกว้างของคอนเทนเนอร์.
+
+</Callout>
+
+### `grid-auto-flow`
+
+โดยปกติแล้ว Grid ถ้าไม่มีการกำหนดจำนวน column ก็จะคำนวณด้วย 1 x n ซึ่ง n ก็คือจำนวน column คูณกับจำนวนแถว (row) หรือจำนวน Element ลูก
+
+แล้วถ้าต้องการกำหนดวาง Element เป็นแนวนอนแทนแนวตั้งหล่ะ grid-auto-flow จึงเข้ามามีบทบาทนี้
+
+เราสามารถกำหนดค่าของ grid-auto-flow ได้ 2 ค่าก็คือ:
+
+- row (default) จะเป็นค่าเริ่มต้นโดยจะจัดเรียง Element เป็นแนวตั้งในแต่ละแถว
+- column จัดเรียง Element เป็นแนวนอนในแต่ละหลัก
+
+<GridAutoFlowInteract />
+
+อาจจะดูเหมือน flex-direction แต่จริงๆแล้วมีความแตกต่างกันอยู่ก็คือ CSS Grid นั้นจะไม่มีแกนหลักหรือแกนรอง มีแค่แถว (row) และหลัก (column)
+
+ซึ่งแถวจะเรียกว่าเป็นการจัดเรียงตามแกน block หรือการจัดเรียงแบบทั้งแถว มีลักษณะซ้อนทับกันเป็นชั้นๆ ส่วนหลักจะเรียกว่าการจัดเรียงตามแกน inline ก็คือการจัดแบบต่อๆกันภายในแถว
+
+พฤติกรรมของ Grid นั้นต้องการเติมเต็มพื้นที่ที่มีอยู่ สังเกตุว่าแต่ละ Element ลูกๆจะยืดออกตามแนวนอน
+
+ถ้าเราลองกำหนดความสูงให้กับ Element หลัก ให้เราสังเกตุความสูงของแต่ละแถว
+
+<Playground
+  id="grid-introduction-2"
+  title="การใช้งาน CSS Grid"
+  html={`
+<style>
+	  .container {
+	     display: grid;
+	     height: 300px;
+	  }
+</style>
+<div class="container">
+    <header>Navbar</header>
+    <main>Some of content</main>
+    <footer>Copyright @2025</footer>
+</div>
+`}
+  css={`
+    header,
+    main,
+    footer {
+      padding: 1rem;
+      background-color: #f1f1f1;
+      border: 1px solid black;
+    }
+  `}
+  layoutMode="side-by-side"
+  centered={false}
+/>
+
+จากผลลัพท์ที่ได้ ในแต่ละแถวจะมีความสูง 100px สรุปได้ว่าแต่ละ Element ลูก ใน Element Grid จะขยายทั้งด้านกว้างและยาว
+
+### `Gaps`
+
+เช่นเดียวกับ Flexbox เราสามารถสร้างช่องว่างระหว่าง row และ column ได้เช่นเดียวกัน โดยใช้คุณสมบัติ <TextCode>gap</TextCode>
+
+<Playground
+  id="grid-fundamentals-5"
+  title="ตัวอย่างการใช้ gap"
+  html={`
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+</style>
+<div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+    <div class="item">7</div>
+</div>
+`}
+  css={`
+    .item {
+      border: 2px solid #000000;
+      padding: 8px;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+หรือถ้าหากต้องการกำหนดขนาดช่องว่าง Gap ที่แตกต่างกันระหว่าง row กับ column ก็สามารถกำหนดได้ดังนี้
+
+<Playground
+  id="grid-fundamentals-6"
+  title="ตัวอย่างการใช้ gap"
+  html={`
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* 8px คือช่องว่างระหว่าง row และ 0px คือช่องว่างระหว่าง column */
+        gap: 8px 0px; 
+    }
+</style>
+<div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+    <div class="item">7</div>
+</div>
+`}
+  css={`
+    .item {
+      border: 2px solid #000000;
+      padding: 8px;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+### `repeat()`
+
+สมมุติว่าเราต้องการสร้าง Grid ที่มี 5 columns โดย column แรกจะมีขนาด 150px ส่วน 4 column ที่เหลือจะมีขนาด 1fr เราอาจจะเขียนได้แบบนี้
+
+<CodeBlock copiable={true}>
+  {`.container {
+	    display: grid;
+	    grid-template-columns: 150px 1fr 1fr 1fr 1fr;
+}
+`}
+</CodeBlock>
+
+ซึ่งการเขียนแบบนี้ก็ไม่ผิดอะไร แต่ก็จะต้องใช้เวลาสังเกตุว่ามีกี่ column
+และต้องกำหนดขนาด column ที่มีขนาดเท่ากันทีละตัวใช่ไหม
+
+ฟังก์ชั่น repeat() จึงเข้ามามีบทบาทในการแก้ไขปัญหานี้ โดยสามารถเขียนได้ดังนี้:
+
+<Playground
+  id="grid-fundamentals-7"
+  title="ตัวอย่างการใช้ repeat()"
+  html={`
+<style>
+    .container {
+	    display: grid;
+	    grid-template-columns: 150px repeat(4, 1fr);
+    }
+</style>
+<div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+`}
+  css={`
+    .item {
+      border: 2px solid #000000;
+      padding: 8px;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+จากโค้ดตัวอย่างอธิบายได้ว่าเรากำหนดขนาด column 150px และ 1fr ซ้ำกัน 4 รอบ ซึ่งผลลัพธ์ก็เหมือนกัน แต่อ่านง่ายกว่าวิธีแรก
+
+## Grid Alignment
+
+ใน CSS Grid การจัดตำแหน่ง (Alignment) สามารถควบคุมได้ทั้งในแนวแกนหลัก (Primary Axis) และแกนรอง (Secondary Axis) โดยใช้คุณสมบัติที่คล้ายกับ Flexbox
+
+### Aligning Columns
+
+การจัดตำแหน่งคอลัมน์ใน CSS Grid ใช้ <TextCode>justify-content</TextCode> เพื่อควบคุมการกระจายตัวของคอลัมน์ เช่น:
+
+<Playground
+  id="grid-fundamentals-8"
+  title="ตัวอย่างการใช้ justify-content ใน CSS Grid"
+  html={`
+<style>
+    .container {
+        display: grid;
+        justify-content: center;
+    }
+</style>
+<div class="container">
+    <header>Header</header>
+    <section>Content</section>
+    <footer>Copyright @2025</footer>
+</div>
+`}
+  css={`
+    header,
+    section,
+    footer {
+      padding: 1rem;
+      background-color: #f1f1f1;
+      border: 1px solid black;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+จากผลลัพท์ก็จะเป็นการกำหนดตำแหน่งของ cell ให้อยู่ตรงกลางและจะสังเกตุว่า Grid จะมีการคำนวณความกว้างของ columns โดยอัตโนมัติซึ่งจะใช้ความกว้างของเนื้อหาที่ยาวที่สุดของ element ลูกๆ ในแต่ละแถว
+
+<CarouselGallery images={["/images/content/grid/justify-content-grid.png"]} />
+
+ซึ่งหากเราไม่ต้องการให้กำหนดความกว้างแบบนี้ เราก็สามาถกำหนด ความกว้างให้กับ column ได้เองเลยโดยเพิ่มคุณสมบัติ <TextCode>grid-template-columns</TextCode>
+
+<Playground
+  id="grid-fundamentals-9"
+  title="ตัวอย่างการใช้ justify-content ใน CSS Grid"
+  html={`
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: 200px;
+        justify-content: center;
+    }
+</style>
+<div class="container">
+    <header>Header</header>
+    <section>Content</section>
+    <footer>Copyright @2025</footer>
+</div>
+`}
+  css={`
+    header,
+    section,
+    footer {
+      padding: 1rem;
+      background-color: #f1f1f1;
+      border: 1px solid black;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+นอกจากจะใช้ center แล้วก็จะมี start กับ end ซึ่งจะคล้ายกับ flex-start กับ flex-end และยังสามารถใช้ space-between space-around และ space-evenly **เมื่อมี columns มากกว่า 1 อันอีกด้วย**
+
+<Playground
+  id="grid-fundamentals-10"
+  title="ตัวอย่างการใช้ justify-content ใน CSS Grid"
+  html={`
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: 120px 120px;
+        justify-content: space-around;
+    }
+</style>
+<div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+</div>
+`}
+  css={`
+    .item {
+      border: 2px solid #000000;
+      padding: 8px;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+อีกหนึ่งคุณสมบัติที่อยากแนะนำให้รู้จักก็คือ justify-items
+
+<Playground
+  id="grid-fundamentals-11"
+  title="ตัวอย่างการใช้ justify-items ใน CSS Grid"
+  html={`
+<style>
+    .container {
+        display: grid;
+        justify-items: center;
+    }
+</style>
+<div class="container">
+    <header>Navbar</header>
+    <section>Content</section>
+    <footer>Copyright @2025</footer>
+</div>
+`}
+  css={`
+    header,
+    section,
+    footer {
+      padding: 1rem;
+      background-color: #f1f1f1;
+      border: 1px solid black;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+จากตัวอย่างจะสังเกตุและสงสัยว่าทำไมความกว้างใน column ของแต่ละแถวถึงไม่เท่ากันเหมือนตอนใช้ <TextCode>justify-content: center;</TextCode>
+
+ซึ่งความเป็นจริงก็คือ justify-items จะเป็นการกำหนด element ลูกที่อยู่ให้อยู่ตรงกลางภายใน cell นั้นเอง
+
+<CarouselGallery images={["/images/content/grid/justify-items-grid.png"]} />
+
+### Aligning rows
+
+การจัดตำแหน่งแถวใน CSS Grid ใช้ <TextCode>align-content</TextCode> เพื่อควบคุมการกระจายตัวของแถว เช่น:
+
+<Playground
+  id="grid-fundamentals-12"
+  title="ตัวอย่างการใช้ align-content ใน CSS Grid"
+  html={`
+<style>
+    .container {
+        display: grid;  
+        height: 300px;  
+        align-content: space-between;
+        border: 2px solid red;
+    }
+</style>
+<div class="container">
+    <header>Navbar</header>
+    <section>Content</section>
+    <footer>Copyright @2025</footer>
+</div>
+`}
+  css={`
+    header,
+    section,
+    footer {
+      padding: 1rem;
+      background-color: #f1f1f1;
+      border: 1px solid black;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+จากตัวอย่าง <TextCode>align-content</TextCode> ถูกกำหนดค่าให้เป็น <TextCode>space-between</TextCode> element ลูกๆ จึงขยับแถวให้ห่างระหว่างกัน
+
+<CarouselGallery images={["/images/content/grid/align-content-grid.png"]} />
+
+<Callout type="warning" title="สิ่งที่สำคัญในการจัดตำแหน่ง row">
+  การจัดตำแหน่งของ row คือคุณจำเป็นต้องกำหนดความสูงที่ชัดเจนให้กับ element หลัก
+  ที่กำหนด layout mode เป็น grid เพราะถ้าหากไม่มีการกำหนดความสูงให้ชัดเจน การใช้
+  <TextCode>align-content</TextCode> และ <TextCode>align-items</TextCode>
+  จะไม่มีผล
+</Callout>
+
+ในการจัด align row ก็จะมีการจัดการ content ที่อยู่ใน cell เช่นเดียวกันนั่นก็คือ <TextCode>align-items</TextCode>
+
+<Playground
+  id="grid-fundamentals-13"
+  title="ตัวอย่างการใช้ align-items ใน CSS Grid"
+  html={`
+<style>
+    .container {
+        display: grid;
+        height: 300px;
+        align-items: center;
+        border: 2px solid red;
+    }
+</style>
+<div class="container">
+    <header>Navbar</header>
+    <section>Content</section>
+    <footer>Copyright @2025</footer>
+</div>
+`}
+  css={`
+    header,
+    section,
+    footer {
+      padding: 1rem;
+      background-color: #f1f1f1;
+      border: 1px solid black;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+จากตัวอย่างก็จะเป็นการจัด content ให้อยู่กื่งกลางในแต่ละ cell ที่มีความสูง 100px
+นั่นเอง
+
+<CarouselGallery images={["/images/content/grid/align-items-grid.png"]} />
+
+<Callout title="การใช้ระหว่าง items กับ content?">
+  ใน CSS Grid การเลือกใช้ <TextCode>justify-content</TextCode>/
+  <TextCode>align-content</TextCode> หรือ <TextCode>justify-items</TextCode>/
+  <TextCode>align-items</TextCode>
+  ขึ้นอยู่กับว่าคุณต้องการจัดตำแหน่งโครงสร้างกริดหรือไอเท็มภายในเซลล์โดยสามารถแยกการใช้งานได้ดังนี้:
+
+**1. เมื่อใดควรใช้ <TextCode>justify-content</TextCode> และ <TextCode>align-content</TextCode>**
+
+- ใช้เมื่อคุณต้องการจัดตำแหน่ง**โครงสร้างกริดทั้งหมด**ภายในคอนเทนเนอร์
+- มีผลต่อการกระจาย**คอลัมน์** (<TextCode>justify-content</TextCode>) หรือ**แถว** (<TextCode>align-content</TextCode>) ในกริด
+- เหมาะสำหรับกรณีที่กริดมีพื้นที่ว่างเหลือ และคุณต้องการควบคุมการกระจายตัวของคอลัมน์หรือแถว
+
+<Playground
+  id="grid-fundamentals-14"
+  title="ตัวอย่างการใช้ justify-content กับ align-content ใน CSS Grid"
+  html={`
+<style>
+    .container {  
+        display: grid;  
+        grid-template-columns: 120px 120px;  
+        grid-template-rows: 50px 50px;  
+        justify-content: center; /* จัดคอลัมน์ให้อยู่ตรงกลาง */  
+        align-content: space-between; /* กระจายแถวให้มีช่องว่างระหว่างกัน */  
+        height: 300px; /* ต้องมีพื้นที่ว่างในกริด */  
+}
+</style>
+<div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+</div>
+`}
+  css={`
+    .item {
+      border: 2px solid #000000;
+      padding: 8px;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+**2. เมื่อใดควรใช้ <TextCode>justify-items</TextCode> และ <TextCode>align-items</TextCode>**
+
+- ใช้เมื่อคุณต้องการจัดตำแหน่ง **ไอเท็มภายในเซลล์** ของกริด
+- มีผลต่อการจัดตำแหน่ง **ไอเท็มแต่ละตัว** ในแนวนอน (<TextCode>justify-items</TextCode>) หรือแนวตั้ง (<TextCode>align-items</TextCode>)
+- เหมาะสำหรับกรณีที่คุณต้องการควบคุมการจัดวางไอเท็มภายในเซลล์โดยไม่กระทบโครงสร้างกริด
+
+<Playground
+  id="grid-fundamentals-15"
+  title="ตัวอย่างการใช้ justify-items กับ align-items ใน CSS Grid"
+  html={`
+<style>
+    .container {  
+        display: grid;  
+        grid-template-columns: 1fr 1fr;  
+        grid-template-rows: 1fr 1fr;  
+        justify-items: center; /* จัดไอเท็มให้อยู่ตรงกลางในแนวนอน */  
+        align-items: start; /* จัดไอเท็มให้อยู่ด้านบนในแนวตั้ง */  
+        height: 300px; 
+    }
+</style>
+<div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+</div>
+`}
+  css={`
+    .item {
+      border: 2px solid #000000;
+      padding: 8px;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+**3. การใช้งานร่วมกัน**
+
+หากต้องการจัดตำแหน่งทั้งโครงสร้างกริดและไอเท็มภายในเซลล์ คุณสามารถใช้ทั้ง <TextCode>content</TextCode> และ <TextCode>items</TextCode> ร่วมกันได้:
+
+<Playground
+  id="grid-fundamentals-15"
+  title="ตัวอย่างการใช้ justify-items กับ align-items ใน CSS Grid"
+  html={`
+<style>
+    .container {  
+        .wrapper {  
+        display: grid;  
+        grid-template-columns: 120px 120px;  
+        grid-template-rows: 50px 50px;  
+        justify-content: center; /* จัดคอลัมน์ให้อยู่ตรงกลาง */  
+        align-content: center; /* จัดแถวให้อยู่ตรงกลาง */  
+        justify-items: end; /* จัดไอเท็มในเซลล์ให้อยู่ชิดขวา */  
+        align-items: start; /* จัดไอเท็มในเซลล์ให้อยู่ด้านบน */  
+        height: 300px; /* ต้องมีพื้นที่ว่างในกริด */
+}
+    }
+</style>
+<div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+</div>
+`}
+  css={`
+    .item {
+      border: 2px solid #000000;
+      padding: 8px;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+</Callout>
+
+### Self-alignment
+
+เราสามารถกำหนดการจัดเรียงให้เฉพาะกับ element ลูกๆเฉพาะตัวที่เราต้องการได้โดยการใช้ align-self และ justify-self
+
+<Playground
+  id="grid-fundamentals-16"
+  title="ตัวอย่างการใช้ justify-self กับ align-self ใน CSS Grid"
+  html={`
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        align-items: center;
+        justify-items: center;
+    }
+    .box:last-of-type {
+        align-self: start;
+        justify-self: start;
+    }
+</style>
+<div class="container">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</div>
+`}
+  css={`
+    body,
+    html {
+      height: 100%;
+    }
+    .container {
+      height: 100%;
+      border: 2px solid;
+    }
+    .box {
+      width: 50px;
+      height: 50px;
+      background: #84cc16;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+จากตัวอย่างเราได้เลือก element ลูกที่สุดท้ายโดยใช้ pseudo-classes <TextCode>last-of-type</TextCode> และกำหนดให้ <TextCode>align-self</TextCode> และ <TextCode>justify-self</TextCode> อยู่ที่ start ซึ่งจะทำให้ element ลูกนั้นอยู่ที่ด้านบนซ้าย
+
+## Grid Item Properties
+
+ใน CSS Grid, Grid Item หมายถึงองค์ประกอบ (element) ที่อยู่ภายใน Grid Container ซึ่งสามารถควบคุมตำแหน่งและขนาดได้อย่างยืดหยุ่นโดยใช้ Grid Line เป็นตัวกำหนดตำแหน่ง
+
+### Grid Lines
+
+Grid Line คือเส้นที่แบ่งคอลัมน์และแถวในกริด โดยเส้นเหล่านี้ใช้สำหรับกำหนดตำแหน่งเริ่มต้นและสิ้นสุดของ Grid Item ใน Grid เส้นจะถูกนับจาก 1 (ไม่ใช่ 0) เสมอ โดยเริ่มจากซ้ายไปขวาสำหรับคอลัมน์ และจากบนลงล่างสำหรับแถว
+
+<CarouselGallery images={["/images/content/grid/grid-line.png"]} />
+
+จากรูปแบ่งเส้นเป็น 2 สีดังนี้:
+
+- **เส้นสีแดง**: แสดง **Grid Line แนวตั้ง** (Column Lines)
+- **เส้นสีน้ำเงิน**: แสดง **Grid Line แนวนอน** (Row Lines)
+
+#### **การนับ Grid Line**
+
+##### **แนวตั้ง (Column Lines)**
+
+- เส้นแนวตั้งเริ่มนับจากซ้ายไปขวา
+- ในรูปจะมีเส้นแนวตั้งทั้งหมด **5 เส้น** ได้แก่:
+  - **1**: เส้นกริดแนวตั้งแรก (ซ้าย)
+  - **2, 3, 4**: เส้นกริดกลาง
+  - **5**: เส้นกริดแนวตั้งสุดท้าย (ขวา)
+
+##### **แนวนอน (Row Lines)**
+
+- เส้นแนวนอนเริ่มนับจากบนลงล่าง
+- ในรูปจะมีเส้นแนวนอนทั้งหมด **5 เส้น** ได้แก่:
+  - **1**: เส้นกริดแนวนอนแรก (บน)
+  - **2, 3, 4**: เส้นกริดกลาง
+  - **5**: เส้นกริดแนวนอนสุดท้าย (ล่าง)
+
+<Callout type="tip" title="การ Inspect ดู Grid Line ใน Browser">
+  หากคุณต้องการตรวจสอบ Grid Line และโครงสร้างของ CSS Grid ในเบราว์เซอร์
+  คุณสามารถใช้ DevTools ที่มีในเบราว์เซอร์ยอดนิยม เช่น Google Chrome หรือ
+  Firefox ได้อย่างง่ายดาย โดยทำตามขั้นตอนดังนี้:
+
+**ขั้นตอนการ Inspect Grid Line**
+
+1.  **เปิด DevTools**
+
+- คลิกขวาที่หน้าเว็บ แล้วเลือก **Inspect** หรือกด **F12** บนคีย์บอร์ด
+- ไปที่แท็บ **Elements** เพื่อดูโครงสร้าง HTML
+
+2.  **เลือก Grid Container**
+
+- คลิกที่องค์ประกอบ (Element) ที่เป็น **Grid Container** เช่น `<div class="container">`
+- ในส่วนของ **Styles** จะมีการแสดงคุณสมบัติ CSS เช่น `display: grid;`
+
+3.  **เปิดใช้งาน Grid Overlay**
+
+- ใน DevTools ของ Chrome:
+  - คลิกที่ไอคอน **Grid** (มักอยู่ถัดจากชื่อคลาสใน Elements Panel)
+  - เลือก **Show Grid** เพื่อแสดงเส้น Grid Line บนหน้าเว็บ
+- ใน DevTools ของ Firefox:
+
+  - ไปที่แท็บ **Layout**
+  - เลือก **Grid** และเปิดใช้งาน Grid Overlay
+
+  <CarouselGallery images={["/images/content/grid/grid-inspect.png"]} />
+
+4.  **ดูหมายเลข Grid Line** - เมื่อเปิด Grid Overlay แล้ว คุณจะเห็นหมายเลขของ **Grid Line** ทั้งในแนวนอนและแนวตั้ง - หมายเลขนี้ช่วยให้คุณเข้าใจตำแหน่งเริ่มต้นและสิ้นสุดของ Grid Item ได้ง่ายขึ้น
+
+<CarouselGallery images={["/images/content/grid/grid-line-example.png"]} />
+
+   </Callout>
+
+คำสั่งที่ใช้ควบคุม Grid Items จะเป็นคุณสมบัติ <TextCode>grid-column</TextCode> และ <TextCode>grid-row</TextCode> ใช้สำหรับกำหนดตำแหน่งและขนาดของ Grid Item โดยอ้างอิงจาก Grid Line
+
+### `grid-column`
+
+ใช้กำหนดตำแหน่งในแนวนอน (คอลัมน์) ของ Grid Item
+
+<CodeBlock>
+  {`grid-column: [start-line] / [end-line];
+`}
+</CodeBlock>
+
+จากตัวอย่างมีส่วนประกอบ 2 อย่างคือ:
+
+- **`start-line`**: เส้นเริ่มต้นของคอลัมน์
+- **`end-line`**: เส้นสิ้นสุดของคอลัมน์
+
+ไม่จำเป็นต้องกำหนด `end-line` ก็ได้สามารถกำหนดแค่ `start-line` ตัวเดียวได้เลย
+
+<Playground
+  id="grid-fundamentals-17"
+  title="ตัวอย่างการใช้ grid-column"
+  html={`
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    .item:nth-child(1) {
+        grid-column: 1 / 3; /* เริ่มที่เส้นกริดที่ 1 และสิ้นสุดที่เส้นกริดที่ 3 */ 
+    }
+</style>
+<div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+`}
+  css={`
+    .item {
+      border: 2px solid #000000;
+      padding: 8px;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+จากตัวอย่างตำแหน่ง ของ item ที่ 1 ที่กำหนด <TextCode>grid-column: 1 / 3;</TextCode> คือเริ่มที่เส้นกริดที่ 1 และสิ้นสุดที่เส้นกริดที่ 3
+
+<CarouselGallery images={["/images/content/grid/grid-column.png"]} />
+
+### `grid-row`
+
+ใช้กำหนดตำแหน่งในแนวตั้ง (แถว) ของ Grid Item
+
+<CodeBlock>
+  {`grid-row: [start-line] / [end-line];
+`}
+</CodeBlock>
+
+จากตัวอย่างมีส่วนประกอบ 2 อย่างคือ:
+
+- **`start-line`**: เส้นเริ่มต้นของแถว
+- **`end-line`**: เส้นสิ้นสุดของแถว
+
+เช่นเดียวกับ `grid-column` คือสามารถกำหนดแค่ `start-line` ตัวเดียวได้เลย
+
+<Playground
+  id="grid-fundamentals-18"
+  title="ตัวอย่างการใช้ grid-row"
+  html={`
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    .item:nth-child(1) {
+        grid-row: 1 / 3; /* เริ่มที่เส้นกริดที่ 2 และสิ้นสุดที่เส้นกริดที่ 4 */ 
+    }
+</style>
+<div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+`}
+  css={`
+    .item {
+      border: 2px solid #000000;
+      padding: 8px;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+จากตัวอย่างตำแหน่ง ของ item ที่ 1 ที่กำหนด <TextCode>grid-row: 1 / 3;</TextCode> คือเริ่มที่เส้นกริดที่ 1 และสิ้นสุดที่เส้นกริดที่ 3
+
+<CarouselGallery images={["/images/content/grid/grid-row.png"]} />
+
+### การใช้งานร่วมกัน
+
+สามารถใช้ <TextCode>grid-column</TextCode> และ <TextCode>grid-row</TextCode> ร่วมกันเพื่อกำหนดตำแหน่งทั้งแนวนอนและแนวตั้งของ Grid Item ได้
+
+<Playground
+  id="grid-fundamentals-19"
+  title="ตัวอย่างการใช้ grid-column และ grid-row ร่วมกัน"
+  html={`
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    .item:nth-child(1) {
+        grid-column: 1 / 3; /* ครอบคลุมคอลัมน์ที่ 1 ถึง 2 */  
+        grid-row: 2 / 4;    /* ครอบคลุมแถวที่ 2 ถึง 3 */
+    }
+</style>
+<div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+`}
+  css={`
+    .item {
+      border: 2px solid #000000;
+      padding: 8px;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+จากตัวอย่างตำแหน่ง ของ item ที่ 1 ที่กำหนด <TextCode>grid-column: 1 / 3;</TextCode> และ <TextCode>grid-row: 2 / 4;</TextCode> คือเริ่มที่เส้นกริดที่ 1 และสิ้นสุดที่เส้นกริดที่ 3 ในแนวนอน และเริ่มที่เส้นกริดที่ 2 และสิ้นสุดที่เส้นกริดที่ 4 ในแนวตั้ง
+
+<CarouselGallery images={["/images/content/grid/grid-column-grid-row.png"]} />
+
+## Grid Template Areas และ Grid Area
+
+### `grid-template-areas`
+
+<TextCode>grid-template-areas</TextCode> ใช้สำหรับกำหนดและตั้ง "ชื่อพื้นที่"
+(Grid Area) ของแต่ละส่วนใน Grid Layout
+ซึ่งช่วยให้โครงสร้างมีความชัดเจนและอ่านง่าย โดยเฉพาะกับเลย์เอาต์ที่ซับซ้อน
+มักใช้กับคุณสมบัติ grid-area
+
+การใช้งาน <TextCode>grid-template-areas</TextCode> ให้กำหนดชื่อพื้นที่ Grid Area ผ่าน <TextCode>grid-template-areas</TextCode> ใน Grid Container โดยชื่อเหล่านี้จะใช้อ้างอิงกับแต่ละ Grid Item เพื่อกำหนดตำแนห่งในพื้นที่ต้องการ
+
+<CodeBlock>
+  {`.container {
+	  display: grid;
+	  grid-template-areas:
+    'sidebar header'
+    'sidebar main-content';
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 80px 1fr;
+}
+`}
+</CodeBlock>
+
+### `grid-area`
+
+<TextCode>grid-area</TextCode> ใช้สำหรับกำหนดตำแหน่งและขนาดพื้นที่ในกริดสำหรับ
+Grid Item โดยตรง โดยอ้างอิงจาก Grid Line (เส้นกริด)
+
+ซึ่ง <TextCode>grid-area</TextCode> สามารถทำงานได้สองรูปแบบ ได้แก่:
+
+1. กำหนดตำแหน่งและขนาดโดยอ้างอิง Grid Line (รูปแบบตัวเลข)
+2. กำหนดตำแหน่งโดย อ้างอิงชื่อของพื้นที่ (Area Names) ที่นิยามไว้ใน <TextCode>grid-template-areas</TextCode>
+
+#### 1. การกำหนดตำแหน่งและขนาดโดยอ้างอิง Grid Line (ตัวเลข)
+
+การกำหนดตำแหน่งและขนาดโดยอ้างอิง Grid Line ใช้ค่าตัวเลขเพื่อกำหนดตำแหน่งและขนาดของ Grid Item โดยตรง
+
+<TextCode>grid-area</TextCode> จะอ้างอิงเส้นเริ่มต้น (start-row, start-column)
+และเส้นสิ้นสุด (end-row, end-column) ของ Item ใน Grid Layout
+
+<CodeBlock>
+  {`grid-area: [row-start] / [column-start] / [row-end] / [column-end];
+`}
+</CodeBlock>
+
+<Playground
+  id="grid-fundamentals-20"
+  title="ตัวอย่างการใช้ grid-area โดยอ้างอิง Grid Line"
+  html={`
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+
+    }
+    .item:nth-child(1) {
+        grid-area: 1 / 1 / 2 / 3; /* กำหนดพื้นที่ด้วยเส้นกริด */
+    }
+
+</style>
+<div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+`}
+  css={`
+    .item {
+      border: 2px solid #000000;
+      padding: 8px;
+    }
+  `}
+  layoutMode="tabbed"
+  centered={false}
+/>
+
+#### 2.การกำหนดตำแหน่งโดยอ้างอิงชื่อ (Area Names)
+
+<TextCode>grid-area</TextCode> ยังสามารถใช้ร่วมกับการนิยามชื่อพื้นที่ใน <TextCode>
+  grid-template-areas
+</TextCode> ซึ่งช่วยให้โครงสร้างมีความชัดเจนและอ่านง่ายขึ้น
+อย่างเช่นการจัดเลย์เอาต์ที่ซับซ้อน
+
+สมมติเรากำลังสร้างเลย์เอาต์แบบพื้นฐาน เช่นเว็บไซต์ที่มีพื้นที่ Header, Nav, Sidebar, Main, Footer:
+
+<Playground
+  id="grid-fundamentals-20"
+  title="ตัวอย่างการใช้ grid-area โดยอ้างอิงชื่อ"
+  html={`
+<style>
+    .container {  
+        display: grid;  
+        grid-template-areas:   
+        "header header header"  
+        "nav main aside"  
+        "footer footer footer";  
+        grid-template-columns: 1fr 2fr 1fr; /* คอลัมน์แบบ Flexible */  
+        grid-template-rows: 100px 1fr 50px; /* ความสูงแต่ละแถว */ 
+        height: 100%; 
+    }
+    header {  
+        grid-area: header;  
+    }  
+    nav {  
+        grid-area: nav;  
+    }  
+    main {  
+        grid-area: main;  
+    }  
+    aside {  
+        grid-area: aside;  
+    }  
+    footer {  
+        grid-area: footer;  
+    }
+</style>
+<div class="container">
+    <header>Header</header>
+    <nav>Sidebar</nav>
+    <main>Main</main>
+    <aside>Aside</aside>
+    <footer>Footer</footer>
+</div>
+`} css=
+{`
+body,
+html {
+    height: 100%;
+}
+header,
+nav,
+main,
+aside,
+footer {
+    padding: 1rem;
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-secondary);
+    }
+    header {
+    --color-primary: lightgreen;
+    --color-secondary: green;
+    }
+    nav {
+    --color-primary: lightblue;
+    --color-secondary: blue;
+    }
+    main {
+    --color-primary: lightcoral;
+    --color-secondary: coral;
+    }
+    aside {
+    --color-primary: lightgoldenrodyellow;
+    --color-secondary: goldenrod;
+    }
+    footer {
+    --color-primary: lightgray;
+    --color-secondary: gray;
+    }
+
+`}
+layoutMode="codepen" centered={false}
+/>
+
+## CSS Grid's Fluid Grids
+
+Fluid Grids หมายถึงเทคนิคการสร้างเลย์เอาต์กริดที่ปรับขนาดและจำนวนคอลัมน์อัตโนมัติตามขนาดคอนเทนเนอร์หรือหน้าจอ โดยไม่ต้องใช้ Media Queries โดยใช้ฟีเจอร์หลักของ CSS Grid ดังนี้:
+
+### 1. `minmax()`
+
+การใช้ minmax กับ CSS Grid จะใช้กำหนดขนาดมากสุดและน้อยที่สุดได้
+
+<Playground
+  id="grid-fundamentals-21"
+  title="ตัวอย่างการทำ Fluid Grids ด้วย minmax()"
+  html={`
+<style>
+  .container {
+    display: grid;
+    grid-template-columns:
+      minmax(75px, 1fr)
+      minmax(150px, 1fr);
+    gap: 16px;
+  }
+</style>
+
+<div class="container">
+  <div class="item">Item 1</div>
+  <div class="item">Item 2</div>
+</div>
+`} css=
+{`
+ .item {
+      border: 2px solid #000000;
+      padding: 8px;
+    }
+`}
+layoutMode="side-by-side" centered={false}
+/>
+
+จากตัวอย่างอธิบายได้ว่า ในตอนแรกเรามีขนาดของ column เท่ากันทั้ง 2 columns เพราะถูกตั้งค่าไว้ที่ 1fr แต่ column แรกนั้นจะไม่หดลงไปน้อยกว่า 75px ส่วน column ที่สองก็จะไม่หดลงไปน้อยกว่า 150px นี้จึงเป็นการกำหนดค่าความกว้างขั้นต่ำหรือเปรียบเสมือนกำหนด <TextCode>min-width</TextCode> ให้นั้นเอง
+
+ในทำนองเดียวกันเมื่อเรานำไปใช้กับ <TextCode>grid-template-rows</TextCode> ก็จะเป็นการกำหนดความสูงขั้นต่ำหรือ <TextCode>min-height</TextCode> ได้นั้นเอง
+
+### 2. `auto-fill`
+
+เราสามารถใช้ auto-fill มาใช้ในการสร้างคอลัมน์ให้เต็มพื้นที่โดยไม่สนใจจำนวนไอเท็ม ก็คือหากมีพื้นที่เหลือ จะสร้างคอลัมน์ว่าง (แม้ไม่มีไอเท็ม) เหมาะสำหรับกรณีที่ต้องการคงจำนวนคอลัมน์ให้สม่ำเสมอ
+
+<Playground
+  id="grid-fundamentals-2"
+  splitRatio="0.3"
+  title="ตัวอย่างการทำ Fluid Grids ด้วย auto-fill"
+  html={`
+<style>
+    .container {  
+        display: grid;  
+        grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+        /*grid-template-columns: repeat(6, 1fr)*/  
+    }
+</style>
+<div class="container">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 4</div>
+    <div class="item">Item 5</div>
+</div>
+`}
+  css={`
+    .item {
+      border: 2px solid #000000;
+      padding: 8px;
+    }
+  `}
+  layoutMode="side-by-side"
+  centered={false}
+/>
+
+ลองใช้ inspect ดู grid โดยใช้ devtools บน browser และลองย่อขนาดฝั่น Result จะสังเกตุได้ว่ามีจำนวนคอลัมน์เพิ่มขึ้นเพราะเมื่อมีพื้นที่ว่าง auto-fill จะสร้างคอลัมน์เพิ่มขึ้นมาเติมพื้นที่ และเมื่อย่อขนาดจนแต่ละ Item จริงมีขนาด 75px ก็จะเห็นว่าจำนวนคอลัมน์จะลดลง
+
+<CarouselGallery images={["/images/content/grid/grid-auto-fill.png"]} />

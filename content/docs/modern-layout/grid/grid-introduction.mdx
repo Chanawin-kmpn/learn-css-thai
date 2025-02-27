@@ -2,6 +2,284 @@
 title: "Grid Introduction"
 description: "This is my first post!"
 createdDate: "21-2-2025"
-updatedDate: "21-2-2025"
+updatedDate: "26-2-2025"
 published: true
 ---
+
+## Grid คืออะไร?
+
+CSS Grid คือ Layout System ที่ใช้การแบ่งพื้นที่ของหน้าเว็บไซต์เป็น "กริด" โดยกริดนี้จะถูกกำหนดเป็นโครงสร้างที่มี "แถว" (Rows) และ "คอลัมน์" (Columns)
+
+การใช้งาน Grid เหมือนกับ Flexbox นั้นก็คือการใช้งานผ่านคุณสมบัติ display
+
+<CodeBlock>
+  {`.container {
+	    display: grid
+}
+`}
+</CodeBlock>
+
+### Mental Model
+
+การเข้าใจเกี่ยวกับการทำงานของ CSS Grid เป็นสิ่งสำคัญมาก โดยเฉพาะสำหรับผู้เริ่มต้นที่อาจงงกับคำสั่งหรือโครงสร้าง เหตุผลที่หลายคนชอบใช้ CSS Grid ก็เพราะวิธีการทำงานของมันคล้ายกับการ "สร้างตาราง" (Table) แต่ง่ายและยืดหยุ่นกว่ามาก
+
+ลองนึกภาพ CSS Grid เป็น "กระดาษกราฟ" ที่แบ่งช่องออกเป็นตาราง (Grid) โดยคุณสามารถกำหนดจำนวน "แนวตั้ง" (Columns) และ "แนวนอน" (Rows) ได้ เช่นเดียวกับการวาดช่องตารางในสมุดโน้ต และไอเท็มแต่ละชิ้นสามารถวางในช่องต่าง ๆ ได้ตามใจชอบ
+
+ในระบบ CSS Grid แต่ละแถวและคอลัมน์ไม่จำเป็นต้องมีขนาดเท่ากันทั้งหมด แต่ต้องมีความสม่ำเสมอตามแนวแกน ดังที่เห็นในภาพประกอบ:
+
+<ImageCompare
+  firstImage="/images/content/grid/invalid-grid.png"
+  firstImageLabel="Grid ที่ไม่ถูกต้อง"
+  firstImageAlt="รูป Grid ที่ไม่สม่ำเสมอ"
+  secondImage="/images/content/grid/valid-grid.png"
+  secondImageLabel="Grid ที่ถูกต้อง"
+  secondImageAlt="รูป Grid ที่สม่ำเสมอ"
+/>
+
+**ภาพที่ 1 :** Grid แบบไม่สม่ำเสมอ
+ในภาพแรก เราเห็นการจัดวางแบบที่ไม่สอดคล้องกับหลักการของ CSS Grid เนื่องจาก:
+
+- แถวที่ 1: คอลัมน์ซ้ายมีความกว้าง 500px
+- แถวที่ 2: คอลัมน์ซ้ายมีความกว้าง 725px (กว้างกว่าแถวอื่น)
+- แถวที่ 3: คอลัมน์ซ้ายกลับมามีความกว้าง 500px เท่าเดิม
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;การจัดวางลักษณะนี้ทำให้เกิดรูปแบบ "ซิกแซก" ที่ไม่สม่ำเสมอ ซึ่ง CSS Grid ไม่รองรับ เพราะทำให้เส้นกริดขาดความต่อเนื่องและไม่เป็นระเบียบ
+
+**ภาพที่ 2 :** Grid แบบสม่ำเสมอ
+ในภาพที่สอง เราเห็นการจัดวางที่ถูกต้องตามหลักการ CSS Grid:
+
+ทุกแถว: คอลัมน์ซ้ายมีความกว้างเท่ากันหมดที่ 500px
+คอลัมน์ขวามีความกว้างเท่ากันทุกแถว
+เส้นกริดมีความต่อเนื่องและสม่ำเสมอตลอดทั้งโครงสร้าง
+
+### Grid Flow
+
+ค่าเริ่มต้น Grid จะสร้างแถว (row) ใหม่ 1 แถวสำหรับแต่ละ Element ลูก ที่อยู่ใน Element หลักที่กำหนด grid โดยแต่ละ Element ลูก จะถูกวางในแถวและคอลัมน์ที่สร้างขึ้นใหม่
+
+<Playground
+  id="grid-introduction-1"
+  title="การใช้งาน CSS Grid"
+  html={`
+<style>
+	  .container {
+	      display: grid;
+	  }
+</style>
+<div class="container">
+    <header>Navbar</header>
+    <main>Content</main>
+    <footer>Copyright</footer>
+</div>
+`}
+  css={`
+    header,
+    main,
+    footer {
+      padding: 1rem;
+      background-color: #f1f1f1;
+      border: 1px solid black;
+    }
+  `}
+  layoutMode="side-by-side"
+  centered={false}
+/>
+
+จากตัวอย่าง Element หลักมี Element ลูก 3 อัน เราก็จะได้ Grid 1x3 (1 คอลัมน์ 3 แถว)
+
+## Flexbox vs Grid
+
+ความแตกต่างระหว่า Flexbox กับ Grid ส่วนใหญ่แล้วจะเป็นเรื่องของการลักษณะการจัด Layout โดยจะสรุปได้ดังนี้
+
+- **Flexbox**: ออกแบบมาเพื่อจัด Layout ใน "แนวเดียว" (Single Dimension) ไม่ว่าจะเป็นแนวนอนหรือแนวตั้ง เช่น ใช้การกระจายพื้นที่ระหว่างช่องว่างในแถวหรือคอลัมน์
+- **CSS Grid**: เป็นการจัดการ Layout แบบ “สองมิติ” (Two-Dimension) คือกำหนดได้พร้อมกันทั้งแถวและคอลัมน์ ตัวอย่างเช่น สามารถกำหนดให้มี 3 คอลัมน์ 2 แถว แล้วเลือกขยายหรือแบ่งช่องว่าง (gaps) ระหว่างแต่ละช่องได้อย่างอิสระ
+
+### เลือกใช้อะไรดีระหว่าง Flexbox กับ CSS Grid?
+
+การเลือกใช้ Flexbox กับ CSS Grid เป็นสิ่งที่นักพัฒนาหลายๆคนในช่วงแรกจะสงสัยว่าควรเลือกใช้ layout mode แบบไหน ระหว่าง Flexbox กับ CSS Grid
+
+โดยจะแบ่งเป็น 3 สถานการณ์ดังนี้:
+
+**1. การออกแบบเลย์เอาต์ "มิติเดียว" (Flexbox เหมาะกว่า)**
+
+- **สถานการณ์**: คุณต้องการจัดเรียงกล่องในแถวเดียวหรือแนวตั้งเดียว เช่น เมนูนำทาง (Navbar), กล่องไอเท็มสินค้าในแนวนอนแบบเลื่อน (Carousel) หรือ Button แถวเดียวที่เว้นระยะห่างพอดี
+
+- **ทำไมควรใช้ Flexbox**: Flexbox ออกแบบมาเพื่อจัดการ **One Dimensional Layout** ซึ่งหมายความว่ามันเหมาะสำหรับการเรียงลำดับใน "แถว" (Row) หรือ "คอลัมน์" (Column) อย่างใดอย่างนึงเท่านั้น
+
+<Playground
+  id="grid-introduction-3"
+  title="Flexbox"
+  html={`
+<style>
+    .container {  
+        display: flex; 
+        justify-content: space-between;   
+        align-items: center;   
+        gap: 16px;    
+    }
+
+    @media (max-width: 300px) {
+        .container {
+            flex-direction: column;
+        }
+    }
+
+</style>
+<div class="container">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+</div>
+`}
+  css={`
+    .item {
+        min-width: fit-content;
+        background-color: #84cc16;  
+        color: #fff;  
+        padding: 24px;   
+        text-align: center;  
+    }
+  `}
+  layoutMode="side-by-side"
+  centered={false}
+/>
+
+**2. การออกแบบเลย์เอาต์ "สองมิติ" (CSS Grid เหมาะกว่า)**
+
+- **สถานการณ์**: คุณต้องการสร้าง Layout ที่มีทั้งแถว (Rows) และคอลัมน์ (Columns) เช่น หน้า Gallery, ตารางข้อมูล (Table), หรือ Layout ที่มี Section หลายช่องพร้อมกัน
+- **ทำไมควรใช้ CSS Grid**: CSS Grid ถูกสร้างมาเพื่อรองรับ **Two Dimensional Layouts** ซึ่งช่วยให้คุณควบคุมตำแหน่งของแต่ละไอเท็มทั้งในแถวและคอลัมน์ได้พร้อมกัน
+
+<Playground
+  id="grid-introduction-4"
+  title="CSS Grid"
+  html={`
+<style>
+    .grid-container {  
+        display: grid;  
+        grid-template-columns: 1fr 1fr;   
+        grid-template-rows: auto;        
+        gap: 16px;                       
+}
+
+    .item:nth-child(1) {
+        grid-column: 1 / 3;
+    }
+
+    @media (max-width: 300px) {
+        .grid-container {
+            grid-template-columns: 1fr;
+        }
+
+        .item:nth-child(1) {
+        grid-column: 1 / 2;
+        }
+    }
+
+</style>
+<div class="grid-container">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 4</div>
+    <div class="item">Item 5</div>
+</div>
+
+`}
+  css={`
+.item {
+min-width: fit-content;
+background-color: #84cc16;  
+ color: #fff;  
+ padding: 24px;  
+ text-align: center;  
+ }
+`}
+layoutMode="side-by-side"
+centered={false}
+/>
+
+**3. การใช้ทั้ง Flexbox และ CSS Grid ร่วมกัน**
+
+บางกรณีอาจจะต้องใช้ Flexbox กับ CSS Grid ร่วมกันในเว็บไซต์เดียวกัน ตัวอย่างเช่น:
+
+- ใช้ Grid สร้าง Layout หลัก (เช่น Header, Sidebar, Main Content, Footer)
+- ใช้ Flexbox ในการจัดองค์ประกอบย่อย (เช่น จัดเรียงไอคอนใน Navbar หรือปุ่มภายใน Footer)
+
+<Playground
+  id="grid-introduction-5"
+  title="การใช้ Flexbox และ CSS Grid ร่วมกัน"
+  html={`
+<style>
+    .grid-container {  
+        display: grid;  
+        grid-template-columns: 1fr; 
+        grid-template-rows: 50px auto 1fr 50px;  
+        height: 100%;
+    }
+    ul {
+        display: flex;
+        justify-content: space-evenly;
+        list-style-type: none;
+        padding: 0;
+    }
+    @media (max-width: 300px) {
+        ul {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>
+<div class="grid-container">
+    <header>Header</header>
+    <nav>
+      <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
+      </ul>
+    </nav>
+    <main>Main Content</main>
+    <footer>Footer</footer>
+</div>
+
+`}
+  css={`
+body,html {
+height: 100%;
+}
+
+header, nav, main, footer {
+border: 2px solid var(--border-color);
+background: var(--background-color);
+}
+
+header {
+--border-color: red;
+--background-color: lightcoral;
+}
+
+nav {
+--border-color: blue;
+--background-color: lightblue;
+}
+
+main {
+--border-color: green;
+--background-color: lightgreen;
+}
+
+footer {
+--border-color: purple;
+--background-color: lightpink;
+}
+
+.item {
+min-width: fit-content;
+background-color: #84cc16;  
+ color: #fff;  
+ padding: 24px;  
+ text-align: center;  
+ }
+`}
+layoutMode="side-by-side"
+centered={false}
+/>
