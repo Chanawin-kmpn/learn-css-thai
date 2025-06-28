@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Learn CSS Thai Website
 
-## Getting Started
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/f93118a7-a1e6-40b3-b4d3-3b5647530113" alt="Learn CSS Thai Logo" title="Learn CSS Thai"/>
+</div>
 
-First, run the development server:
+## Demo
+[Live Demo](https://learn-css-thai.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## About Project
+Learn CSS Thai is an educational web platform designed to teach CSS concepts in the Thai language. The project addresses a significant gap in Thai-language programming resources, particularly for CSS, which is a fundamental technology for web development.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![heroImage](https://github.com/user-attachments/assets/1666075e-4810-4d63-a219-ef7af130327f)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Objectives
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Create a comprehensive CSS learning resource for Thai speakers
+- Implement interactive code examples for hands-on learning
+- Develop a fast-loading, responsive website for optimal user experience across devices
+- Ensure accessibility for learners with different needs and technical backgrounds
+- Establish a scalable platform that can be easily updated with new content
+- Optimize for search engines to increase discoverability
+- Build a community around CSS learning in Thailand
+- Provide clear, concise explanations of complex CSS concepts
 
-## Learn More
+## Web Stack Overview
 
-To learn more about Next.js, take a look at the following resources:
+The website architecture prioritizes performance, interactivity, and content management. The component-based structure allows for consistent design patterns and reusable elements throughout the site. Server-side rendering capabilities ensure fast initial page loads and improved SEO, while client-side interactivity enhances the learning experience. The content management approach using MDX enables writers to create rich, interactive tutorials without extensive technical knowledge of HTML.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Technologies we've used
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+<div >
+	<img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/next_js.png" alt="Next.js" title="Next.js"/>
+	<img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/typescript.png" alt="TypeScript" title="TypeScript"/>
+	<img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/tailwind_css.png" alt="Tailwind CSS" title="Tailwind CSS"/>
+	<img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/shadcn_ui.png" alt="ShadCn UI" title="ShadCn UI"/>
+	<img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/figma.png" alt="Figma" title="Figma"/>
+	<img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/git.png" alt="Git" title="Git"/>
+</div>
 
-## Deploy on Vercel
+## Results
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The Learn CSS Thai project has successfully delivered:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- A performance-optimized educational platform with fast-loading interactive examples
+- Comprehensive CSS curriculum in Thai language with progressive learning paths
+- Intuitive navigation and search functionality for easy content discovery
+- Mobile-responsive design ensuring accessibility across all device types
+- Interactive code editors allowing hands-on practice within tutorials
+
+## Read More
+**[View full project summary](https://chanawin-portfolio.vercel.app/projects/learn-css-thai)**
+
+© 2025 Chanawin. All rights reserved.
