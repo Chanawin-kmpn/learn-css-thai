@@ -144,7 +144,7 @@ const component = {
     />
   ),
   ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className={cn("ml-6 list-decimal", className)} {...props} />
+    <ol className={cn("mb-4 ml-6 mt-6 list-decimal", className)} {...props} />
   ),
   li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <li

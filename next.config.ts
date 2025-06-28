@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "fonts.googleapis.com",
       },
+      {
+        protocol: "https",
+        hostname: "assets.fonts.adobe.com",
+      },
     ],
   },
   /* config options here */

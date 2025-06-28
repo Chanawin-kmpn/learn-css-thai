@@ -26,6 +26,7 @@ export const throttle = (func: Function, limit: number) => {
   let lastRan: number;
   return function (...args: any) {
     if (!lastRan) {
+      // ถ้าหากว่ารันครั้งแรกก็ให้ !lastRan เป็น true ก่อน จากนั้นเมื่อ lastRun มีค่าแล้วก็ไปทำงานที่ else
       func.apply(null, args);
       lastRan = Date.now();
     } else {
