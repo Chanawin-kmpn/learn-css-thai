@@ -148,7 +148,10 @@ const component = {
   ),
   li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <li
-      className={cn("text-dark700_light400 mt-2 gap-6", className)}
+      className={cn(
+        "text-dark700_light400 mt-2 gap-6 last-of-type:mb-4",
+        className,
+      )}
       {...props}
     />
   ),
