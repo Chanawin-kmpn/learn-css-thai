@@ -12,6 +12,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "assets.fonts.adobe.com",
       },
+      {
+        protocol: "https",
+        hostname: "www.simplilearn.com",
+      },
     ],
   },
   /* config options here */

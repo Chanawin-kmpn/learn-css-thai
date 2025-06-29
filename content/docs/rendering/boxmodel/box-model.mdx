@@ -1,0 +1,143 @@
+---
+title: "Box Model"
+description: "เรียนรู้ Box Model ที่เป็นส่วนสำคัญในการจัดเรียงเนื้อหา"
+createdDate: "27-01-2025"
+updatedDate: "29-02-2025"
+published: true
+---
+
+## Box Model คืออะไร
+
+CSS Box Model เป็นแนวคิดพื้นฐานที่สำคัญที่สุดในการออกแบบเว็บไซต์ และเป็นหัวข้อยอดนิยมในการสัมภาษณ์งานด้านการพัฒนาเว็บ การเข้าใจ Box Model อย่างถ่องแท้จะช่วยให้สามารถควบคุมการจัดวางเลย์เอาต์ได้อย่างแม่นยำและคาดเดาได้
+
+### องค์ประกอบของ Box Model
+
+Box Model ประกอบด้วย 4 ส่วนหลักที่สามารถเปรียบเทียบกับกล่องของขวัญให้เห็นภาพได้ง่ายขึ้นแบบนี้:
+
+1. Content (เนื้อหา)
+
+   - **คือ:** ของขวัญตัวจริงที่อยู่ข้างในกล่อง เช่น นาฬิกา กระเป๋า หรือเครื่องประดับ
+   - **ในเว็บ:** พื้นที่ที่บรรจุเนื้อหาจริง เช่น ข้อความ รูปภาพ หรือ elements อื่นๆ
+   - **ลักษณะ:** เป็นแกนกลางของ element ทุกอย่างถูกสร้างขึ้นรอบๆ ส่วนนี้
+
+2. Padding (ช่องว่างภายใน)
+
+   - **คือ:** ใยบุหรือฟองน้ำที่ใช้หุ้มของขวัญเพื่อป้องกันการกระแทก
+   - **ในเว็บ:** พื้นที่ว่างระหว่างเนื้อหากับขอบของ element
+   - **ลักษณะ:** ยิ่งมี padding มาก element ก็จะมี "ระยะหายใจ" มากขึ้น และจะได้รับสีพื้นหลังเดียวกับ element
+
+3. Border (เส้นขอบ)
+
+   - **คือ:** กล่องที่ห่อของขวัญ มีความหนา สี และลวดลายที่สวยงาม
+   - **ในเว็บ:** เส้นขอบรอบ element ที่มีความหนา สี และรูปแบบได้
+   - **ลักษณะ:** ส่งผลต่อรูปลักษณ์และขนาดของ element
+
+4. Margin (ช่องว่างภายนอก)
+   - **คือ:** ระยะห่างที่เราจัดให้มีระหว่างกล่องของขวัญแต่ละใบบนโต๊ะ เพื่อไม่ให้แออัดหรือชนกัน
+   - **ในเว็บ:** พื้นที่ว่างรอบๆ element เพื่อแยกออกจาก elements อื่น
+   - **ลักษณะ:** สร้างระยะห่างและจังหวะในการออกแบบ
+
+<div>
+  <Image
+    src="/images/content/boxModel/box-model-layer.png"
+    alt="Banner"
+    quality={100}
+    width={1500}
+    height={200}
+    priority={true}
+    className="object-cover"
+  />
+</div>
+
+## การ Debug Box Model ในเบราว์เซอร์
+
+เครื่องมือ Developer Tools ในเบราว์เซอร์สมัยใหม่มีฟีเจอร์ที่ช่วยให้เราเห็น Box Model ได้อย่างชัดเจน:
+
+### วิธีการใช้งาน:
+
+1. เปิด Developer Tools (กด F12 หรือคลิกขวาเลือก "Inspect")
+2. เลือก element ที่ต้องการตรวจสอบ
+3. ดูแท็บ "Computed" จะเห็นแผนภาพ Box Model
+4. สังเกตสีต่างๆ: แต่ละส่วนจะมีสีแยกความแตกต่าง
+   - Content: สีฟ้า (ของขวัญตัวจริง)
+   - Padding: สีเขียว (ใยบุหุ้ม)
+   - Border: สีเหลือง (กล่อง)
+   - Margin: สีส้ม (ระยะห่างรอบกล่อง)
+
+<div>
+  <Image
+    src="https://www.simplilearn.com/ice9/free_resources_article_thumb/CSS-Box-Model.png"
+    alt="Banner"
+    quality={100}
+    width={1500}
+    height={200}
+    priority={true}
+    className="object-cover"
+  />
+</div>
+
+Credit Image: <TextLink href="https://www.simplilearn.com/tutorials/css-tutorial/css-box-model">Simplilearn</TextLink>
+
+### ประโยชน์ของการ Debug:
+
+- เห็นขนาดจริง ของแต่ละส่วนในหน่วย pixel
+- ระบุปัญหา เมื่อ layout ไม่เป็นไปตามที่คาดหวัง
+- เข้าใจการคำนวณ ขนาดรวมของ element
+
+## Box Sizing: หัวใจสำคัญของการคำนวณขนาด
+
+### ปัญหาของ Content-Box (ค่าเริ่มต้น)
+
+เมื่อเราตั้งค่า <TextCode>width: 100%</TextCode> สำหรับ element หนึ่ง เบราว์เซอร์จะตีความอย่างไร? คำตอบอาจไม่เป็นไปตามที่เราคาดหวัง
+
+<CodeBlock language="css">
+  {`div {
+    width: 500px;
+  }
+  
+  .box {
+    box-sizing: content-box;
+    width: 100%; 
+    padding: 20px; 
+    border: 4px solid black;`}
+</CodeBlock>
+
+ด้วยการตั้งค่าเริ่มต้น <TextCode>box-sizing: content-box;</TextCode> การคำนวณจะเป็น:
+
+- **Content width:** 500px (100% ของ div)
+- **Padding:** 20px ซ้าย + 20px ขวา = 40px
+- **Border:** 4px ซ้าย + 4px ขวา = 8px
+- **ขนาดจริงทั้งหมด:** 500 + 40 + 8 = 548px
+
+- **ผลลัพธ์:** element กว้างเกินกว่า container และอาจ overflow
+
+### วิธีแก้ไขด้วย Border-Box
+
+<CodeBlock language="css">
+  {`div {
+    width: 200px;
+  }
+  
+  .box {
+    box-sizing: border-box;
+    width: 100%; 
+    padding: 20px; 
+    border: 4px solid black;`}
+</CodeBlock>
+
+ด้วย border-box การคำนวณจะเปลี่ยนไป:
+
+- **Padding:** 20px ซ้าย + 20px ขวา = 40px
+- **Border:** 4px ซ้าย + 4px ขวา = 8px
+- **Content width:** 500 - 40 - 8 = 452px
+- **ผลลัพธ์:** ขนาด div พอดีไม่ล้น
+
+### การตั้งค่าเป็น Default
+
+เราสามารถตั้งเป็นค่าเริ่มต้นสำหรับทุก element:
+
+<CodeBlock language="css">
+  {`*, *::before, *::after {
+    box-sizing: border-box;
+}`}
+</CodeBlock>

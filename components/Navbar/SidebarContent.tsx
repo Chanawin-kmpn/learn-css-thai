@@ -33,13 +33,14 @@ const SidebarContent = ({ isMobile = false }: { isMobile?: boolean }) => {
                       let isActive = pathName.includes(item.path);
                       return item.label !== "Flexbox" &&
                         item.label !== "CSS Grid" &&
-                        item.label !== "Selectors" ? (
+                        item.label !== "Selectors" &&
+                        item.label !== "Box model" ? (
                         <li
                           className="jun-sidebarMenuItem"
                           key={`Sub Section ${item.label}`}
                         >
                           <Link
-                            className="link text-dark700_light400 jun-sidebarMenuButton transition-all duration-150 hover:bg-light-300 hover:dark:bg-dark-700"
+                            className="text-dark700_light400 link jun-sidebarMenuButton transition-all duration-150 hover:bg-light-300 hover:dark:bg-dark-700"
                             href={item.path}
                           >
                             <span
@@ -71,7 +72,7 @@ const SidebarContent = ({ isMobile = false }: { isMobile?: boolean }) => {
                                       key={`Super Sub Section ${child.label}`}
                                     >
                                       <Link
-                                        className="link text-dark700_light400 jun-sidebarMenuButton transition-all duration-150 hover:bg-light-300 hover:dark:bg-dark-700"
+                                        className="text-dark700_light400 link jun-sidebarMenuButton transition-all duration-150 hover:bg-light-300 hover:dark:bg-dark-700"
                                         href={child.path}
                                       >
                                         <span
@@ -117,7 +118,7 @@ const SidebarContent = ({ isMobile = false }: { isMobile?: boolean }) => {
                                           key={`Super Sub Section ${child.path}`}
                                         >
                                           <Link
-                                            className="link text-dark700_light400 jun-sidebarMenuButton transition-all duration-150 hover:bg-light-300 hover:dark:bg-dark-700"
+                                            className="text-dark700_light400 link jun-sidebarMenuButton transition-all duration-150 hover:bg-light-300 hover:dark:bg-dark-700"
                                             href={child.path}
                                           >
                                             <span

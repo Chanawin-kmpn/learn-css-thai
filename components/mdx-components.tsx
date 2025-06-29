@@ -139,7 +139,7 @@ const component = {
   ),
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
     <ul
-      className={cn("ml-6 list-disc last-of-type:mb-6", className)}
+      className={cn("mb-4 ml-6 mt-6 list-disc last-of-type:mb-6", className)}
       {...props}
     />
   ),

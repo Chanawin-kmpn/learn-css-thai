@@ -63,7 +63,25 @@ const ROUTES = [
       },
       {
         label: "Box model",
-        path: "/docs/rendering/box-model",
+        path: "/docs/rendering/boxmodel",
+        children: [
+          {
+            label: "Box Model",
+            path: "/docs/rendering/boxmodel/box-model",
+          },
+          {
+            label: "Padding",
+            path: "/docs/rendering/boxmodel/padding",
+          },
+          {
+            label: "Border",
+            path: "/docs/rendering/boxmodel/border",
+          },
+          {
+            label: "Margin",
+            path: "/docs/rendering/boxmodel/margin",
+          },
+        ],
       },
       {
         label: "Flow layout",
